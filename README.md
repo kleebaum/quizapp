@@ -22,5 +22,8 @@ Erreichbarkeit und Nutzbarkeit wurden mit Hilfe von Selenium und Selenium Grid d
 # Benutzerbeschreibung
 ## Installationsbeschreibung
 ## Lehrer nutzung
+![alt tag](Screenshots/LehreStart.jpg)
 ## Administrator nutzung
+![alt tag](Screenshots/AdministratorLogin.jpg)
 ## Studenten nutzung
+![alt tag](Screenshots/SchuelerLogin.jpg)
