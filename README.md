@@ -1,5 +1,5 @@
 # quizapp
-Mobile quiz web app
+![alt tag](Screenshots/WelcomePage.jpg)
 
 ## Motivation
 
@@ -19,7 +19,9 @@ Bei der Entwicklung der App werden Methoden kontinuierlicher Softwareentwicklung
 kontinuierlichen Softwareentwicklung eingebunden so das nach jeder Version in der Versionsverwaltung (Git) Regressionstest durchlaufen wurden. Test der 
 Erreichbarkeit und Nutzbarkeit wurden mit Hilfe von Selenium und Selenium Grid durchgeführt. Komponenten Test wurden mit Hilfe von JUnit Test durchgeführt.
 
-## Installation Guide
-## Teacher User Guide
-## Administrator User Guide
-## Student User Guide
+# Benutzer beschreibung
+
+## Installations beschreibung
+## Lehrer nutzung
+## Administrator nutzung
+## Studenten nutzung
