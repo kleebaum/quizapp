@@ -19,9 +19,8 @@ Bei der Entwicklung der App werden Methoden kontinuierlicher Softwareentwicklung
 kontinuierlichen Softwareentwicklung eingebunden so das nach jeder Version in der Versionsverwaltung (Git) Regressionstest durchlaufen wurden. Test der 
 Erreichbarkeit und Nutzbarkeit wurden mit Hilfe von Selenium und Selenium Grid durchgeführt. Komponenten Test wurden mit Hilfe von JUnit Test durchgeführt.
 
-# Benutzer beschreibung
-
-## Installations beschreibung
+# Benutzerbeschreibung
+## Installationsbeschreibung
 ## Lehrer nutzung
 ## Administrator nutzung
 ## Studenten nutzung
