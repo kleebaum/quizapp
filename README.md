@@ -23,6 +23,10 @@ Erreichbarkeit und Nutzbarkeit wurden mit Hilfe von Selenium und Selenium Grid d
 ## Installationsbeschreibung
 ## Lehrer nutzung
 ![alt tag](Screenshots/LehreStart.jpg)
+Lehrer können die Ergebnisse der Schüler im Lehrerzugang sich anzeigen lassen. Der Lehrerzug ermöglicht zwischen allgemeine Ergebnissen, für alle Aufgaben, 
+sich ebenso die Ergebnisse für jeden Schüler separat anzeigen zu lassen. Eine Dritte Möglichkeit bietet hier die Metrik Ansicht in der Visuell 
+die anzahlen der Richtigen bzw. Falschen Antworten dargestellt wird.
+
 ## Administrator nutzung
 ![alt tag](Screenshots/AdministratorLogin.jpg)
 ## Studenten nutzung
