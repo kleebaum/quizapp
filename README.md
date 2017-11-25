@@ -29,5 +29,9 @@ die anzahlen der Richtigen bzw. Falschen Antworten dargestellt wird.
 
 ## Administrator nutzung
 ![alt tag](Screenshots/AdministratorLogin.jpg)
+Der Administrator Zugang ermöglicht die Verwaltung des Systems. Nach dem Einlogen kann der Administrator neben der Aufgabenerstellung der 3 Typen 
+(Richtig/Falsch- , Satzverbindungs- und Beschriftungs-Aufgaben)  ebenso noch die Verwendeten Informationen Verwalten. Unter den Einstellung ist es möglich die 
+Datenbank zu löschen und eine Neue Datenbank zu integrieren.
+
 ## Studenten nutzung
 ![alt tag](Screenshots/SchuelerLogin.jpg)
