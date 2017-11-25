@@ -1,6 +1,6 @@
 # quizapp
 ![alt tag](Screenshots/WelcomePage.jpg)
-
+[![Travis-CI Status]][travis]
 ## Motivation
 
 Mobilgeräte wie Smartphones und Tablets sind aus unserem Alltag kaum mehr wegzudenken und ermöglichen es,
