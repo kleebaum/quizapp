@@ -1,5 +1,5 @@
 # quizapp
-https://travis-ci.org/dekome/quizapp.svg?branch=master
+![Travis Build](https://travis-ci.org/dekome/quizapp.svg?branch=master)
 ![alt tag](Screenshots/WelcomePage.jpg)
 ## Motivation
 
