@@ -33,5 +33,11 @@ Der Administrator Zugang ermöglicht die Verwaltung des Systems. Nach dem Einlog
 (Richtig/Falsch- , Satzverbindungs- und Beschriftungs-Aufgaben)  ebenso noch die Verwendeten Informationen Verwalten. Unter den Einstellung ist es möglich die 
 Datenbank zu löschen und eine Neue Datenbank zu integrieren.
 
-## Studenten nutzung
+## Schüler nutzung
 ![alt tag](Screenshots/SchuelerLogin.jpg)
+Schüler haben, nach dem sie sich Registriert haben, die Möglichkeit
+Aufgaben zu lösen. Hier können sie zwischen 3 Typen von Aufgaben auswählen
+(Richtig/Falsch- , Satzverbindungs- und Beschriftung-Aufgaben) ebenso wie die
+Schwierigkeit der Aufgaben. Nach der Bearbeitung einer Aufgaben bekommt der
+Schüler direktes Feedback und hat die Möglichkeit sich weitere Aufgaben aus dem
+Katalog zu suchen und diese weiter zu bearbeiten.
