@@ -43,15 +43,22 @@ Erreichbarkeit und Nutzbarkeit wurden mit Hilfe von Selenium und Selenium Grid d
 # Usage Description
 
 ## Administrator
-<p align="center"> 
-<img src="screenshots/AdminLogin.png" alt="Screenshot of the login on the admin page" width="400"/>
-<img src="screenshots/AdminCreateExercise.png" alt="Screenshot of creating an exercise on the admin page" width="400"/>
-<img src="screenshots/AdminCreateInformation.png" alt="Screenshot of creating information material on the admin page" width="400"/>
-</p>
+
 The administrator is allowed to administer the app. 
 First, the administrator needs to login.
+
+<p align="center"> 
+<img src="screenshots/AdminLogin.png" alt="Screenshot of the login on the admin page" width="400"/>
+</p>
+
 Then, s/he can manage (create, update and delete) instances of three differnt types of exercises (multiple choice exercises, sentence part exercises and exercises to label images).
 In addition, the administrator can manage information material that is related to exercises. 
+
+<p align="center"> 
+<img src="screenshots/AdminCreateExercise.png" alt="Screenshot of creating an exercise on the admin page" height="400"/>
+<img src="screenshots/AdminCreateInformation.png" alt="Screenshot of creating information material on the admin page" height="400"/>
+</p>
+
 The administrator has also access to a settings page that e.g. enables him/her to backup or to reset the database.
 
 ## Student
