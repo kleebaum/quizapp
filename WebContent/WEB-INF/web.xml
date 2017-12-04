@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:web="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<servlet>
+		<servlet-name>AdministratorServlet</servlet-name>
+		<servlet-class>de.uhd.ifi.se.quizapp.controller.AdministratorServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AdministratorServlet</servlet-name>
+		<url-pattern>/admin/Administrator</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>StudentServlet</servlet-name>
+		<servlet-class>de.uhd.ifi.se.quizapp.controller.StudentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>StudentServlet</servlet-name>
+		<url-pattern>/student/Student</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>TeacherServlet</servlet-name>
+		<servlet-class>de.uhd.ifi.se.quizapp.controller.TeacherServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TeacherServlet</servlet-name>
+		<url-pattern>/teacher/Teacher</url-pattern>
+	</servlet-mapping>
+	<security-constraint>
+		<display-name>Default Student Security Constraints</display-name>
+		<web-resource-collection>
+			<web-resource-name>Student Directory</web-resource-name>
+			<url-pattern>/student/filterExercises.jsp</url-pattern>
+			<url-pattern>/student/showFilteredExercises.jsp</url-pattern>
+			<url-pattern>/student/showResult.jsp</url-pattern>
+			<url-pattern>/student/solveExercise.jsp</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>Admin</role-name>
+		</auth-constraint>
+		<user-data-constraint>
+			<transport-guarantee>NONE</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+</web-app>

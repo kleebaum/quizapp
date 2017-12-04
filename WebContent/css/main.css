@@ -1,0 +1,374 @@
+@CHARSET "UTF-8";
+
+* {
+	box-sizing: border-box;
+}
+
+/*Bootstraps*/
+.navbar {
+	background: #28A828;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1;
+}
+
+.btn {
+	background-color: #28A828;
+	border: none
+}
+
+.form-signin {
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
+	border: 1px dotted;
+}
+
+.signin {
+	padding: 40px 15px;
+	text-align: center;
+}
+
+.nav-item:hover { //
+	background: #454545;
+	transition: all .5;
+	color: whitesmoke !important;
+}
+
+.container img {
+	max-width: 100% !important;
+	height: auto !important;
+}
+
+/* Custom styles */
+#deleteFilesButton {
+	float: right;
+}
+
+.labelImageDropZone {
+	position: relative;
+	width: 100%;
+	background-size: contain;
+	background-repeat: no-repeat;
+	height: 35vw;
+	background-repeat: no-repeat;
+	border: 1px dashed black;
+}
+
+.deleteLabel {
+	cursor: pointer;
+	position: absolute;
+	border-radius: 1000px;
+	border: 1px solid;
+	width: 25px;
+	height: 25px;
+	text-align: center;
+	background: white;
+}
+
+.deleteLabel:hover {
+	color: red;
+}
+
+.labels {
+	position: absolute;
+	width: 200px;
+}
+
+.imagePicker li, #deleteFilesForm li {
+	display: inline-block;
+	margin: 5px;
+}
+
+.labelImagePreview {
+	display: inline-block;
+	width: 200px;
+	height: auto;
+	opacity: 0.5;
+	transition: all 0.5s;
+	cursor: pointer;
+	border: 15px solid;
+	box-shadow: 5px 5px 5px #888888;
+}
+
+.labelImagePreviewSelected {
+	border: 15px inset;
+	box-shadow: 0px 0px 0px #888888;
+	opacity: 1;
+}
+
+.labelImagePreview:hover {
+	opacity: 1;
+}
+
+#exercisetabel {
+	display: block;
+	border: none;
+	margin-bottom: 25px;
+	padding: 25px 0px;
+	box-shadow: 5px 5px 5px #888888;
+}
+
+#sideMenu {
+	width: 100%;
+	position: fixed;
+	background: salmon;
+	transition: all .5s;
+}
+
+#sideMenu ul {
+	margin: 0;
+	display: none;
+}
+
+#sideMenu li {
+	text-align: center;
+}
+
+#wrapper {
+	max-width: 980px;
+	min-height: 100%;
+	padding: 100px 10px;
+	margin: 0 auto;
+	position: relative;
+	border: 1px dotted;
+	background: #EEEEEE;
+}
+
+/*
+.group, .group2 {
+	border: 1px dashed;
+	padding: 10px;
+	display: inline-block;
+}
+*/
+.highlighted {
+	background: yellow;
+}
+
+.droppable-hover {
+	background: lightgreen;
+}
+
+.correct {
+	width: 32px !important;
+	height: 32px !important;
+}
+
+input, select, textarea {
+	padding: 10px;
+	margin: 10px;
+	text-align: center;
+	width: auto;
+}
+
+input[type=range] {
+	color: red;
+}
+
+span {
+	position: relative;
+}
+
+span:after {
+	position: relative;
+	content: attr(data-range-max);
+}
+
+span:before {
+	position: relative;
+	content: attr(data-range-min);
+}
+
+#exerciseform {
+	position: relative;
+	background: white;
+	border: 1px solid black;
+	padding: 25px;
+}
+
+h1 {
+	text-align: center;
+	text-transform: uppercase;
+	word-break: break-all;
+}
+
+#exercisetable {
+	margin: 0 auto;
+	padding-bottom: 50px;
+	width: 100%;
+}
+
+#exercisetable img {
+	max-width: 100%;
+	height: auto;
+}
+
+#exercisetable td, #exercisetable tr {
+	display: block;
+	border: none;
+	margin-bottom: 25px;
+	padding: 25px 0px;
+	box-shadow: 5px 5px 5px #888888;
+}
+
+#exercisetable td:before {
+	content: attr(data-th) ": ";
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+#exercisetable td:last-child:before {
+	content: "";
+}
+
+iframe {
+	max-width: 100%;
+	height: auto;
+}
+
+#textbox, #task, #description, #exercisetable td, .points,
+	#resultwrapper {
+	box-shadow: 5px 5px 5px #888888;
+	border: 1px solid black;
+	margin: 10px;
+	padding: 10px;
+}
+
+#filterform {
+	text-align: center;
+}
+
+#filterform input, #filterform select, #filterform label {
+	display: block;
+	margin: 10px auto;;
+}
+
+.part {
+	padding: 10px;
+	border: 1px solid;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.part:hover {
+	background: #151515;
+	color: white;
+}
+
+.points {
+	font-size: 27px;
+}
+
+/*
+	Lehrer Css
+*/
+#studenttable {
+	border-spacing: 0px;
+}
+
+#studenttable tr {
+	border-bottom: 1px solid black;
+}
+
+#studenttable td, th {
+	border-bottom: 1px solid black;
+	padding: 5px;
+	text-align: center;
+}
+
+#sliderValue {
+	position: relative;
+	top: 10px;
+	right: 92px;
+	font-weight: bold;
+}
+
+.mobilemenu {
+	display: none;
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	padding: 25px;
+}
+
+.mobilemenu span, .mobilemenu span::before, .mobilemenu span::after {
+	z-index: 999;
+	cursor: pointer; //
+	top: 25px;
+	border-radius: 1px;
+	height: 1px;
+	width: 30px;
+	background: black;
+	display: block;
+	content: '';
+}
+
+.mobilemenu span::before {
+	top: -10px;
+}
+
+.mobilemenu span::after {
+	top: 10px;
+}
+
+#sideMenu .mobilemenu {
+	display: block !important;
+	right: 0;
+}
+
+.mobilemenu:hover>span, .mobilemenu:hover>span::before, .mobilemenu:hover>span::after
+	{
+	background: white;
+}
+
+.seperator {
+	display: block;
+	width: 100%;
+	height: 1px;
+	border: 1px solid black;
+}
+
+@media screen and (min-width : 0px) and (max-width : 991px) {
+	#sideMenu {
+		display: none;
+	}
+	.mobilemenu {
+		display: block;
+	}
+	.mobilemenu span, .mobilemenu span::before, .mobilemenu span::after {
+		z-index: 999;
+		cursor: pointer; //
+		top: 25px;
+		border-radius: 1px;
+		height: 1px;
+		width: 30px;
+		background: black;
+		display: block;
+		content: '';
+		transition: all .25s;
+	}
+	.mobilemenu span::before {
+		top: -10px;
+	}
+	.mobilemenu span::after {
+		top: 10px;
+	}
+	.mobilemenu:hover>span, .mobilemenu:hover>span::before, .mobilemenu:hover>span::after
+		{
+		background: white;
+	}
+	.mobilemenu.toggled span::before {
+		transform: rotate(45deg);
+		top: 0px;
+	}
+	.mobilemenu.toggled span::after {
+		transform: rotate(-45deg);
+		top: 0px;
+	}
+	.mobilemenu.toggled span {
+		background-color: transparent;
+	}
+}
