@@ -7,7 +7,7 @@ The app runs on a Java servlet container such as [Tomcat](https://tomcat.apache.
 
 The app has been developed in order to teach students the German language with a focus on natural sciences and the scientific terminology. 
 The app distinguishes between three user roles: administrators, students and teachers.
-Currently, there are three differnt types of exercises: multiple choice exercises, sentence part exercises, and exercises to label images.
+Currently, there are three different types of exercises: multiple choice exercises, sentence part exercises, and exercises to label images.
 
 <p align="center"> 
 <img src="screenshots/WelcomePage.png" alt="Screenshot of the index page" width="440"/>
@@ -53,7 +53,7 @@ First, the administrator needs to login.
 <img src="screenshots/AdminLogin.png" alt="Screenshot of the login on the admin page" width="440"/>
 </p>
 
-Then, s/he can manage (create, update and delete) instances of three differnt types of exercises (multiple choice exercises, sentence part exercises and exercises to label images).
+Then, s/he can manage (create, update and delete) instances of three different types of exercises (multiple choice exercises, sentence part exercises and exercises to label images).
 In addition, the administrator can manage information material that is related to exercises. 
 
 <p align="center"> 
