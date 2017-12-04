@@ -1,24 +1,28 @@
 # NaWiDaZ Quiz App
 ![Travis Build](https://travis-ci.org/dekome/quizapp.svg?branch=master)
 
-This repository contains the code of a mobile quiz web app that was developed within the [NaWi-DaZ project](#nawidaz).
+This repository contains the code of a mobile quiz web app that was developed within the [NaWi-DaZ 2.0 project](http://se.ifi.uni-heidelberg.de/research/projects/nawi_daz_20.html).
 It is written in Java and web programming languages (e.g., Java Server Pages, Java Script) and stores data in an [SQLite database](https://www.sqlite.org).
 The app runs on a Java servlet container such as [Tomcat](https://tomcat.apache.org/) or [Jetty](https://www.eclipse.org/jetty/) and can be accessed via browser.
 The app distinguishes between three user roles: administrators, students and teachers.
 
-![Screenshot of the index page](screenshots/WelcomePage.png | width=400)
+The following text is written in German since the app has been developed in order to teach students German language. 
 
-## NaWi-DaZ Project (#nawidaz)
+![Screenshot of the index page](screenshots/WelcomePage.png)
 
-Mobilgeräte wie Smartphones und Tablets sind aus unserem Alltag kaum mehr wegzudenken und ermöglichen es,
-Anwendungssoftware (Apps) überall einzusetzen. In Schulen haben SchülerInnen oft das Problem das die 
-Lehreinheiten nicht interaktiv genug sind und die Bewertung von einem Lehrer durchgeführt werden muss.
+## NaWi-DaZ 2.0 Projekt
 
-Das heiEDUCATION Projekt ist ein gemeinsames Projekt der Universität Heidelberg und der Pädagogischen Hochschule Heidelberg. 
-Im Rahmen dieses Projekts soll das Erlernen von Sprache im naturwissenschaftlichen Kontext untersucht werden. 
-Dafür eine Android App entwickelt, die es ermöglicht naturwissenschaftliche Fachsprache ohne Verwendung der Muttersprache des Lernenden zu vermitteln.
-Die App kann im Unterricht eingesetzt werden ohne das eine Verbindung in das Internet von Nöten ist. Die App ist lauffähig auf einen Raspberry Pi und 
-von dort aus dann erreichbar auf den Lokalen Geräten. Hiermit kann man eine Sichere Lernumgebung für Schüler sichern. 
+Das [NaWi-DaZ 2.0 Projekt](http://se.ifi.uni-heidelberg.de/research/projects/nawi_daz_20.html) war ein gemeinsames Projekt der Universität Heidelberg und der Pädagogischen Hochschule Heidelberg. 
+Es wurde im Rahmen von [PLACE (Partizipation langfristig absichern, Chancen erweitern)](https://hse-heidelberg.de/forschung/place-aktuell/) gefördert. 
+Im Rahmen dieses Projekts wurde das Erlernen von Sprache im naturwissenschaftlichen Kontext untersucht. 
+Dafür wurde diese App entwickelt, die es den SchülerInnen ermöglicht, naturwissenschaftliche Fachsprache ohne Verwendung ihrer Muttersprache zu erlernen.
+
+## Einsatz der App auf einem Raspberry Pi
+
+Die App kann im Unterricht eingesetzt werden, ohne dass eine Verbindung mit Internet benötigt wird. Die App ist lauffähig auf einen Raspberry Pi und 
+von dort aus dann erreichbar auf den lokalen Geräten wie Smartphones und Tablets. Das hat die folgenden Vorteile:
+- Die App kann (theoretisch) überall zum Einsatz kommen, d.h. auch in Schulen, die kein öffentliches WLAN zur Verfügung stellen können
+- Vertraulichkeit der Daten ist gewährleistet
 
 ## Beschreibung der Entwicklung
 
