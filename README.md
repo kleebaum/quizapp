@@ -7,9 +7,10 @@ The app runs on a Java servlet container such as [Tomcat](https://tomcat.apache.
 
 The app has been developed in order to teach students the German language with a focus on natural sciences and the scientific terminology. 
 The app distinguishes between three user roles: administrators, students and teachers.
+Currently, there are three differnt types of exercises: multiple choice exercises, sentence part exercises, and exercises to label images.
 
 <p align="center"> 
-<img src="screenshots/WelcomePage.png" alt="Screenshot of the index page" width="400"/>
+<img src="screenshots/WelcomePage.png" alt="Screenshot of the index page" width="440"/>
 </p>
 
 ## NaWi-DaZ 2.0 Project
@@ -29,16 +30,17 @@ The following prerequisites are necessary to install the app:
 
 ### Run the App on a Raspberry Pi
 
-Die App kann im Unterricht eingesetzt werden, ohne dass eine Verbindung mit Internet benötigt wird. Die App ist lauffähig auf einen Raspberry Pi und 
-von dort aus dann erreichbar auf den lokalen Geräten wie Smartphones und Tablets. Das hat die folgenden Vorteile:
-- Die App kann (theoretisch) überall zum Einsatz kommen, d.h. auch in Schulen, die kein öffentliches WLAN zur Verfügung stellen können
-- Vertraulichkeit der Daten ist gewährleistet
+An advantage of this app is that it can be used in school classes without requiring access to the internet.
+The app can be installed on a [Raspberry Pi](https://www.raspberrypi.org/). This Raspberry Pi needs to be connected to a WLAN router that sets up a wireless local area network (WLAN).
+Then, students and the teacher can login to the local WLAN via their smartphones or tablets (or laptops) and they can access the app in their browser.
+
+This has the following benefits:
+- The app can be used everywhere (where this infrastructure is set up). That is, it can also be run in schools without access to the internet.
+- The data remains confidential.
 
 ## Unit and Selenium Tests
 
-Bei der Entwicklung der App werden Methoden kontinuierlicher Softwareentwicklung eingesetzt. Zur Sicherung der Qualität wurde das Testsystem in der 
-kontinuierlichen Softwareentwicklung eingebunden so das nach jeder Version in der Versionsverwaltung (Git) Regressionstest durchlaufen wurden. Test der 
-Erreichbarkeit und Nutzbarkeit wurden mit Hilfe von Selenium und Selenium Grid durchgeführt. Komponenten Test wurden mit Hilfe von JUnit Test durchgeführt.
+The quality of the app is ensured using JUnit and Selenium tests.
 
 # Usage Description
 
@@ -48,7 +50,7 @@ The administrator is allowed to administer the app.
 First, the administrator needs to login.
 
 <p align="center"> 
-<img src="screenshots/AdminLogin.png" alt="Screenshot of the login on the admin page" width="400"/>
+<img src="screenshots/AdminLogin.png" alt="Screenshot of the login on the admin page" width="440"/>
 </p>
 
 Then, s/he can manage (create, update and delete) instances of three differnt types of exercises (multiple choice exercises, sentence part exercises and exercises to label images).
@@ -62,18 +64,15 @@ In addition, the administrator can manage information material that is related t
 The administrator has also access to a settings page that e.g. enables him/her to backup or to reset the database.
 
 ## Student
-Schüler haben, nachdem sie sich registriert haben, die Möglichkeit
-Aufgaben zu lösen. Hier können sie zwischen 3 Typen von Aufgaben auswählen
-(Richtig/Falsch- , Satzverbindungs- und Beschriftung-Aufgaben) ebenso wie die
-Schwierigkeit der Aufgaben. Nach der Bearbeitung einer Aufgaben bekommt der
-Schüler direktes Feedback und hat die Möglichkeit sich weitere Aufgaben aus dem
-Katalog zu suchen und diese weiter zu bearbeiten.
+Students need to be registered, in order to login to the students' page.
+They have the possibility to learn from information material and solve related exercises.
+After solving an exercise, students instantly receive feedback.
 
 <p align="center"> 
 <img src="screenshots/StudentSolveExercise.png" alt="Screenshot of solving an exercise on the student page" width="400"/>
 </p>
 
 ## Teacher
-Lehrer können die Ergebnisse der Schüler im Lehrerzugang sich anzeigen lassen. Der Lehrerzug ermöglicht zwischen allgemeine Ergebnissen, für alle Aufgaben, 
-sich ebenso die Ergebnisse für jeden Schüler separat anzeigen zu lassen. Eine Dritte Möglichkeit bietet hier die Metrik Ansicht in der Visuell 
-die anzahlen der Richtigen bzw. Falschen Antworten dargestellt wird.
+Teachers can get an overview about the students' exercise results on the teacher page.
+They can either see every result of a certain exercise or all results by a certain student.
+In addition, teachers have the possibility to access a statistics overview that visualizes the number of correctly and incorrectly solved exercises using barplots.
