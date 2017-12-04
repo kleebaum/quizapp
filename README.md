@@ -4,18 +4,18 @@
 This repository contains the code of a mobile quiz web app that was developed within the [NaWi-DaZ 2.0 project](http://se.ifi.uni-heidelberg.de/research/projects/nawi_daz_20.html).
 It is written in Java and web programming languages (e.g., Java Server Pages, Java Script) and stores data in an [SQLite database](https://www.sqlite.org).
 The app runs on a Java servlet container such as [Tomcat](https://tomcat.apache.org/) or [Jetty](https://www.eclipse.org/jetty/) and can be accessed via browser.
-The app distinguishes between three user roles: administrators, students and teachers.
 
-The following text is written in German since the app has been developed in order to teach students German language. 
+The app has been developed in order to teach students German language with a focus on natural sciences and the scientific terminology. 
+The app distinguishes between three user roles: administrators, students and teachers.
 
 ![Screenshot of the index page](screenshots/WelcomePage.png)
 
-## NaWi-DaZ 2.0 Projekt
+## NaWi-DaZ 2.0 Project
 
-Das [NaWi-DaZ 2.0 Projekt](http://se.ifi.uni-heidelberg.de/research/projects/nawi_daz_20.html) war ein gemeinsames Projekt der Universität Heidelberg und der Pädagogischen Hochschule Heidelberg. 
-Es wurde im Rahmen von [PLACE (Partizipation langfristig absichern, Chancen erweitern)](https://hse-heidelberg.de/forschung/place-aktuell/) gefördert. 
-Im Rahmen dieses Projekts wurde das Erlernen von Sprache im naturwissenschaftlichen Kontext untersucht. 
-Dafür wurde diese App entwickelt, die es den SchülerInnen ermöglicht, naturwissenschaftliche Fachsprache ohne Verwendung ihrer Muttersprache zu erlernen.
+[NaWi-DaZ 2.0](http://se.ifi.uni-heidelberg.de/research/projects/nawi_daz_20.html) was a corporate project between the Heidelberg School of Education and the Software Engineering group of the Heidelberg University. 
+It was financially supported by the [PLACE programme](https://hse-heidelberg.de/forschung/place-aktuell/).
+The NaWi-DaZ 2.0 project investigated how students can learn the German language with focus on natural sciences.
+For this purpose, this mobile quiz web app was developed, which enables students to learn scientific terminology without using their first language.
 
 ## Einsatz der App auf einem Raspberry Pi
 
@@ -33,19 +33,19 @@ Erreichbarkeit und Nutzbarkeit wurden mit Hilfe von Selenium und Selenium Grid d
 # Benutzerbeschreibung
 ## Installationsbeschreibung
 ## Lehrer nutzung
-![alt tag](Screenshots/LehreStart.jpg)
+![alt tag](screenshots/LehreStart.jpg)
 Lehrer können die Ergebnisse der Schüler im Lehrerzugang sich anzeigen lassen. Der Lehrerzug ermöglicht zwischen allgemeine Ergebnissen, für alle Aufgaben, 
 sich ebenso die Ergebnisse für jeden Schüler separat anzeigen zu lassen. Eine Dritte Möglichkeit bietet hier die Metrik Ansicht in der Visuell 
 die anzahlen der Richtigen bzw. Falschen Antworten dargestellt wird.
 
 ## Administrator nutzung
-![alt tag](Screenshots/AdministratorLogin.jpg)
+![alt tag](screenshots/AdministratorLogin.jpg)
 Der Administrator Zugang ermöglicht die Verwaltung des Systems. Nach dem Einlogen kann der Administrator neben der Aufgabenerstellung der 3 Typen 
 (Richtig/Falsch- , Satzverbindungs- und Beschriftungs-Aufgaben)  ebenso noch die Verwendeten Informationen Verwalten. Unter den Einstellung ist es möglich die 
 Datenbank zu löschen und eine Neue Datenbank zu integrieren.
 
 ## Schüler nutzung
-![alt tag](Screenshots/SchuelerLogin.jpg)
+![alt tag](screenshots/SchuelerLogin.jpg)
 Schüler haben, nach dem sie sich Registriert haben, die Möglichkeit
 Aufgaben zu lösen. Hier können sie zwischen 3 Typen von Aufgaben auswählen
 (Richtig/Falsch- , Satzverbindungs- und Beschriftung-Aufgaben) ebenso wie die
