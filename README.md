@@ -55,23 +55,25 @@ Then, s/he can manage (create, update and delete) instances of three differnt ty
 In addition, the administrator can manage information material that is related to exercises. 
 
 <p align="center"> 
-<img src="screenshots/AdminCreateExercise.png" alt="Screenshot of creating an exercise on the admin page" height="400"/>
 <img src="screenshots/AdminCreateInformation.png" alt="Screenshot of creating information material on the admin page" height="400"/>
+<img src="screenshots/AdminCreateExercise.png" alt="Screenshot of creating an exercise on the admin page" height="300"/>
 </p>
 
 The administrator has also access to a settings page that e.g. enables him/her to backup or to reset the database.
 
 ## Student
-![alt tag](screenshots/SchuelerLogin.jpg)
-Schüler haben, nach dem sie sich Registriert haben, die Möglichkeit
+Schüler haben, nachdem sie sich registriert haben, die Möglichkeit
 Aufgaben zu lösen. Hier können sie zwischen 3 Typen von Aufgaben auswählen
 (Richtig/Falsch- , Satzverbindungs- und Beschriftung-Aufgaben) ebenso wie die
 Schwierigkeit der Aufgaben. Nach der Bearbeitung einer Aufgaben bekommt der
 Schüler direktes Feedback und hat die Möglichkeit sich weitere Aufgaben aus dem
 Katalog zu suchen und diese weiter zu bearbeiten.
 
+<p align="center"> 
+<img src="screenshots/StudentSolveExercise.png" alt="Screenshot of solving an exercise on the student page" width="400"/>
+</p>
+
 ## Teacher
-![alt tag](screenshots/LehreStart.jpg)
 Lehrer können die Ergebnisse der Schüler im Lehrerzugang sich anzeigen lassen. Der Lehrerzug ermöglicht zwischen allgemeine Ergebnissen, für alle Aufgaben, 
 sich ebenso die Ergebnisse für jeden Schüler separat anzeigen zu lassen. Eine Dritte Möglichkeit bietet hier die Metrik Ansicht in der Visuell 
 die anzahlen der Richtigen bzw. Falschen Antworten dargestellt wird.
