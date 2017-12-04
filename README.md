@@ -1,5 +1,5 @@
 # NaWiDaZ Quiz App
-![Travis Build](https://travis-ci.org/dekome/quizapp.svg?branch=master)
+[![Build Status](https://travis-ci.org/nawidaz/quizapp.svg?branch=master)](https://travis-ci.org/nawidaz/quizapp)
 
 This repository contains the code of a mobile quiz web app that was developed within the [NaWi-DaZ 2.0 project](http://se.ifi.uni-heidelberg.de/research/projects/nawi_daz_20.html).
 It is written in Java and web programming languages (e.g., Java Server Pages, Java Script) and stores data in an [SQLite database](https://www.sqlite.org).
