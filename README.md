@@ -8,7 +8,9 @@ The app runs on a Java servlet container such as [Tomcat](https://tomcat.apache.
 The app has been developed in order to teach students the German language with a focus on natural sciences and the scientific terminology. 
 The app distinguishes between three user roles: administrators, students and teachers.
 
-<img src="screenshots/WelcomePage.png" alt="Screenshot of the index page" style="width: 599px;"/>
+<p align="center"> 
+<img src="screenshots/WelcomePage.png" alt="Screenshot of the index page" style="width: 350px;"/>
+</p>
 
 ## NaWi-DaZ 2.0 Project
 
