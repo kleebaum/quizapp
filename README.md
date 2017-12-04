@@ -9,12 +9,12 @@ The app has been developed in order to teach students the German language with a
 The app distinguishes between three user roles: administrators, students and teachers.
 
 <p align="center"> 
-<img src="screenshots/WelcomePage.png" alt="Screenshot of the index page" width="350"/>
+<img src="screenshots/WelcomePage.png" alt="Screenshot of the index page" width="400"/>
 </p>
 
 ## NaWi-DaZ 2.0 Project
 
-[NaWi-DaZ 2.0](http://se.ifi.uni-heidelberg.de/research/projects/nawi_daz_20.html) was a corporate project between the Heidelberg School of Education and the Software Engineering group of the Heidelberg University. 
+[NaWi-DaZ 2.0](http://se.ifi.uni-heidelberg.de/research/projects/nawi_daz_20.html) was a joint project between the Heidelberg School of Education and the Software Engineering group of the Heidelberg University. 
 It was financially supported by the [PLACE programme](https://hse-heidelberg.de/forschung/place-aktuell/).
 The NaWi-DaZ 2.0 project investigated how students can learn the German language with a focus on natural sciences.
 For this purpose, this mobile quiz web app was developed, which enables students to learn scientific terminology without using their first language.
@@ -44,7 +44,8 @@ Erreichbarkeit und Nutzbarkeit wurden mit Hilfe von Selenium und Selenium Grid d
 
 ## Administrator
 <p align="center"> 
-<img src="screenshots/AdminLogin.png" alt="Screenshot of the admin page" width="350"/>
+<img src="screenshots/AdminLogin.png" alt="Screenshot of the login on the admin page" width="400"/>
+<img src="screenshots/AdminCreateInformation.png" alt="Screenshot of creating information material on the admin page" width="400"/>
 </p>
 The administrator is allowed to administer the app. 
 First, the administrator needs to login.
