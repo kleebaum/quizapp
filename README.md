@@ -9,7 +9,7 @@ The app has been developed in order to teach students the German language with a
 The app distinguishes between three user roles: administrators, students and teachers.
 
 <p align="center"> 
-<img src="screenshots/WelcomePage.png" alt="Screenshot of the index page" style="width: 350px;"/>
+<img src="screenshots/WelcomePage.png" alt="Screenshot of the index page" width="350"/>
 </p>
 
 ## NaWi-DaZ 2.0 Project
@@ -43,7 +43,9 @@ Erreichbarkeit und Nutzbarkeit wurden mit Hilfe von Selenium und Selenium Grid d
 # Usage Description
 
 ## Administrator
-![alt tag](screenshots/AdminLogin.png)
+<p align="center"> 
+<img src="screenshots/AdminLogin.png" alt="Screenshot of the admin page" width="350"/>
+</p>
 The administrator is allowed to administer the app. 
 First, the administrator needs to login.
 Then, s/he can manage (create, update and delete) instances of three differnt types of exercises (multiple choice exercises, sentence part exercises and exercises to label images).
