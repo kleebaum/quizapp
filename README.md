@@ -1,10 +1,17 @@
-# quizapp
+# NaWiDaZ Quiz App
 ![Travis Build](https://travis-ci.org/dekome/quizapp.svg?branch=master)
-![alt tag](Screenshots/WelcomePage.jpg)
+
+This repository contains the code of a mobile quiz web app that was developed during the NaWiDaZ project.
+It is written in Java and web programming languages (e.g., Java Server Pages, Java Script) and stores data in an [SQLite database](https://www.sqlite.org).
+The app runs on a Java servlet container such as [Tomcat](https://tomcat.apache.org/) or [Jetty](https://www.eclipse.org/jetty/) and can be accessed via browser.
+The app distinguishes between three user roles: administrators, students and teachers.
+
+![Screenshot of the index page](screenshots/WelcomePage.png)
+
 ## Motivation
 
 Mobilgeräte wie Smartphones und Tablets sind aus unserem Alltag kaum mehr wegzudenken und ermöglichen es,
-Anwendungssoftware (Apps) überall einzusetzen. In Schulen haben Schüler oft das Problem das die 
+Anwendungssoftware (Apps) überall einzusetzen. In Schulen haben SchülerInnen oft das Problem das die 
 Lehreinheiten nicht interaktiv genug sind und die Bewertung von einem Lehrer durchgeführt werden muss.
 
 Das heiEDUCATION Projekt ist ein gemeinsames Projekt der Universität Heidelberg und der Pädagogischen Hochschule Heidelberg. 
