@@ -20,9 +20,8 @@ It was financially supported by the [PLACE programme](https://hse-heidelberg.de/
 The NaWi-DaZ 2.0 project investigated how students can learn the German language with a focus on natural sciences.
 For this purpose, this mobile quiz web app was developed, which enables students to learn scientific terminology without using their first language.
 
-Project Manager: Dr. SN
-Project Participants: Prof. Dr. BP, AK, HR, Dr. NW
-Software Developers: PZ and TK
+- Project participants: Dr. SN, Prof. Dr. BP, AK, HR, Dr. NW
+- Software developers: PZ and TK
 
 ## Installation
 
