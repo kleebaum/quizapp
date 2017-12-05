@@ -1,4 +1,4 @@
-# NaWiDaZ Quiz App
+# NaWi-DaZ Quiz App
 [![Build Status](https://travis-ci.org/nawidaz/quizapp.svg?branch=master)](https://travis-ci.org/nawidaz/quizapp)
 
 This repository contains the code of a mobile quiz web app that was developed within the [NaWi-DaZ 2.0 project](http://se.ifi.uni-heidelberg.de/research/projects/nawi_daz_20.html).
@@ -20,6 +20,10 @@ It was financially supported by the [PLACE programme](https://hse-heidelberg.de/
 The NaWi-DaZ 2.0 project investigated how students can learn the German language with a focus on natural sciences.
 For this purpose, this mobile quiz web app was developed, which enables students to learn scientific terminology without using their first language.
 
+Project Manager: Dr. SN
+Project Participants: Prof. Dr. BP, AK, HR, Dr. NW
+Software Developers: PZ and TK
+
 ## Installation
 
 ### Prerequisites
@@ -29,9 +33,8 @@ The following prerequisites are necessary to install the app:
 - Java servlet container such as [Tomcat](https://tomcat.apache.org/) or [Jetty](https://www.eclipse.org/jetty/)
 
 ### Run the App on a Raspberry Pi
-
 An advantage of this app is that it can be used in school classes without requiring access to the internet.
-The app can be installed on a [Raspberry Pi](https://www.raspberrypi.org/). This Raspberry Pi needs to be connected to a WLAN router that sets up a wireless local area network (WLAN).
+The app can be installed on a [Raspberry Pi](https://www.raspberrypi.org/). This Raspberry Pi needs to be connected to a router that sets up a wireless local area network (WLAN).
 Then, students and the teacher can login to the local WLAN via their smartphones or tablets (or laptops) and they can access the app in their browser.
 
 This has the following benefits:
@@ -39,13 +42,11 @@ This has the following benefits:
 - The data remains confidential.
 
 ## Unit and Selenium Tests
-
 The quality of the app is ensured using JUnit and Selenium tests.
 
-# Usage Description
+## Usage Description
 
-## Administrator
-
+### Administrator
 The administrator is allowed to administer the app. 
 First, the administrator needs to login.
 
@@ -63,7 +64,7 @@ In addition, the administrator can manage information material that is related t
 
 The administrator has also access to a settings page that e.g. enables him/her to backup or to reset the database.
 
-## Student
+### Student
 Students need to be registered, in order to login to the students' page.
 They have the possibility to learn from information material and solve related exercises.
 After solving an exercise, students instantly receive feedback.
@@ -72,7 +73,7 @@ After solving an exercise, students instantly receive feedback.
 <img src="screenshots/StudentSolveExercise.png" alt="Screenshot of solving an exercise on the student page" width="400"/>
 </p>
 
-## Teacher
+### Teacher
 Teachers can get an overview about the students' exercise results on the teacher page.
 They can either see every result of a certain exercise or all results by a certain student.
 In addition, teachers have the possibility to access a statistics overview that visualizes the number of correctly and incorrectly solved exercises using barplots.
