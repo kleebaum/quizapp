@@ -29,7 +29,13 @@
 	<div class="jumbotron" id="wrapper">
 		<div class="container">
 			<h1 class="display-4">Schül&shy;er/In&shy;nen Zu&shy;gang</h1>
-			<p>${message}</p>
+			<%
+				if (request.getAttribute("message") != null) {
+			%>
+				<p> <%=request.getAttribute("message")%> </p>
+			<%
+				}
+			%>
 			<%
 				if (student.isValid() || administrator.isValid()
 						|| (request.getParameter("p") != null && request.getParameter("p").equals("register_success"))) {

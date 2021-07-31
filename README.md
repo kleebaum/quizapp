@@ -2,6 +2,7 @@
 
 [![Continuous integration](https://github.com/kleebaum/quizapp/actions/workflows/maven.yml/badge.svg)](https://github.com/kleebaum/quizapp/actions/workflows/maven.yml)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d5cee157eb424dc689e449f517f46892)](https://www.codacy.com/gh/kleebaum/quizapp/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kleebaum/quizapp&amp;utm_campaign=Badge_Grade)
+[![codecov](https://codecov.io/gh/kleebaum/quizapp/branch/master/graph/badge.svg?token=xbzzGhdFjN)](https://codecov.io/gh/kleebaum/quizapp)
 [![GitHub contributors](https://img.shields.io/github/contributors/kleebaum/quizapp.svg)](https://github.com/kleebaum/quizapp/graphs/contributors)
 
 This repository contains the code of a mobile quiz web app that was developed within the [NaWi-DaZ 2.0 project](http://se.ifi.uni-heidelberg.de/research/projects/nawi_daz_20.html).
@@ -30,6 +31,11 @@ The following prerequisites are necessary to install the app:
 
 - Java 8 or higher
 - Java servlet container such as [Tomcat](https://tomcat.apache.org/) or [Jetty](https://www.eclipse.org/jetty/)
+
+### Set-up SQLite Database
+The app uses [SQLite](https://www.sqlite.org) as the database. 
+You need to make sure that the database file is located at `WebContent/db/heieducation.sqlite`.
+To recreate the database, run the main method of the class `model/init/InitDatabase.java`.
 
 ### Run the App on a Raspberry Pi
 An advantage of this app is that it can be used in school classes without requiring access to the internet.

@@ -37,7 +37,7 @@
 					Im AdministratorInnen Zugang können verschiedene Arten von Aufgaben erstellt, gel&ouml;scht oder bearbeitet werden.
 				</p>
 				<p>
-			 		<a class="btn btn-secondary" href="<%=path%>admin/index.jsp" role="button">Zum Zugang</a>
+			 		<a class="btn btn-secondary" href="admin/index.jsp" role="button">Zum Zugang</a>
 			 	</p>
 			</div>
 			
@@ -47,7 +47,7 @@
 					Im SchülerInnen Zugang können Satzteilverbindungs-Aufgaben, Richtig/Falsch-Aufgaben und Beschriftungs-Aufgaben bearbeitet werden.  
 				</p>
 				<p>
-					<a class="btn btn-secondary" href="<%=path%>student/index.jsp" role="button">Zum Zugang</a>
+					<a class="btn btn-secondary" href="student/index.jsp" role="button">Zum Zugang</a>
 				</p>
 			</div>
 			<div class="col-md-4">
@@ -56,7 +56,7 @@
 					Im LehrerInnen Zugang können die von den SchülerInnen bearbeiteten Aufgaben inklusive ihrer Korrektur eingesehen werden. 
 				</p>
 				<p>
-					<a class="btn btn-secondary" href="<%=path%>teacher/index.jsp" role="button">Zum Zugang</a>
+					<a class="btn btn-secondary" href="teacher/index.jsp" role="button">Zum Zugang</a>
 				</p>
 			</div>
 		</div>

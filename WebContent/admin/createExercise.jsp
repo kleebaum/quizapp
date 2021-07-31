@@ -39,6 +39,12 @@
 		</c:otherwise>
 	</c:choose>
 
-	<p>${message}</p>
+	<%
+		if (request.getAttribute("message") != null) {
+	%>
+		<p> <%=request.getAttribute("message")%> </p>
+	<%
+		}
+	%>
 	<jsp:include page="showExercise.jsp"></jsp:include>
 </div>
