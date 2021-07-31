@@ -1,0 +1,9 @@
+# Gitignore for the mobile quizz app
+
+# Directories
+/target/
+.settings/
+
+# Files
+.classpath
+.project

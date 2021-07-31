@@ -1,5 +1,5 @@
 # NaWi-DaZ Quiz App
-[![Build Status](https://travis-ci.org/nawidaz/quizapp.svg?branch=master)](https://travis-ci.org/nawidaz/quizapp)
+[![Build Status](https://travis-ci.org/kleebaum/quizapp.svg?branch=master)](https://travis-ci.org/kleebaum/quizapp)
 
 This repository contains the code of a mobile quiz web app that was developed within the [NaWi-DaZ 2.0 project](http://se.ifi.uni-heidelberg.de/research/projects/nawi_daz_20.html).
 It is written in Java and web programming languages (e.g., Java Server Pages, Java Script) and stores data in an [SQLite database](https://www.sqlite.org).
@@ -20,15 +20,12 @@ It was financially supported by the [PLACE programme](https://hse-heidelberg.de/
 The NaWi-DaZ 2.0 project investigated how students can learn the German language with a focus on natural sciences.
 For this purpose, this mobile quiz web app was developed, which enables students to learn scientific terminology without using their first language.
 
-- Project participants: Dr. SN, Prof. Dr. BP, AK, HR, Dr. NW
-- Software developers: PZ and TK
-
 ## Installation
 
 ### Prerequisites
 The following prerequisites are necessary to install the app:
 
-- Java 8 JDK or OpenJDK
+- Java 8
 - Java servlet container such as [Tomcat](https://tomcat.apache.org/) or [Jetty](https://www.eclipse.org/jetty/)
 
 ### Run the App on a Raspberry Pi
