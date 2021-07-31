@@ -31,6 +31,11 @@ The following prerequisites are necessary to install the app:
 - Java 8 or higher
 - Java servlet container such as [Tomcat](https://tomcat.apache.org/) or [Jetty](https://www.eclipse.org/jetty/)
 
+### Set-up SQLite Database
+The app uses [SQLite](https://www.sqlite.org) as the database. 
+You need to make sure that the database file is located at `WebContent/db/heieducation.sqlite`.
+To recreate the database, run the main method of the class `model/init/InitDatabase.java`.
+
 ### Run the App on a Raspberry Pi
 An advantage of this app is that it can be used in school classes without requiring access to the internet.
 The app can be installed on a [Raspberry Pi](https://www.raspberrypi.org/). This Raspberry Pi needs to be connected to a router that sets up a wireless local area network (WLAN).

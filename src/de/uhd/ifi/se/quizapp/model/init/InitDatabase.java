@@ -1,5 +1,6 @@
 package de.uhd.ifi.se.quizapp.model.init;
 
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -45,7 +46,11 @@ public class InitDatabase {
 
 		sentencePartDataManager.insertExercise(sampleExercise);
 
-		Administrator administrator = new Administrator("admin", "admin", "admin", "A665A45920422F9D417E4867EFDC4FB8A04A1F3FFF1FA07E998E86F7F7A27AE3");
+		Administrator administrator = new Administrator("admin", "admin", "admin", "admin");
+		try {
+			administrator.hashPassword("admin");
+		} catch (NoSuchAlgorithmException e) {
+		}
 		dataManager.insertAdministrator(administrator);
 	}
 }

@@ -34,7 +34,13 @@
 <body>
 	<jsp:include page="menu.jsp"></jsp:include>
 	<div class="jumbotron" id="wrapper">
-		${message}
+		<%
+			if (request.getAttribute("message") != null) {
+		%>
+			<p> <%=request.getAttribute("message")%> </p>
+		<%
+			}
+		%>
 		<div class="container">
 			<h1 class="display-4">Ad&shy;mi&shy;nis&shy;tra&shy;tor/&shy;Innen Zu&shy;gang</h1>
 			<p>W&auml;hlen Sie eine Aufgabe oder Information aus, die Sie
