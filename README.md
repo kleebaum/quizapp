@@ -28,7 +28,7 @@ For this purpose, this mobile quiz web app was developed, which enables students
 ### Prerequisites
 The following prerequisites are necessary to install the app:
 
-- Java 8
+- Java 8 or higher
 - Java servlet container such as [Tomcat](https://tomcat.apache.org/) or [Jetty](https://www.eclipse.org/jetty/)
 
 ### Run the App on a Raspberry Pi

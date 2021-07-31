@@ -33,10 +33,6 @@ import de.uhd.ifi.se.quizapp.model.Administrator;
 import de.uhd.ifi.se.quizapp.model.DataManager;
 import de.uhd.ifi.se.quizapp.model.Information;
 
-/**
- * @author Paul
- *
- */
 @WebServlet("/Administrator")
 public class AdministratorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -304,8 +300,8 @@ public class AdministratorServlet extends HttpServlet {
 		ServletFileUpload upload = new ServletFileUpload(factory);
 		String message = "Der Upload war nicht erfolgreich.";
 		try {
-			List items = upload.parseRequest(request);
-			Iterator iterator = items.iterator();
+			List<FileItem> items = upload.parseRequest(request);
+			Iterator<FileItem> iterator = items.iterator();
 			while (iterator.hasNext()) {
 				FileItem item = (FileItem) iterator.next();
 
@@ -328,11 +324,6 @@ public class AdministratorServlet extends HttpServlet {
 						request.setAttribute("message", message);
 						return request;
 					}
-					System.out.println(path.getAbsolutePath());
-					if (!path.exists()) {
-						boolean status = path.mkdirs();
-					}
-
 					File uploadedFile = new File(path + "/" + fileName);
 					item.write(uploadedFile);
 					request.setAttribute("filePath", "/images/" + uploadedFile.getName());

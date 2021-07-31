@@ -40,8 +40,7 @@ public class LabelImageDataManager extends DataManager {
 		if (content == null) {
 			return new ArrayList<ImageLabel>();
 		}
-		JsonParser jsonParser = new JsonParser();
-		JsonElement element = jsonParser.parse(content);
+		JsonElement element = JsonParser.parseString(content);
 		JsonArray jsonArray = element.getAsJsonArray();
 		JsonObject jsonobject = jsonArray.get(0).getAsJsonObject();
 
