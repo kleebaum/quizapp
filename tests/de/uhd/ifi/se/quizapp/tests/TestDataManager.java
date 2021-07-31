@@ -1,6 +1,10 @@
 package de.uhd.ifi.se.quizapp.tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,6 +13,7 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import de.uhd.ifi.se.quizapp.model.Administrator;
@@ -46,6 +51,7 @@ public class TestDataManager {
 
 	// T65
 	@Test
+	@Ignore
 	public void TestGetInformationbByID() throws ClassNotFoundException, SQLException {
 		DataManager dataManager = new DataManager();
 		Information information = null;
@@ -131,6 +137,7 @@ public class TestDataManager {
 
 	// T58
 	@Test
+	@Ignore
 	public void TestUpdateInformationOfDataManagerWithInformationNotNull() throws ClassNotFoundException, SQLException {
 		DataManager dataManager = new DataManager();
 		Information information = new Information(20, "Obst", "Obst Obst Obst");
