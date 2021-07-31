@@ -3,7 +3,6 @@ package de.uhd.ifi.se.quizapp.model.twochoiceexercise;
 import java.util.ArrayList;
 
 import de.uhd.ifi.se.quizapp.model.Metric;
-import de.uhd.ifi.se.quizapp.model.sentencepartexercise.SentencePartResult;
 
 /**
  * This Class can be used to define TwoChoiceMetric
