@@ -2,6 +2,7 @@
 
 [![Continuous integration](https://github.com/kleebaum/quizapp/actions/workflows/maven.yml/badge.svg)](https://github.com/kleebaum/quizapp/actions/workflows/maven.yml)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d5cee157eb424dc689e449f517f46892)](https://www.codacy.com/gh/kleebaum/quizapp/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=kleebaum/quizapp&amp;utm_campaign=Badge_Grade)
+[![codecov](https://codecov.io/gh/kleebaum/quizapp/branch/master/graph/badge.svg?token=xbzzGhdFjN)](https://codecov.io/gh/kleebaum/quizapp)
 [![GitHub contributors](https://img.shields.io/github/contributors/kleebaum/quizapp.svg)](https://github.com/kleebaum/quizapp/graphs/contributors)
 
 This repository contains the code of a mobile quiz web app that was developed within the [NaWi-DaZ 2.0 project](http://se.ifi.uni-heidelberg.de/research/projects/nawi_daz_20.html).
