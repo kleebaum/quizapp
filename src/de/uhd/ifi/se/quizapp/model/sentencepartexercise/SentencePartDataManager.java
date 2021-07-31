@@ -87,7 +87,7 @@ public class SentencePartDataManager extends DataManager {
 	 * @param sentences
 	 * @return
 	 */
-	public static String sentencesToString(ArrayList<Sentence> sentences) {
+	public static String sentencesToString(List<Sentence> sentences) {
 		StringBuffer contentBuffer = new StringBuffer();
 		for (Sentence sentence : sentences) {
 			for (String sentencePart : sentence.getSentenceParts()) {
@@ -142,7 +142,7 @@ public class SentencePartDataManager extends DataManager {
 	 * @throws ClassNotFoundException
 	 */
 	public void insertExercise(SentencePartExercise exercise) throws SQLException, ClassNotFoundException {
-		ArrayList<Sentence> sentences = exercise.getSentences();
+		List<Sentence> sentences = exercise.getSentences();
 		String content = sentencesToString(sentences);
 
 		String sql = "INSERT INTO exercise (difficulty, content, description, width, height, information_id, type) VALUES (?,?,?,?,?,?,?)";
@@ -172,7 +172,7 @@ public class SentencePartDataManager extends DataManager {
 	 * @throws ClassNotFoundException
 	 */
 	public void updateExercise(SentencePartExercise exercise) throws SQLException, ClassNotFoundException {
-		ArrayList<Sentence> sentences = exercise.getSentences();
+		List<Sentence> sentences = exercise.getSentences();
 		String content = sentencesToString(sentences);
 
 		String sql = "UPDATE exercise SET difficulty = ?, content = ?, description = ?,"
@@ -241,7 +241,7 @@ public class SentencePartDataManager extends DataManager {
 	 * @throws SQLException
 	 */
 	public void insertResult(SentencePartResult result) throws ClassNotFoundException, SQLException {
-		ArrayList<Sentence> sentences = result.getSentences();
+		List<Sentence> sentences = result.getSentences();
 		String content = sentencesToString(sentences);
 		String sql = "INSERT INTO result (exercise_id, result_content, student_id) VALUES (?,?,?)";
 		PreparedStatement stmt = this.getConnection().prepareStatement(sql);

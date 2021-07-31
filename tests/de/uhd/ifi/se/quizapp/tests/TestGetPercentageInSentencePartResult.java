@@ -11,40 +11,6 @@ import de.uhd.ifi.se.quizapp.model.sentencepartexercise.Sentence;
 import de.uhd.ifi.se.quizapp.model.sentencepartexercise.SentencePartExercise;
 import de.uhd.ifi.se.quizapp.model.sentencepartexercise.SentencePartResult;
 
-/*
- * UAK1 Aufgabe ohne Sätze (NumSentence = 0)
- *  AKS1 Aufgabe enthält Sätze (NumSentence > 0)
- * 	AkS1.1 1 Satz
- * 	AkS1.2 mehrere Sätze
- * 
-AKR1: Es gibt nur 1 Satzteil
-
-AKR2: Es gibt mehrere Satzteile
-
- 
-
-AKL1: Alle Sätze wurden falsch gelöst.
-
-AKL2: Die Sätze wurden teilweise falsch gelöst.
-
-AKL3: Alle Sätze wurden richtig gelöst.
- * 
- * AKS1.1	AKR1	AKL1	0
- * AKS1.1	AKR1	AKL3	1
- * AKS1.1	AKR2	AKL1	0
- * AKS1.1	AKR2	AKL2	0
- * AKS1.1	AKR2	AKL3	1
- * UAK						-1
- * 
- * AKS1.2	AKR1	AKL1	0
- * AKS1.2	AKR1	AKL3	1
- * AKS1.2	AKR2	AKL1	0
- * AKS1.2	AKR2	AKL2	0
- * AKS1.2	AKR2	AKL3	1
- * 
- * 
- */
-
 public class TestGetPercentageInSentencePartResult {
 
 	@Test

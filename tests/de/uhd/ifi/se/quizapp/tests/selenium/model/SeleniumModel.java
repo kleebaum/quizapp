@@ -10,7 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-
 public class SeleniumModel {
 
 	protected WebDriver driver;
@@ -19,28 +18,11 @@ public class SeleniumModel {
 	protected boolean acceptNextAlert = true;
 	protected StringBuffer verificationErrors = new StringBuffer();
 
-	
 	public void setUpFirefox() throws MalformedURLException {
-		/*
-		 * File browserAppPath = null; if
-		 * (Platform.getCurrent().is(Platform.WINDOWS)) { //Windows
-		 * browserAppPath = new
-		 * File("C:\\Program Files\\Mozilla   Firefox\\firefox.exe"); if
-		 * (!browserAppPath.exists()) { browserAppPath = new
-		 * File("C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe"); } }
-		 * else { //Linux browserAppPath = new File("/usr/bin/firefox"); }
-		 * 
-		 * this.driver = new FirefoxDriver( new FirefoxBinary(browserAppPath),
-		 * new FirefoxProfile());
-		 */
-		/**
-		 * Verbindung mit Tim Kuchenbuchs Laptop nach dem die Verbindung
-		 * eingerichtet wurde auf den Hub
-		 */
-		
-		this.baseUrl="localhost:8080/";
-		this.nodeUrl=" http://129.206.78.158:555/wd/hub";
-		
+
+		this.baseUrl = "localhost:8080/";
+		this.nodeUrl = " http://129.206.78.158:555/wd/hub";
+
 		DesiredCapabilities capability = DesiredCapabilities.firefox();
 		// Nutzung von Firefox
 		capability.setBrowserName("firefox");
@@ -48,12 +30,11 @@ public class SeleniumModel {
 		capability.setPlatform(Platform.LINUX);
 		driver = new RemoteWebDriver(new URL(this.nodeUrl), capability);
 	}
-	
 
-	public void setUpChrome() throws MalformedURLException{
-		this.baseUrl="http://heieducation.ifi.uni-heidelberg.de:8080/nawidaztest/";
-		this.nodeUrl="http://129.206.78.158:5555/wd/hub";
-		
+	public void setUpChrome() throws MalformedURLException {
+		this.baseUrl = "http://heieducation.ifi.uni-heidelberg.de:8080/nawidaztest/";
+		this.nodeUrl = "http://129.206.78.158:5555/wd/hub";
+
 		DesiredCapabilities capability = DesiredCapabilities.chrome();
 		// Nutzung von Chrome
 		capability.setBrowserName("chrome");
@@ -61,59 +42,49 @@ public class SeleniumModel {
 		capability.setPlatform(Platform.LINUX);
 		driver = new RemoteWebDriver(new URL(this.nodeUrl), capability);
 	}
-	
-	protected void  loginStudent() {
+
+	protected void loginStudent() {
 		driver.navigate().to(this.baseUrl + "student/index.jsp");
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.findElement(By.name("username")).sendKeys("admin");
 		driver.findElement(By.name("password")).sendKeys("123");
-		
-		driver.findElement(By.name("login")).click();		
-	}
-	
-	protected void loginAdmin() {
-		driver.navigate().to(this.baseUrl+"admin/index.jsp");
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		
-		driver.findElement(By.name("username")).sendKeys("admin");
-		driver.findElement(By.name("password")).sendKeys("123");
-		
+
 		driver.findElement(By.name("login")).click();
 	}
-	
+
+	protected void loginAdmin() {
+		driver.navigate().to(this.baseUrl + "admin/index.jsp");
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+		driver.findElement(By.name("username")).sendKeys("admin");
+		driver.findElement(By.name("password")).sendKeys("123");
+
+		driver.findElement(By.name("login")).click();
+	}
+
 	protected boolean compareString(String expected, String actual) {
-		actual=normaliseString(actual,0);
-		if(expected.equals(actual)){
+		actual = normaliseString(actual, 0);
+		if (expected.equals(actual)) {
 			return true;
 		}
 		return false;
 	}
-	
-	private String normaliseString(String input, int from){
-		input=input.toLowerCase();
-		for(int i=from; i<input.length();i++){			
-			char caracter =input.charAt(i);
-			if(caracter=='['||caracter==']'){
-				input=input.substring(0, i) + input.substring(i+1);
-				input=normaliseString(input,i);
+
+	private String normaliseString(String input, int from) {
+		input = input.toLowerCase();
+		for (int i = from; i < input.length(); i++) {
+			char caracter = input.charAt(i);
+			if (caracter == '[' || caracter == ']') {
+				input = input.substring(0, i) + input.substring(i + 1);
+				input = normaliseString(input, i);
 				break;
 			}
-			if(caracter=='\u00fc'){
-				input=input.substring(0,i)+"ue"+input.substring(i+1);
-				input=normaliseString(input,i);
+			if (caracter == '\u00fc') {
+				input = input.substring(0, i) + "ue" + input.substring(i + 1);
+				input = normaliseString(input, i);
 				break;
 			}
-			if(caracter=='ö'){
-				input=input.substring(0,i)+"oe"+input.substring(i+1);
-				input=normaliseString(input,i);
-				break;
-			}
-			if(caracter=='ä'){
-				input=input.substring(0,i)+"ae"+input.substring(i+1);
-				input=normaliseString(input,i);
-				break;
-			}
-		}		
+		}
 		return input;
 	}
 }

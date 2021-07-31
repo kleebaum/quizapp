@@ -2,6 +2,7 @@ package de.uhd.ifi.se.quizapp.model.sentencepartexercise;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -10,15 +11,15 @@ import de.uhd.ifi.se.quizapp.model.Result;
 
 public class SentencePartResult extends Result {
 
-	private ArrayList<Sentence> sentences;
-	private HashMap<Sentence, Boolean> result;
+	private List<Sentence> sentences;
+	private Map<Sentence, Boolean> result;
 
 	public SentencePartResult() {
 		this.sentences = new ArrayList<Sentence>();
 		this.result = new HashMap<Sentence, Boolean>();
 	}
 
-	public ArrayList<Sentence> getSentences() {
+	public List<Sentence> getSentences() {
 		return sentences;
 	}
 
@@ -34,7 +35,7 @@ public class SentencePartResult extends Result {
 	 * Checks the result of the sentence-part-exercise (checks for each sentence
 	 * whether it is correct or wrong)
 	 */
-	public HashMap<Sentence, Boolean> getResult() {
+	public Map<Sentence, Boolean> getResult() {
 
 		if (this.getSentences() != null) {
 			// init result map
@@ -43,8 +44,8 @@ public class SentencePartResult extends Result {
 			}
 
 			SentencePartExercise exercise = (SentencePartExercise) this.getExercise();
-			ArrayList<Sentence> exerciseSentences = exercise.getSentences();
-			ArrayList<Sentence> resultSentences = this.getSentences();
+			List<Sentence> exerciseSentences = exercise.getSentences();
+			List<Sentence> resultSentences = this.getSentences();
 
 			for (int i = 0; i < exerciseSentences.size(); i++) {
 				for (int j = 0; j < resultSentences.size(); j++) {
@@ -58,7 +59,7 @@ public class SentencePartResult extends Result {
 
 		return this.result;
 	}
-	
+
 	@Override
 	public int getNumberOfCorrectAnswers() {
 		int numberOfCorrectSentences = 0;
@@ -74,7 +75,7 @@ public class SentencePartResult extends Result {
 		}
 		return numberOfCorrectSentences;
 	}
-	
+
 	@Override
 	public int getNumberOfWrongAnswers() {
 		int numberOfCorrectSentences = getNumberOfCorrectAnswers();
@@ -96,6 +97,6 @@ public class SentencePartResult extends Result {
 		}
 
 		float numberOfCorrectSentences = getNumberOfCorrectAnswers();
-		return  numberOfCorrectSentences / this.getSentences().size();
+		return numberOfCorrectSentences / this.getSentences().size();
 	}
 }

@@ -1,15 +1,13 @@
 package de.uhd.ifi.se.quizapp.tests.labelimageexercise.labelimagedatamanager;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import de.uhd.ifi.se.quizapp.model.labelimageexercise.ImageLabel;
@@ -27,7 +25,8 @@ public class TestUpdateExercise extends LabelImageDataTestingSuper {
 		this.exercise.setDifficulty(1);
 		this.exercise.setInformationId(1);
 		this.exercise.setDescription("Test");
-		this.exercise.setLabelData("[{&quot;image&quot;:&quot;/images/logo.png&quot;},{&quot;position&quot;:&quot;top:60.899993896484375px;left:192.5px;&quot;,&quot;label&quot;:&quot;Test&quot;}]");
+		this.exercise.setLabelData(
+				"[{&quot;image&quot;:&quot;/images/logo.png&quot;},{&quot;position&quot;:&quot;top:60.899993896484375px;left:192.5px;&quot;,&quot;label&quot;:&quot;Test&quot;}]");
 
 		ArrayList<ImageLabel> labels = new ArrayList<ImageLabel>();
 		ImageLabel label = new ImageLabel();

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertNull;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -97,7 +98,7 @@ public class TestContentToSentences {
 	@Test(expected = java.lang.NullPointerException.class)
 	public void testStringNullSentencePartsOkSentencesOk() throws ClassNotFoundException, SQLException {
 		this.content = null;
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 1, 1);
+		SentencePartDataManager.contentToSentences(content, 1, 1);
 	}
 
 	// AQ11
@@ -120,7 +121,7 @@ public class TestContentToSentences {
 	@Test(expected = java.lang.NullPointerException.class)
 	public void testStringNullSentencePartsBigSentencesOk() throws ClassNotFoundException, SQLException {
 		this.content = null;
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 2, 1);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 2, 1);
 		assertNull(sentences);
 	}
 

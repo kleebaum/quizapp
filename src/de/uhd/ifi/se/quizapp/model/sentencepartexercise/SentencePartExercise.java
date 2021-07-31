@@ -1,12 +1,13 @@
 package de.uhd.ifi.se.quizapp.model.sentencepartexercise;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.uhd.ifi.se.quizapp.model.Exercise;
 
 public class SentencePartExercise extends Exercise {
 
-	private ArrayList<Sentence> sentences;
+	private List<Sentence> sentences;
 
 	public SentencePartExercise() {
 		this.sentences = new ArrayList<Sentence>();
@@ -18,11 +19,11 @@ public class SentencePartExercise extends Exercise {
 		this.sentences = sentences;
 	}
 
-	public ArrayList<Sentence> getSentences() {
+	public List<Sentence> getSentences() {
 		return sentences;
 	}
 
-	public void setSentences(ArrayList<Sentence> sentences) {
+	public void setSentences(List<Sentence> sentences) {
 		this.sentences = sentences;
 	}
 
