@@ -1,5 +1,6 @@
 # NaWi-DaZ Quiz App
-[![Build Status](https://travis-ci.org/kleebaum/quizapp.svg?branch=master)](https://travis-ci.org/kleebaum/quizapp)
+
+[![Continuous integration](https://github.com/kleebaum/quizapp/actions/workflows/maven.yml/badge.svg)](https://github.com/kleebaum/quizapp/actions/workflows/maven.yml)
 
 This repository contains the code of a mobile quiz web app that was developed within the [NaWi-DaZ 2.0 project](http://se.ifi.uni-heidelberg.de/research/projects/nawi_daz_20.html).
 It is written in Java and web programming languages (e.g., Java Server Pages, Java Script) and stores data in an [SQLite database](https://www.sqlite.org).
