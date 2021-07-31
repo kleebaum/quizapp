@@ -16,19 +16,6 @@ import org.jsoup.Jsoup;
 
 import de.uhd.ifi.se.quizapp.model.sentencepartexercise.SentencePartResult;
 
-/**
- * @Decision Datenbank Verbindungsdaten sind hardcodiert, da sie hier nicht
- *           verändert werden
- * 
- * @Alternative Verbindungsdaten können auch in der web.xml gespeichert werden
- * 
- * @Problems Verbindungsdaten Ãndern sich. Man müsste jedesmal den Code Ãndern.
- *           Wo soll die DB Verbindung initialisiert werden? D
- * 
- * @Solutions Verbindungsdaten tatsächlich in web.xml auslagern
- *
- * 
- */
 public class DataManager {
 
 	private String dbName = "org.sqlite.JDBC";
