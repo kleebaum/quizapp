@@ -7,8 +7,6 @@ import de.uhd.ifi.se.quizapp.model.Exercise;
 
 public abstract class ExerciseHandler {
 
-	private DataManager dataManager;
-
 	public static final int TWOCHOICE = 1;
 	public static final int SENTENCEPART = 2;
 	public static final int LABEL = 3;
@@ -63,7 +61,7 @@ public abstract class ExerciseHandler {
 	abstract protected HttpServletRequest handleCreationInChain(HttpServletRequest request);
 
 	public HttpServletRequest handleDeletion(HttpServletRequest request) {
-		this.dataManager = new DataManager();
+		DataManager dataManager = new DataManager();
 		int id = 1;
 		if (request.getParameter("id") != null) {
 			id = Integer.parseInt(request.getParameter("id"));

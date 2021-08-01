@@ -1,6 +1,5 @@
 package de.uhd.ifi.se.quizapp.tests.datamanager;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -11,7 +10,6 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import de.uhd.ifi.se.quizapp.model.Administrator;
 import de.uhd.ifi.se.quizapp.model.DataManager;
 import de.uhd.ifi.se.quizapp.model.Student;
 
@@ -34,14 +32,6 @@ public class TestReadAndWriteStudents {
 	public void testGetStudentByUsernameWithUsernameNull() {
 		Student student = dataManager.getStudent(null);
 		assertNull(student);
-	}
-
-	@Test
-	public void testGetAdminByUsernameWithUsernameInTheDatabase() {
-		String username = "admin";
-		Administrator administrator = dataManager.getAdministrator(username);
-		assertNotNull(administrator);
-		assertEquals(administrator.getUsername(), username);
 	}
 
 	@Test

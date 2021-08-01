@@ -245,7 +245,7 @@ public class DataManager {
 				|| administrator.getLastname() == null || administrator.getPasswordHash() == null)
 			return false;
 
-		String sql = "INSERT INTO user (username, firstname, lastname, password,role) VALUES (?, ?, ?, ?,?)";
+		String sql = "INSERT INTO user (username, firstname, lastname, password, role) VALUES (?, ?, ?, ?, ?)";
 		PreparedStatement stmt;
 		int status = 0;
 		try {
@@ -259,7 +259,7 @@ public class DataManager {
 			status = stmt.executeUpdate();
 			stmt.close();
 		} catch (SQLException e) {
-			System.err.println("Insertion of administrator to database failed.");
+			System.err.println("Insertion of administrator to database failed. " + e.getMessage());
 		}
 
 		return status == 1;
