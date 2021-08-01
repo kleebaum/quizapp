@@ -1,7 +1,5 @@
 package de.uhd.ifi.se.quizapp.controller;
 
-import java.sql.SQLException;
-
 import javax.servlet.http.HttpServletRequest;
 
 import de.uhd.ifi.se.quizapp.model.DataManager;
@@ -67,15 +65,10 @@ public abstract class ExerciseHandler {
 	public HttpServletRequest handleDeletion(HttpServletRequest request) {
 		this.dataManager = new DataManager();
 		int id = 1;
-		try {
-			if (request.getParameter("id") != null) {
-				id = Integer.parseInt(request.getParameter("id"));
-			}
-			dataManager.deleteExercise(id);
-		} catch (ClassNotFoundException | SQLException e) {
-			System.err.println(e);
-			e.printStackTrace();
+		if (request.getParameter("id") != null) {
+			id = Integer.parseInt(request.getParameter("id"));
 		}
+		dataManager.deleteExercise(id);
 
 		request.setAttribute("message", "Die Aufgabe wurde erfolgreich geloescht.");
 		return request;

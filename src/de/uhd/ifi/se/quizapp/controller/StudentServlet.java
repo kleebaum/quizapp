@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -140,7 +139,7 @@ public class StudentServlet extends HttpServlet {
 						+ ". Ihr Benutzername lautet <strong>" + request.getParameter("username") + "</strong>";
 
 				System.out.println("Registrierung erfolgreich");
-			} catch (NoSuchAlgorithmException | ClassNotFoundException | SQLException e) {
+			} catch (NoSuchAlgorithmException e) {
 				System.err.println("Fehler!");
 				message = "Registrierung nicht erfolgreich";
 				e.printStackTrace();
@@ -178,23 +177,19 @@ public class StudentServlet extends HttpServlet {
 
 		Student student = null;
 		message = "Login war nicht erfolgreich";
-		try {
-			student = this.dataManager.getStudent(username);
-			if (student != null && password.equals(student.getPasswordHash())) {
-				student.setValid(true);
-				session.setAttribute("student", student);
-				message = "Erfolgreich als Student angemeldet";
-			} else {
-				Administrator administrator = this.dataManager.getAdministrator(username);
-				if (password.equals(administrator.getPasswordHash())) {
-					administrator.setValid(true);
-					session.setAttribute("administrator", administrator);
-					message = "Erfolgreich als Administrator angemeldet";
-				}
-
+		student = this.dataManager.getStudent(username);
+		if (student != null && password.equals(student.getPasswordHash())) {
+			student.setValid(true);
+			session.setAttribute("student", student);
+			message = "Erfolgreich als Student angemeldet";
+		} else {
+			Administrator administrator = this.dataManager.getAdministrator(username);
+			if (password.equals(administrator.getPasswordHash())) {
+				administrator.setValid(true);
+				session.setAttribute("administrator", administrator);
+				message = "Erfolgreich als Administrator angemeldet";
 			}
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+
 		}
 
 		request.setAttribute("message", message);

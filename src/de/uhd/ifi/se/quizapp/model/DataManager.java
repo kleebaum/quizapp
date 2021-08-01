@@ -15,8 +15,18 @@ import java.util.List;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.jsoup.Jsoup;
 
-import de.uhd.ifi.se.quizapp.model.sentencepartexercise.SentencePartResult;
-
+/**
+ * Responsible for CRUD operations, i.e. creates, reads, updates, and deletes
+ * objects in/from database.
+ * 
+ * @issue Which database do we use?
+ * @decision We use a SQLite database!
+ * @pro Easier to set up than MySQL or PostgreSQL.
+ * @alternative We could store data in text files, e.g. in JSON format.
+ * 
+ * @issue How to prevent SQL injections?
+ * @decision Use prepared statements to prevent SQL injections!
+ */
 public class DataManager {
 
 	private String dbName = "org.sqlite.JDBC";
@@ -62,23 +72,7 @@ public class DataManager {
 	}
 
 	/**
-	 * 
-	 * @param conn
-	 */
-	public void putConnection(Connection conn) {
-		if (conn != null) {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-			}
-		}
-	}
-
-	/**
-	 * @issue How to prevent SQL injections?
-	 * @decision Use prepared statements to prevent SQL injections!
-	 * 
-	 *           Inserts an object of class {@link Information} into database.
+	 * Inserts an object of class {@link Information} into database.
 	 */
 	public boolean insertInformation(Information information) {
 		if (information == null) {
@@ -98,359 +92,300 @@ public class DataManager {
 			System.err.println("Insertion of information to database failed. " + e.getMessage());
 		}
 
-		if (status == 1) {
-			return true;
-		} else {
-			System.err.println("Insertion of information to database failed.");
-			return false;
-		}
+		return status == 1;
 	}
 
 	/**
-	 * Retrieves all {@link Information} objects from database.
-	 * 
-	 * @return
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
+	 * @return all {@link Information} objects from database.
 	 */
-	public List<Information> getInformation() throws ClassNotFoundException, SQLException {
+	public List<Information> getInformation() {
 		List<Information> informationList = new ArrayList<Information>();
 		ResultSet resultSet;
 
 		String sql = "SELECT * FROM information";
-		Statement stmt = this.getConnection().createStatement();
+		Statement stmt;
+		try {
+			stmt = getConnection().createStatement();
+			resultSet = stmt.executeQuery(sql);
 
-		resultSet = stmt.executeQuery(sql);
-
-		while (resultSet.next()) {
-			informationList.add(
-					new Information(resultSet.getInt("id"), StringEscapeUtils.unescapeHtml(resultSet.getString("name")),
-							StringEscapeUtils.unescapeHtml(resultSet.getString("text"))));
+			while (resultSet.next()) {
+				informationList.add(new Information(resultSet.getInt("id"),
+						StringEscapeUtils.unescapeHtml(resultSet.getString("name")),
+						StringEscapeUtils.unescapeHtml(resultSet.getString("text"))));
+			}
+			stmt.close();
+		} catch (SQLException e) {
+			System.err.println("Get information from database failed. " + e.getMessage());
 		}
-		stmt.close();
 		return informationList;
 	}
 
 	/**
-	 * Retrieves a single information from database by id.
-	 * 
-	 * @param id
-	 * @return
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
+	 * Retrieves a single {@link Information} object from database by its id.
 	 */
-	public Information getInformation(int id) throws ClassNotFoundException, SQLException {
+	public Information getInformation(int id) {
 		ResultSet resultSet = null;
 
 		String sql = "SELECT * FROM information WHERE id = ?";
-		PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-		stmt.setInt(1, id);
-		resultSet = stmt.executeQuery();
+		PreparedStatement stmt;
+		Information information = null;
+		try {
+			stmt = this.getConnection().prepareStatement(sql);
+			stmt.setInt(1, id);
+			resultSet = stmt.executeQuery();
 
-		Information information = new Information(resultSet.getInt("id"),
-				StringEscapeUtils.unescapeHtml(resultSet.getString("name")),
-				StringEscapeUtils.unescapeHtml(resultSet.getString("text")));
+			information = new Information(resultSet.getInt("id"),
+					StringEscapeUtils.unescapeHtml(resultSet.getString("name")),
+					StringEscapeUtils.unescapeHtml(resultSet.getString("text")));
 
-		stmt.close();
-		resultSet.close();
+			stmt.close();
+			resultSet.close();
+		} catch (SQLException e) {
+			System.err.println("Get information from database failed. " + e.getMessage());
+		}
 
 		return information;
 	}
 
 	/**
-	 * Update existing information in database.
-	 * 
-	 * @param information
-	 * @return
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
+	 * Updates an existing {@link Information} object in database.
 	 */
-	public boolean updateInformation(Information information) throws SQLException, ClassNotFoundException {
+	public boolean updateInformation(Information information) {
 		int id = information.getInformationId();
 		String name = StringEscapeUtils.escapeHtml(information.getName());
 		String text = StringEscapeUtils.escapeHtml(information.getText());
 
 		String sql = "UPDATE information SET text = ?, name = ? WHERE id = ?";
-		PreparedStatement stmt = getConnection().prepareStatement(sql);
-		stmt.setString(1, text);
-		stmt.setString(2, name);
-		stmt.setInt(3, id);
+		PreparedStatement stmt;
+		int status = 0;
+		try {
+			stmt = getConnection().prepareStatement(sql);
+			stmt.setString(1, text);
+			stmt.setString(2, name);
+			stmt.setInt(3, id);
 
-		int status = stmt.executeUpdate();
-		stmt.close();
-
-		if (status == 1) {
-			System.out.println("Update of information was successful.");
-			return true;
-		} else {
-			System.err.println("Update of information to database failed.");
-			return false;
+			status = stmt.executeUpdate();
+			stmt.close();
+		} catch (SQLException e) {
+			System.err.println("Update of information to database failed. " + e.getMessage());
 		}
+
+		return status == 1;
 	}
 
 	/**
-	 * Deletes an information in database by id.
-	 * 
-	 * @param id
-	 * @return
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
+	 * Deletes an {@link Information} object in database by id.
 	 */
-	public boolean deleteInformation(int id) throws SQLException, ClassNotFoundException {
+	public boolean deleteInformation(int id) {
 		String sql = "DELETE FROM information WHERE id = ?";
-		PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-		stmt.setInt(1, id);
-		stmt.executeUpdate();
-		stmt.close();
+		PreparedStatement stmt;
+		int status = 0;
+		try {
+			stmt = getConnection().prepareStatement(sql);
+			stmt.setInt(1, id);
+			stmt.executeUpdate();
+			stmt.close();
 
-		sql = "DELETE FROM exercise WHERE information_id = ?";
-		stmt = this.getConnection().prepareStatement(sql);
-		stmt.setInt(1, id);
-		int status = stmt.executeUpdate();
-		stmt.close();
-		if (status == 1) {
-			System.out.println("Deletion of information was successful.");
-			return true;
-		} else {
-			System.err.println("Deletion of information failed.");
-			return false;
+			sql = "DELETE FROM exercise WHERE information_id = ?";
+			stmt = this.getConnection().prepareStatement(sql);
+			stmt.setInt(1, id);
+			status = stmt.executeUpdate();
+			stmt.close();
+		} catch (SQLException e) {
+			System.err.println("Deletion of information failed. " + e.getMessage());
 		}
 
+		return status == 1;
 	}
 
 	/**
 	 * Deletes an information in database.
-	 * 
-	 * @param information
-	 * @return
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
 	 */
-	public boolean deleteInformation(Information information) throws SQLException, ClassNotFoundException {
-		return this.deleteInformation(information.getInformationId());
+	public boolean deleteInformation(Information information) {
+		return deleteInformation(information.getInformationId());
 	}
 
 	/**
-	 * Deletes an exercise by id in database.
-	 * 
-	 * @param id
-	 * @return
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
+	 * Deletes an {@link Exercise} by id in database.
 	 */
-	public boolean deleteExercise(int id) throws SQLException, ClassNotFoundException {
+	public boolean deleteExercise(int id) {
 		String sql = "DELETE FROM exercise WHERE id = ?";
-		PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-		stmt.setInt(1, id);
-		int status = stmt.executeUpdate();
-		stmt.close();
-		if (status == 1) {
-			System.out.println("Deletion of exercise was successful.");
-			return true;
-		} else {
-			System.out.println("Deletion of exercise was not successful.");
-			return false;
+		PreparedStatement stmt;
+		int status = 0;
+		try {
+			stmt = getConnection().prepareStatement(sql);
+			stmt.setInt(1, id);
+			status = stmt.executeUpdate();
+			stmt.close();
+		} catch (SQLException e) {
+			System.out.println("Deletion of exercise was not successful. " + e.getMessage());
 		}
+		return status == 1;
 	}
 
 	/**
-	 * Inserts an object of class Student into database.
-	 * 
-	 * @param student
-	 * @return
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
+	 * Inserts a {@link Students} object into database.
 	 */
-	public boolean insertStudent(Student student) throws SQLException, ClassNotFoundException {
+	public boolean insertStudent(Student student) {
 		if (student.getUsername() == null || student.getFirstname() == null || student.getLastname() == null
 				|| student.getPasswordHash() == null)
 			return false;
 
 		String sql = "INSERT INTO user (username, firstname, lastname, password, role) VALUES (?, ?, ?, ?,?)";
-		PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-		stmt.setString(1, StringEscapeUtils.escapeHtml(Jsoup.parse(student.getUsername()).text()));
-		stmt.setString(2, StringEscapeUtils.escapeHtml(Jsoup.parse(student.getFirstname()).text()));
-		stmt.setString(3, StringEscapeUtils.escapeHtml(Jsoup.parse(student.getLastname()).text()));
-		stmt.setString(4, StringEscapeUtils.escapeHtml(Jsoup.parse(student.getPasswordHash()).text()));
-		stmt.setString(5, "student");
+		PreparedStatement stmt;
+		int status = 0;
+		try {
+			stmt = getConnection().prepareStatement(sql);
+			stmt.setString(1, StringEscapeUtils.escapeHtml(Jsoup.parse(student.getUsername()).text()));
+			stmt.setString(2, StringEscapeUtils.escapeHtml(Jsoup.parse(student.getFirstname()).text()));
+			stmt.setString(3, StringEscapeUtils.escapeHtml(Jsoup.parse(student.getLastname()).text()));
+			stmt.setString(4, StringEscapeUtils.escapeHtml(Jsoup.parse(student.getPasswordHash()).text()));
+			stmt.setString(5, "student");
 
-		int status = stmt.executeUpdate();
-		stmt.close();
-		if (status == 1) {
-			System.out.println("Insertion of student to database was successful.");
-			return true;
-		} else {
-			System.err.println("Insertion of student to database failed.");
-			return false;
+			status = stmt.executeUpdate();
+			stmt.close();
+		} catch (SQLException e) {
+			System.err.println("Insertion of student to database failed. " + e.getMessage());
 		}
+
+		return status == 1;
 	}
 
 	/**
-	 * Inserts an object of class Administrator into database.
-	 * 
-	 * @param administrator
-	 * @return
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
+	 * Inserts an {@link Administrator} object into database.
 	 */
-	public boolean insertAdministrator(Administrator administrator) throws SQLException, ClassNotFoundException {
+	public boolean insertAdministrator(Administrator administrator) {
 		if (administrator.getUsername() == null || administrator.getFirstname() == null
 				|| administrator.getLastname() == null || administrator.getPasswordHash() == null)
 			return false;
 
 		String sql = "INSERT INTO user (username, firstname, lastname, password,role) VALUES (?, ?, ?, ?,?)";
-		PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-		stmt.setString(1, StringEscapeUtils.escapeHtml(Jsoup.parse(administrator.getUsername()).text()));
-		stmt.setString(2, StringEscapeUtils.escapeHtml(Jsoup.parse(administrator.getFirstname()).text()));
-		stmt.setString(3, StringEscapeUtils.escapeHtml(Jsoup.parse(administrator.getLastname()).text()));
-		stmt.setString(4, StringEscapeUtils.escapeHtml(Jsoup.parse(administrator.getPasswordHash()).text()));
-		stmt.setString(5, "administrator");
+		PreparedStatement stmt;
+		int status = 0;
+		try {
+			stmt = getConnection().prepareStatement(sql);
+			stmt.setString(1, StringEscapeUtils.escapeHtml(Jsoup.parse(administrator.getUsername()).text()));
+			stmt.setString(2, StringEscapeUtils.escapeHtml(Jsoup.parse(administrator.getFirstname()).text()));
+			stmt.setString(3, StringEscapeUtils.escapeHtml(Jsoup.parse(administrator.getLastname()).text()));
+			stmt.setString(4, StringEscapeUtils.escapeHtml(Jsoup.parse(administrator.getPasswordHash()).text()));
+			stmt.setString(5, "administrator");
 
-		int status = stmt.executeUpdate();
-		stmt.close();
-		if (status == 1) {
-			System.out.println("Insertion of student to database was successful.");
-			return true;
-		} else {
-			System.err.println("Insertion of student to database failed.");
-			return false;
+			status = stmt.executeUpdate();
+			stmt.close();
+		} catch (SQLException e) {
+			System.err.println("Insertion of administrator to database failed.");
 		}
+
+		return status == 1;
 	}
 
 	/**
-	 * Retrieves all students from database.
-	 * 
-	 * @return
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
+	 * @return all {@link Student}s from database.
 	 */
-	public ArrayList<Student> getStudents() throws SQLException, ClassNotFoundException {
-		ArrayList<Student> students = new ArrayList<Student>();
+	public List<Student> getStudents() {
+		List<Student> students = new ArrayList<Student>();
 		ResultSet resultSet;
 
 		String sql = "SELECT * FROM user WHERE role = ?";
-		PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-		stmt.setString(1, "student");
+		PreparedStatement stmt;
+		try {
+			stmt = getConnection().prepareStatement(sql);
+			stmt.setString(1, "student");
 
-		resultSet = stmt.executeQuery();
-		while (resultSet.next()) {
-			Student student = new Student();
-			student.setUsername(resultSet.getString(1));
-			student.setFirstname(resultSet.getString(2));
-			student.setLastname(resultSet.getString(3));
-			student.setPassword(resultSet.getString(4));
-			students.add(student);
+			resultSet = stmt.executeQuery();
+			while (resultSet.next()) {
+				Student student = new Student();
+				student.setUsername(resultSet.getString(1));
+				student.setFirstname(resultSet.getString(2));
+				student.setLastname(resultSet.getString(3));
+				student.setPassword(resultSet.getString(4));
+				students.add(student);
+			}
+			stmt.close();
+		} catch (SQLException e) {
+			System.err.println("Reading students from database failed. " + e.getMessage());
 		}
-		stmt.close();
 
 		return students;
 	}
 
 	/**
-	 * Retrieves student from database by username
-	 * 
-	 * @param username
-	 * @return
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
+	 * @return {@link Student} from database by username.
 	 */
-	public Student getStudent(String username) throws SQLException, ClassNotFoundException {
+	public Student getStudent(String username) {
 		Student student = null;
 		ResultSet resultSet = null;
 
 		String sql = "SELECT * FROM user WHERE username = ? AND role = ?";
-		PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-		stmt.setString(1, username);
-		stmt.setString(2, "student");
-		resultSet = stmt.executeQuery();
+		PreparedStatement stmt;
+		try {
+			stmt = getConnection().prepareStatement(sql);
+			stmt.setString(1, username);
+			stmt.setString(2, "student");
+			resultSet = stmt.executeQuery();
 
-		if (resultSet.next()) {
-			student = new Student(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),
-					resultSet.getString(4));
+			if (resultSet.next()) {
+				student = new Student(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),
+						resultSet.getString(4));
+			}
+			stmt.close();
+		} catch (SQLException e) {
+			System.err.println("Reading student from database failed. " + e.getMessage());
 		}
-		stmt.close();
+
 		return student;
 	}
 
 	/**
-	 * Retrieves administrator from database by username
-	 * 
-	 * @param username
-	 * @return
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
+	 * @return {@link Administrator} from database by username
 	 */
-	public Administrator getAdministrator(String username) throws SQLException, ClassNotFoundException {
-		Administrator administrator;
+	public Administrator getAdministrator(String username) {
+		Administrator administrator = null;
 		ResultSet resultSet = null;
 
 		String sql = "SELECT * FROM user WHERE username = ? AND role = ?";
-		PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-		stmt.setString(1, username);
-		stmt.setString(2, "administrator");
-		resultSet = stmt.executeQuery();
+		PreparedStatement stmt;
+		try {
+			stmt = getConnection().prepareStatement(sql);
+			stmt.setString(1, username);
+			stmt.setString(2, "administrator");
+			resultSet = stmt.executeQuery();
 
-		administrator = new Administrator(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),
-				resultSet.getString(4));
-		stmt.close();
+			administrator = new Administrator(resultSet.getString(1), resultSet.getString(2), resultSet.getString(3),
+					resultSet.getString(4));
+			stmt.close();
+		} catch (SQLException e) {
+			System.err.println("Reading admin from database failed. " + e.getMessage());
+		}
+
 		return administrator;
 	}
 
 	/**
-	 * Retrieves all results given by a student
-	 * 
-	 * @param exerciseId
-	 * @return
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
+	 * @return all {@link Student}s who performed a certain exercise.
 	 */
-	public ArrayList<Result> getResultsOfExercise(int exerciseId) throws ClassNotFoundException, SQLException {
-		ArrayList<Result> results = new ArrayList<Result>();
+	public List<Student> getStudentByResult(int exerciseId) {
+		List<Student> students = new ArrayList<Student>();
 		ResultSet resultSet;
 
 		String sql = "SELECT * FROM result WHERE exercise_id = ?";
-		PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-		stmt.setInt(1, exerciseId);
+		PreparedStatement stmt;
+		try {
+			stmt = this.getConnection().prepareStatement(sql);
+			stmt.setInt(1, exerciseId);
 
-		resultSet = stmt.executeQuery();
+			resultSet = stmt.executeQuery();
 
-		while (resultSet.next()) {
-			Student student = this.getStudent(resultSet.getString(4));
-
-			Result result = new SentencePartResult();
-			result.setStudent(student);
-
-			results.add(result);
+			while (resultSet.next()) {
+				Student student = getStudent(resultSet.getString(4));
+				students.add(student);
+			}
+			stmt.close();
+			resultSet.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		stmt.close();
-		resultSet.close();
-		return results;
-	}
 
-	/**
-	 * Retrieves all students who gave a result
-	 * 
-	 * @param exerciseId
-	 * @return
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
-	 */
-	public ArrayList<Student> getStudentByResult(int exerciseId) throws SQLException, ClassNotFoundException {
-		ArrayList<Student> students = new ArrayList<Student>();
-		ResultSet resultSet;
-
-		String sql = "SELECT * FROM result WHERE exercise_id = ?";
-		PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-		stmt.setInt(1, exerciseId);
-
-		resultSet = stmt.executeQuery();
-
-		while (resultSet.next()) {
-			Student student = this.getStudent(resultSet.getString(4));
-			students.add(student);
-		}
-		stmt.close();
-		resultSet.close();
 		return students;
 	}
 
@@ -463,7 +398,6 @@ public class DataManager {
 			Class.forName(this.getDbName());
 		} catch (ClassNotFoundException e) {
 			System.err.println(e.getMessage());
-			e.printStackTrace();
 		}
 
 		try {
@@ -507,7 +441,6 @@ public class DataManager {
 			statement.close(); // @Argument only difference is the role
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
-			e.printStackTrace();
 		}
 	}
 
@@ -576,94 +509,48 @@ public class DataManager {
 		Student student = new Student("admin", "admin", "admin",
 				"8F8145E0F8D63C646E48F5A0377007C2193FCE8C87399B5D9A59DEC43B4CB45B");
 
-		try {
-			this.insertInformation(sampleInformation1);
-			this.insertInformation(sampleInformation2);
-			this.insertStudent(student);
-		} catch (ClassNotFoundException | SQLException e) {
-			System.err.println(e.getMessage());
-			e.printStackTrace();
-		}
+		this.insertInformation(sampleInformation1);
+		this.insertInformation(sampleInformation2);
+		this.insertStudent(student);
 	}
 
-	/**
-	 * 
-	 * @param username
-	 * @param newpassword
-	 * @return
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 */
-	public boolean changePassword(String username, String newpassword) throws ClassNotFoundException, SQLException {
+	public boolean changePassword(String username, String newPassword) {
 		String sql = "UPDATE user  SET password=? WHERE username=?";
-		PreparedStatement stmt = getConnection().prepareStatement(sql);
+		PreparedStatement stmt;
+		int status = 0;
+		try {
+			stmt = getConnection().prepareStatement(sql);
 
-		stmt.setString(1, newpassword);
-		stmt.setString(2, username);
+			stmt.setString(1, newPassword);
+			stmt.setString(2, username);
 
-		int status = stmt.executeUpdate();
-		stmt.close();
-
-		if (status == 1) {
-			System.out.println("Update of the password was successful");
-			return true;
-		} else {
-			System.err.println("Update of the Password failed.");
-			return false;
+			status = stmt.executeUpdate();
+			stmt.close();
+		} catch (SQLException e) {
+			System.err.println("Update of the password failed. " + e.getMessage());
 		}
+		return status == 1;
 	}
 
 	/**
-	 * 
-	 * @return
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
+	 * Deletes a user //TODO ALSO DELETE ALL CONNECTED INFORMATION TO THAT USER
 	 */
-	public ArrayList<User> listAllUser() throws SQLException, ClassNotFoundException {
-		ArrayList<User> userList = new ArrayList<User>();
-
-		ResultSet resultSet;
-
-		String sql = "SELECT * FROM user";
-		PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-
-		resultSet = stmt.executeQuery();
-
-		while (resultSet.next()) {
-			User user = new User(resultSet.getString("username"), resultSet.getString("firstname"),
-					resultSet.getString("lastname"), "", resultSet.getString("role"));
-			userList.add(user);
-		}
-		stmt.close();
-		resultSet.close();
-
-		return userList;
-	}
-
-	/**
-	 * delete a user //TODO ALSO DELETE ALL CONNECTED INFORMATION TO THAT USER
-	 * 
-	 * @param username
-	 * @return
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
-	 */
-	public boolean deleteUser(String username) throws SQLException, ClassNotFoundException {
+	public boolean deleteUser(String username) {
 		String sql = "DELETE FROM user WHERE username = ?";
-		PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-		stmt.setString(1, username);
-		stmt.executeUpdate();
-		stmt.close();
+		PreparedStatement stmt;
+		int status = 0;
+		try {
+			stmt = this.getConnection().prepareStatement(sql);
+			stmt.setString(1, username);
+			stmt.executeUpdate();
+			stmt.close();
 
-		int status = stmt.executeUpdate();
-		stmt.close();
-		if (status == 1) {
-			System.out.println("Deletion of user was successful.");
-			return true;
-		} else {
-			System.err.println("Deletion of user failed.");
-			return false;
+			status = stmt.executeUpdate();
+			stmt.close();
+		} catch (SQLException e) {
+			System.err.println("Deletion of user failed. " + e.getMessage());
 		}
+		return status == 1;
 	}
 
 	/**

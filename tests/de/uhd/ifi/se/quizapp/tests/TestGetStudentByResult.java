@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -18,7 +18,7 @@ public class TestGetStudentByResult {
 	public void TestGetStudentByResultOfTeacherDataManagerWithEmptyExerciseId()
 			throws ClassNotFoundException, SQLException {
 		DataManager dataManager = new DataManager();
-		ArrayList<Student> students = dataManager.getStudentByResult(0);
+		List<Student> students = dataManager.getStudentByResult(0);
 		assertNotNull(students);
 		assertEquals(students.size(), 0);
 	}
@@ -28,7 +28,7 @@ public class TestGetStudentByResult {
 	public void TestGetStudentByResultOfTeacherDataManagerWithNonEmptyExerciseIdExerciseNotInDatabase()
 			throws ClassNotFoundException, SQLException {
 		DataManager dataManager = new DataManager();
-		ArrayList<Student> students = dataManager.getStudentByResult(4353674);
+		List<Student> students = dataManager.getStudentByResult(4353674);
 		assertNotNull(students);
 		assertEquals(students.size(), 0);
 	}
@@ -38,7 +38,7 @@ public class TestGetStudentByResult {
 	public void TestGetStudentByResultOfTeacherDataManagerWithNotInitializedExerciseId()
 			throws ClassNotFoundException, SQLException {
 		DataManager dataManager = new DataManager();
-		ArrayList<Student> students = dataManager.getStudentByResult(-1);
+		List<Student> students = dataManager.getStudentByResult(-1);
 		assertNotNull(students);
 		assertEquals(students.size(), 0);
 	}
