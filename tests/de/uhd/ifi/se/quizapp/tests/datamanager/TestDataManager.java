@@ -9,7 +9,6 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import de.uhd.ifi.se.quizapp.model.Administrator;
@@ -38,7 +37,6 @@ public class TestDataManager {
 	}
 
 	@Test
-	@Ignore
 	public void testGetAdminByUsernameOfDataManagerWithUsernameInTheDatabase() {
 		String username = "admin";
 		Administrator administrator = dataManager.getAdministrator(username);
