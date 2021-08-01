@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.jsoup.Jsoup;
@@ -124,27 +125,13 @@ public class DataManager {
 	 * Retrieves a single {@link Information} object from database by its id.
 	 */
 	public Information getInformation(int id) {
-		ResultSet resultSet = null;
-
-		String sql = "SELECT * FROM information WHERE id = ?";
-		PreparedStatement stmt;
-		Information information = null;
-		try {
-			stmt = this.getConnection().prepareStatement(sql);
-			stmt.setInt(1, id);
-			resultSet = stmt.executeQuery();
-
-			information = new Information(resultSet.getInt("id"),
-					StringEscapeUtils.unescapeHtml(resultSet.getString("name")),
-					StringEscapeUtils.unescapeHtml(resultSet.getString("text")));
-
-			stmt.close();
-			resultSet.close();
-		} catch (SQLException e) {
-			System.err.println("Get information from database failed. " + e.getMessage());
+		List<Information> informationList = getInformation();
+		Optional<Information> informationWithId = informationList.stream()
+				.filter(information -> information.getInformationId() == id).findAny();
+		if (informationWithId.isPresent()) {
+			return informationWithId.get();
 		}
-
-		return information;
+		return null;
 	}
 
 	/**

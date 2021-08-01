@@ -5,7 +5,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -25,37 +24,38 @@ public class TestInformation {
 
 	@Test
 	public void testGetInformation() {
-		List<Information> informationList = new ArrayList<Information>();
-		informationList = dataManager.getInformation();
+		List<Information> informationList = dataManager.getInformation();
 		assertTrue(informationList.size() > 0);
 	}
 
 	@Test
 	public void testGetInformationByID() {
-		Information information = dataManager.getInformation(1);
+		int existingId = dataManager.getInformation().get(0).getInformationId();
+		Information information = dataManager.getInformation(existingId);
 		assertNotNull(information);
-		assertEquals(information.getInformationId(), 1);
+		assertEquals(information.getInformationId(), existingId);
 	}
 
 	@Test
-	public void testInsertInformationOfDataManagerWithInformationNotNull() {
+	public void testInsertInformationWithInformationNotNull() {
 		Information information = new Information("Obst", "Obst Obst Obst");
 		assertTrue(dataManager.insertInformation(information));
 	}
 
 	@Test
-	public void testInsertInformationOfDataManagerWithUninitializedInformation() {
+	public void testInsertInformationWithUninitializedInformation() {
 		assertFalse(dataManager.insertInformation(null));
 	}
 
 	@Test
-	public void testUpdateInformationOfDataManagerWithInformationNotNull() {
-		Information information = new Information(1, "Obst", "Obst Obst Obst");
+	public void testUpdateInformationWithInformationNotNull() {
+		int existingId = dataManager.getInformation().get(0).getInformationId();
+		Information information = new Information(existingId, "Obst", "Obst Obst Obst");
 		assertTrue(dataManager.updateInformation(information));
 	}
 
 	@Test
-	public void testUpdateInformationOfDataManagerWithUninitializedInformation() {
+	public void testUpdateInformationWithUninitializedInformation() {
 		Information information = new Information(0, null, null);
 		assertFalse(dataManager.updateInformation(information));
 	}
