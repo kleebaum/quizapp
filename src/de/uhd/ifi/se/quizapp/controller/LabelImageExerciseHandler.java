@@ -18,7 +18,7 @@ import de.uhd.ifi.se.quizapp.model.labelimageexercise.LabelImageResult;
 
 public class LabelImageExerciseHandler extends ExerciseHandler {
 
-	LabelImageDataManager dataManager;
+	private LabelImageDataManager dataManager;
 
 	public LabelImageExerciseHandler() {
 		this.type = 3;

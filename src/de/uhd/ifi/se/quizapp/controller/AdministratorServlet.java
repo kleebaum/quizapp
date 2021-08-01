@@ -38,9 +38,9 @@ public class AdministratorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private transient DataManager dataManager;
 
-	TwoChoiceExerciseHandler exerciseHandler;
-	SentencePartExerciseHandler sentencePartExerciseHandler;
-	LabelImageExerciseHandler labelImageExerciseHandler;
+	private TwoChoiceExerciseHandler exerciseHandler;
+	private SentencePartExerciseHandler sentencePartExerciseHandler;
+	private LabelImageExerciseHandler labelImageExerciseHandler;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -200,11 +200,6 @@ public class AdministratorServlet extends HttpServlet {
 		doPost(request, response);
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest handleCreateInformationRequest(HttpServletRequest request) {
 		String text = request.getParameter("text");
 		String name = request.getParameter("name");
@@ -224,11 +219,6 @@ public class AdministratorServlet extends HttpServlet {
 		return request;
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest handleDeleteInformationRequest(HttpServletRequest request) {
 		int id = 0;
 		if (request.getParameter("id") != null)
@@ -246,11 +236,6 @@ public class AdministratorServlet extends HttpServlet {
 		return request;
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest handleEditInformationRequest(HttpServletRequest request) {
 		int id = Integer.parseInt(request.getParameter("id"));
 		Information information = new Information();
@@ -264,11 +249,6 @@ public class AdministratorServlet extends HttpServlet {
 		return request;
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest handleUpdateInformationRequest(HttpServletRequest request) {
 		String text = request.getParameter("text");
 		String name = request.getParameter("name");
@@ -289,12 +269,6 @@ public class AdministratorServlet extends HttpServlet {
 		return request;
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 * @throws ServletException
-	 */
 	public HttpServletRequest uploadFile(HttpServletRequest request) throws ServletException {
 		FileItemFactory factory = new DiskFileItemFactory();
 		ServletFileUpload upload = new ServletFileUpload(factory);
@@ -340,12 +314,6 @@ public class AdministratorServlet extends HttpServlet {
 		return request;
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @param session
-	 * @return
-	 */
 	public HttpServletRequest handleLogin(HttpServletRequest request, HttpSession session) {
 
 		String message = null;
@@ -386,11 +354,6 @@ public class AdministratorServlet extends HttpServlet {
 		return request;
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest deleteFiles(HttpServletRequest request) {
 		String[] files;
 		if (request.getParameterValues("deleteFiles") != null) {
@@ -413,13 +376,7 @@ public class AdministratorServlet extends HttpServlet {
 		return request;
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest handleChangingPassword(HttpServletRequest request) {
-		System.out.println("test");
 		HttpSession session = request.getSession();
 		Administrator administrator = (Administrator) session.getAttribute("administrator");
 		String newpassword = "";
@@ -443,13 +400,6 @@ public class AdministratorServlet extends HttpServlet {
 		return request;
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 */
 	public HttpServletRequest handleDeleteUser(HttpServletRequest request) throws ClassNotFoundException, SQLException {
 		String username = request.getParameter("username");
 
@@ -458,11 +408,6 @@ public class AdministratorServlet extends HttpServlet {
 		return request;
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest handleChangingRole(HttpServletRequest request) {
 		String username = request.getParameter("username");
 		String newRole = request.getParameter("role");
@@ -476,5 +421,4 @@ public class AdministratorServlet extends HttpServlet {
 
 		return request;
 	}
-
 }

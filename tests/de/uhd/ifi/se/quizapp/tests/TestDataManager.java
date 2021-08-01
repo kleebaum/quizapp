@@ -9,10 +9,6 @@ import static org.junit.Assert.assertTrue;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -23,25 +19,9 @@ import de.uhd.ifi.se.quizapp.model.Student;
 
 public class TestDataManager {
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
 	// T64
 	@Test
-	public void TestGetInformation() throws ClassNotFoundException, SQLException {
+	public void testGetInformation() throws ClassNotFoundException, SQLException {
 		DataManager dataManager = new DataManager();
 		ArrayList<Information> informationList = new ArrayList<Information>();
 		informationList = dataManager.getInformation();
@@ -52,7 +32,7 @@ public class TestDataManager {
 	// T65
 	@Test
 	@Ignore
-	public void TestGetInformationbByID() throws ClassNotFoundException, SQLException {
+	public void testGetInformationbByID() throws ClassNotFoundException, SQLException {
 		DataManager dataManager = new DataManager();
 		Information information = null;
 		information = dataManager.getInformation(18);
@@ -62,7 +42,7 @@ public class TestDataManager {
 
 	// T77
 	@Test
-	public void TestGetStudentByUsername() throws ClassNotFoundException, SQLException {
+	public void testGetStudentByUsername() throws ClassNotFoundException, SQLException {
 		Student student;
 		DataManager dataManager = new DataManager();
 		String username = "";
@@ -72,7 +52,7 @@ public class TestDataManager {
 
 	// T76
 	@Test
-	public void TestGetStudentByUsernameOfDataManagerWithUninitializedUsernameNegativeTest()
+	public void testGetStudentByUsernameOfDataManagerWithUninitializedUsernameNegative()
 			throws ClassNotFoundException, SQLException {
 		Student student;
 		DataManager dataManager = new DataManager();
@@ -83,7 +63,7 @@ public class TestDataManager {
 
 	// T75
 	@Test
-	public void TestGetAdminByUsernameOfDataManagerWithUsernameInTheDatabase()
+	public void testGetAdminByUsernameOfDataManagerWithUsernameInTheDatabase()
 			throws ClassNotFoundException, SQLException {
 		DataManager dataManager = new DataManager();
 		String username = "admin";
@@ -95,7 +75,7 @@ public class TestDataManager {
 
 	// T72
 	@Test
-	public void TestGetStudents() throws ClassNotFoundException, SQLException {
+	public void testGetStudents() throws ClassNotFoundException, SQLException {
 		DataManager dataManager = new DataManager();
 		ArrayList<Student> studentList = null;
 		studentList = dataManager.getStudents();
@@ -106,7 +86,7 @@ public class TestDataManager {
 
 	// T54
 	@Test
-	public void TestInsertInformationOfDataManagerWithInformationNotNull() throws ClassNotFoundException, SQLException {
+	public void testInsertInformationOfDataManagerWithInformationNotNull() throws ClassNotFoundException, SQLException {
 		DataManager dataManager = new DataManager();
 		Information information = new Information("Obst", "Obst Obst Obst");
 
@@ -115,7 +95,7 @@ public class TestDataManager {
 
 	// T55
 	@Test
-	public void TestInsertInformationOfDataManagerWithUninitializedInformation()
+	public void testInsertInformationOfDataManagerWithUninitializedInformation()
 			throws ClassNotFoundException, SQLException {
 		DataManager dataManager = new DataManager();
 		Information information = null;
@@ -125,7 +105,7 @@ public class TestDataManager {
 
 	// T71
 	@Test
-	public void TestInsertStudentOfDataManagerWithStudentNotNull() throws ClassNotFoundException, SQLException {
+	public void testInsertStudentOfDataManagerWithStudentNotNull() throws ClassNotFoundException, SQLException {
 		DataManager dataManager = new DataManager();
 		Student student = new Student("username", "userfirstname", "userlastname", "userpassword");
 		try {
@@ -138,7 +118,7 @@ public class TestDataManager {
 	// T58
 	@Test
 	@Ignore
-	public void TestUpdateInformationOfDataManagerWithInformationNotNull() throws ClassNotFoundException, SQLException {
+	public void testUpdateInformationOfDataManagerWithInformationNotNull() throws ClassNotFoundException, SQLException {
 		DataManager dataManager = new DataManager();
 		Information information = new Information(20, "Obst", "Obst Obst Obst");
 		assertTrue(dataManager.updateInformation(information));
@@ -146,7 +126,7 @@ public class TestDataManager {
 
 	// T59
 	@Test
-	public void TestUpdateInformationOfDataManagerWithUninitializedInformation()
+	public void testUpdateInformationOfDataManagerWithUninitializedInformation()
 			throws ClassNotFoundException, SQLException {
 		DataManager dataManager = new DataManager();
 		Information information = new Information(0, null, null);
@@ -155,12 +135,10 @@ public class TestDataManager {
 
 	// T70
 	@Test
-	public void TestInsertStudentOfDataManagerWithUninitializedStudent() throws ClassNotFoundException, SQLException {
+	public void testInsertStudentOfDataManagerWithUninitializedStudent() throws ClassNotFoundException, SQLException {
 		Student student = new Student(null, null, null, null);
 		DataManager dataManager = new DataManager();
 
 		assertFalse(dataManager.insertStudent(student));
-
 	}
-
 }

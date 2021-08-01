@@ -20,16 +20,16 @@ import de.uhd.ifi.se.quizapp.model.DataManager;
 import de.uhd.ifi.se.quizapp.model.Student;
 
 /**
- * Servlet implementation class StudentServlet
+ * Fills the pages for students with data and handles the registration of new
+ * students.
  */
 @WebServlet("/Student")
 public class StudentServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-
-	TwoChoiceExerciseHandler exerciseHandler;
-	SentencePartExerciseHandler sentencePartExerciseHandler;
-	LabelImageExerciseHandler labelImageExerciseHandler;
+	private TwoChoiceExerciseHandler exerciseHandler;
+	private SentencePartExerciseHandler sentencePartExerciseHandler;
+	private LabelImageExerciseHandler labelImageExerciseHandler;
 	private DataManager dataManager;
 
 	/**
@@ -123,11 +123,6 @@ public class StudentServlet extends HttpServlet {
 		doPost(request, response);
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest handleRegistration(HttpServletRequest request) {
 		Student student = new Student();
 		student.setUsername(request.getParameter("username"));
@@ -159,12 +154,6 @@ public class StudentServlet extends HttpServlet {
 		return request;
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @param session
-	 * @return
-	 */
 	public HttpServletRequest handleLogin(HttpServletRequest request, HttpSession session) {
 
 		String message = null;
