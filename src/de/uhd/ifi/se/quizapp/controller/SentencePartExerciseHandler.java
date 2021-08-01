@@ -233,12 +233,12 @@ public class SentencePartExerciseHandler extends ExerciseHandler {
 	 */
 	@Override
 	protected String calculateExerciseMetricsInChain(int type) {
-		ArrayList<SentencePartExercise> sentencePartExercises;
-		ArrayList<SentencePartMetric> sentencePartMetrik = new ArrayList<>();
+		List<SentencePartExercise> sentencePartExercises;
+		List<SentencePartMetric> sentencePartMetrik = new ArrayList<>();
 		try {
-			sentencePartExercises = (ArrayList<SentencePartExercise>) dataManager.getExercises();
+			sentencePartExercises = (List<SentencePartExercise>) dataManager.getExercises();
 
-			ArrayList<SentencePartResult> results = new ArrayList<>();
+			List<SentencePartResult> results = new ArrayList<>();
 			for (SentencePartExercise exercise : sentencePartExercises) {
 				removingHTMLTags(exercise);
 				results = dataManager.getAllResultsByExerciseId(exercise.getExerciseId());

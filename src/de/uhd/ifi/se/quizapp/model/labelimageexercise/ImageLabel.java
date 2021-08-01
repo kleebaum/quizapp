@@ -1,5 +1,9 @@
 package de.uhd.ifi.se.quizapp.model.labelimageexercise;
 
+/**
+ * Models a label (i.e. textual description within an image). Used for
+ * {@link LabelImageExercise}s.
+ */
 public class ImageLabel {
 
 	private String label;
@@ -15,7 +19,6 @@ public class ImageLabel {
 	}
 
 	/**
-	 * 
 	 * @param label
 	 * @param position
 	 * @param imageSource
@@ -27,12 +30,12 @@ public class ImageLabel {
 	}
 
 	public String toString() {
-		if (this.getLabel() == null) {
+		if (getLabel() == null) {
 			return null;
 		}
 		StringBuffer contentBuffer = new StringBuffer();
 
-		contentBuffer.append(this.getLabel());
+		contentBuffer.append(getLabel());
 		return contentBuffer.toString();
 	}
 

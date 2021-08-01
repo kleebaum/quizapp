@@ -16,11 +16,14 @@ public abstract class Exercise {
 	}
 
 	/**
-	 * 
 	 * @param id
+	 *            of the exercise in the database.
 	 * @param difficulty
+	 *            of the exercise.
 	 * @param description
+	 *            what to do.
 	 * @param informationId
+	 *            id of a linked information.
 	 */
 	public Exercise(int id, int difficulty, String description, int informationId) {
 		this(id);
@@ -30,7 +33,7 @@ public abstract class Exercise {
 	}
 
 	public int getDifficulty() {
-		return this.difficulty;
+		return difficulty;
 	}
 
 	public void setDifficulty(int difficulty) {
@@ -50,7 +53,7 @@ public abstract class Exercise {
 	}
 
 	public int getInformationId() {
-		return this.informationId;
+		return informationId;
 	}
 
 	public int getExerciseId() {

@@ -13,7 +13,7 @@ import org.junit.Test;
 import de.uhd.ifi.se.quizapp.model.DataManager;
 import de.uhd.ifi.se.quizapp.model.Information;
 
-public class TestInformation {
+public class TestReadAndWriteInformation {
 
 	private DataManager dataManager;
 

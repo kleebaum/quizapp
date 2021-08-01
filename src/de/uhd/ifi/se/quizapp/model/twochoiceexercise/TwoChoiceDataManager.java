@@ -77,7 +77,7 @@ public class TwoChoiceDataManager extends DataManager {
 	 * @param booleanStatements
 	 * @return
 	 */
-	public static String booleanStatementsToString(ArrayList<BooleanStatement> booleanStatements) {
+	public static String booleanStatementsToString(List<BooleanStatement> booleanStatements) {
 		StringBuffer contentBuffer = new StringBuffer();
 
 		for (BooleanStatement booleanStatement : booleanStatements) {

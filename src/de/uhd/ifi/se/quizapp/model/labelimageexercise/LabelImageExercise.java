@@ -1,11 +1,12 @@
 package de.uhd.ifi.se.quizapp.model.labelimageexercise;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.uhd.ifi.se.quizapp.model.Exercise;
 
 public class LabelImageExercise extends Exercise {
-	private ArrayList<ImageLabel> labels;
+	private List<ImageLabel> labels;
 	private String labelData;
 	private String imageSource;
 	// @Decision save Labels as JSONArray in Database
@@ -16,26 +17,13 @@ public class LabelImageExercise extends Exercise {
 		this.labels = new ArrayList<ImageLabel>();
 	}
 
-	/**
-	 * 
-	 * @param id
-	 * @param difficulty
-	 * @param description
-	 * @param informationId
-	 * @param labels
-	 */
-	public LabelImageExercise(int id, int difficulty, String description, int informationId,
-			ArrayList<ImageLabel> labels) {
+	public LabelImageExercise(int id, int difficulty, String description, int informationId, List<ImageLabel> labels) {
 		super(id, difficulty, description, informationId);
 		this.labels = labels;
 		this.imageSource = this.labels.get(0).getImageSrc();
 	}
 
-	/**
-	 * 
-	 * @return ArrayList with String.
-	 */
-	public ArrayList<ImageLabel> getLabels() {
+	public List<ImageLabel> getLabels() {
 		return labels;
 	}
 

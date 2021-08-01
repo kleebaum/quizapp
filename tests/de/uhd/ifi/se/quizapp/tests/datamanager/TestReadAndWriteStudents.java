@@ -15,7 +15,7 @@ import de.uhd.ifi.se.quizapp.model.Administrator;
 import de.uhd.ifi.se.quizapp.model.DataManager;
 import de.uhd.ifi.se.quizapp.model.Student;
 
-public class TestDataManager {
+public class TestReadAndWriteStudents {
 
 	private DataManager dataManager;
 
@@ -37,7 +37,7 @@ public class TestDataManager {
 	}
 
 	@Test
-	public void testGetAdminByUsernameOfDataManagerWithUsernameInTheDatabase() {
+	public void testGetAdminByUsernameWithUsernameInTheDatabase() {
 		String username = "admin";
 		Administrator administrator = dataManager.getAdministrator(username);
 		assertNotNull(administrator);
