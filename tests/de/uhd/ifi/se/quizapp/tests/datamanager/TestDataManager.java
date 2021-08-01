@@ -6,9 +6,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-import java.sql.SQLException;
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import de.uhd.ifi.se.quizapp.model.Administrator;
@@ -17,64 +17,50 @@ import de.uhd.ifi.se.quizapp.model.Student;
 
 public class TestDataManager {
 
-	// T77
+	private DataManager dataManager;
+
+	@Before
+	public void setUp() {
+		dataManager = new DataManager();
+	}
+
 	@Test
-	public void testGetStudentByUsername() throws ClassNotFoundException, SQLException {
-		Student student;
-		DataManager dataManager = new DataManager();
-		String username = "";
-		student = dataManager.getStudent(username);
+	public void testGetStudentByUsernameWithUsernameEmpty() {
+		Student student = dataManager.getStudent("");
 		assertNull(student);
 	}
 
-	// T76
 	@Test
-	public void testGetStudentByUsernameOfDataManagerWithUninitializedUsernameNegative()
-			throws ClassNotFoundException, SQLException {
-		Student student;
-		DataManager dataManager = new DataManager();
-		String username = null;
-		student = dataManager.getStudent(username);
+	public void testGetStudentByUsernameWithUsernameNull() {
+		Student student = dataManager.getStudent(null);
 		assertNull(student);
 	}
 
-	// T75
 	@Test
-	public void testGetAdminByUsernameOfDataManagerWithUsernameInTheDatabase()
-			throws ClassNotFoundException, SQLException {
-		DataManager dataManager = new DataManager();
+	public void testGetAdminByUsernameOfDataManagerWithUsernameInTheDatabase() {
 		String username = "admin";
-		Administrator administrator = null;
-		administrator = dataManager.getAdministrator(username);
+		Administrator administrator = dataManager.getAdministrator(username);
 		assertNotNull(administrator);
 		assertEquals(administrator.getUsername(), username);
 	}
 
-	// T72
 	@Test
-	public void testGetStudents() throws ClassNotFoundException, SQLException {
-		DataManager dataManager = new DataManager();
-		List<Student> studentList = null;
-		studentList = dataManager.getStudents();
-
+	public void testGetStudents() {
+		List<Student> studentList = dataManager.getStudents();
 		assertNotNull(studentList);
-		assertTrue(studentList.size() != 0);
+		assertTrue(studentList.size() > 0);
 	}
 
-	// T71
 	@Test
-	public void testInsertStudentOfDataManagerWithStudentNotNull() throws ClassNotFoundException, SQLException {
-		DataManager dataManager = new DataManager();
+	public void testInsertStudentOfDataManagerWithStudentNotNull() {
+		dataManager.deleteUser("username");
 		Student student = new Student("username", "userfirstname", "userlastname", "userpassword");
 		assertTrue(dataManager.insertStudent(student));
 	}
 
-	// T70
 	@Test
-	public void testInsertStudentOfDataManagerWithUninitializedStudent() throws ClassNotFoundException, SQLException {
+	public void testInsertStudentOfDataManagerWithUninitializedStudent() {
 		Student student = new Student(null, null, null, null);
-		DataManager dataManager = new DataManager();
-
 		assertFalse(dataManager.insertStudent(student));
 	}
 }

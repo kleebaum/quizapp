@@ -231,7 +231,7 @@ public class DataManager {
 				|| student.getPasswordHash() == null)
 			return false;
 
-		String sql = "INSERT INTO user (username, firstname, lastname, password, role) VALUES (?, ?, ?, ?,?)";
+		String sql = "INSERT INTO user (username, firstname, lastname, password, role) VALUES (?, ?, ?, ?, ?)";
 		PreparedStatement stmt;
 		int status = 0;
 		try {
