@@ -23,12 +23,12 @@ public class TwoChoiceResult extends Result {
 		return booleanStatements;
 	}
 
-	public void setBooleanStatements(ArrayList<BooleanStatement> booleanStatements) {
+	public void setBooleanStatements(List<BooleanStatement> booleanStatements) {
 		this.booleanStatements = booleanStatements;
 	}
 
 	public String toString() {
-		return this.booleanStatements.toString();
+		return booleanStatements.toString();
 	}
 
 	/**
@@ -66,7 +66,7 @@ public class TwoChoiceResult extends Result {
 
 		Set<Map.Entry<BooleanStatement, Boolean>> entrySet = this.getResult().entrySet();
 		for (Entry<BooleanStatement, Boolean> entry : entrySet) {
-			if ((Boolean) entry.getValue()) {
+			if (entry.getValue()) {
 				numberOfCorrectStatements++;
 			}
 		}

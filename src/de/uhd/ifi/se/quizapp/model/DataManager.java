@@ -60,9 +60,8 @@ public class DataManager {
 
 	public Connection initConnection() {
 		try {
-			Class.forName(this.getDbName());
-			connection = DriverManager.getConnection(this.getDbURL());
-		} catch (SQLException | ClassNotFoundException e) {
+			connection = DriverManager.getConnection(getDbURL());
+		} catch (SQLException e) {
 			System.err.println("Could not connect to DB: " + e.getMessage());
 		}
 		return connection;
@@ -170,13 +169,13 @@ public class DataManager {
 		try {
 			stmt = getConnection().prepareStatement(sql);
 			stmt.setInt(1, id);
-			stmt.executeUpdate();
+			status = stmt.executeUpdate();
 			stmt.close();
 
 			sql = "DELETE FROM exercise WHERE information_id = ?";
-			stmt = this.getConnection().prepareStatement(sql);
+			stmt = getConnection().prepareStatement(sql);
 			stmt.setInt(1, id);
-			status = stmt.executeUpdate();
+			stmt.executeUpdate();
 			stmt.close();
 		} catch (SQLException e) {
 			System.err.println("Deletion of information failed. " + e.getMessage());

@@ -3,6 +3,7 @@ package de.uhd.ifi.se.quizapp.tests.datamanager;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
@@ -29,11 +30,17 @@ public class TestReadAndWriteInformation {
 	}
 
 	@Test
-	public void testGetInformationByID() {
+	public void testGetInformationById() {
 		int existingId = dataManager.getInformation().get(0).getInformationId();
 		Information information = dataManager.getInformation(existingId);
 		assertNotNull(information);
 		assertEquals(information.getInformationId(), existingId);
+	}
+
+	@Test
+	public void testGetInformationByIdNonExisting() {
+		Information information = dataManager.getInformation(42000);
+		assertNull(information);
 	}
 
 	@Test
@@ -58,5 +65,13 @@ public class TestReadAndWriteInformation {
 	public void testUpdateInformationWithUninitializedInformation() {
 		Information information = new Information(0, null, null);
 		assertFalse(dataManager.updateInformation(information));
+	}
+
+	@Test
+	public void testDeleteInformation() {
+		int existingId = dataManager.getInformation().get(0).getInformationId();
+		Information information = new Information(existingId, "Obst", "Obst Obst Obst");
+		assertTrue(dataManager.deleteInformation(information));
+		dataManager.insertInformation(information);
 	}
 }

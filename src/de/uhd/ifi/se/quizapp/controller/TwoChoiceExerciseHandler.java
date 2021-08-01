@@ -18,12 +18,12 @@ import de.uhd.ifi.se.quizapp.model.twochoiceexercise.TwoChoiceResult;
 public class TwoChoiceExerciseHandler extends ExerciseHandler {
 
 	TwoChoiceDataManager dataManager;
-	
-	public  TwoChoiceExerciseHandler() {
+
+	public TwoChoiceExerciseHandler() {
 		this.type = 1;
 		this.dataManager = new TwoChoiceDataManager();
 	}
-	
+
 	public TwoChoiceExerciseHandler(int type) {
 		this.type = type;
 		this.dataManager = new TwoChoiceDataManager();
@@ -32,8 +32,8 @@ public class TwoChoiceExerciseHandler extends ExerciseHandler {
 	/**
 	 * Parses the parameters of the request object to boolean statements
 	 */
-	protected static ArrayList<BooleanStatement> parametersToBooleanStatements(HttpServletRequest request) {
-		ArrayList<BooleanStatement> booleanStatements = new ArrayList<BooleanStatement>();
+	protected static List<BooleanStatement> parametersToBooleanStatements(HttpServletRequest request) {
+		List<BooleanStatement> booleanStatements = new ArrayList<BooleanStatement>();
 
 		Enumeration<String> parameters = request.getParameterNames();
 
@@ -68,7 +68,7 @@ public class TwoChoiceExerciseHandler extends ExerciseHandler {
 	@Override
 	protected HttpServletRequest handleCreationInChain(HttpServletRequest request) {
 
-		ArrayList<BooleanStatement> statements = parametersToBooleanStatements(request);
+		List<BooleanStatement> statements = parametersToBooleanStatements(request);
 
 		int difficulty = Integer.parseInt(request.getParameter("difficulty"));
 		String selectedInformation = request.getParameter("information");
@@ -198,7 +198,7 @@ public class TwoChoiceExerciseHandler extends ExerciseHandler {
 		Student student = (Student) request.getSession().getAttribute("student");
 		System.out.println("Username " + student.getUsername());
 		result.setStudent(student);
-		ArrayList<BooleanStatement> statements = parametersToBooleanStatements(request);
+		List<BooleanStatement> statements = parametersToBooleanStatements(request);
 
 		if (statements != null) {
 			result.setBooleanStatements(statements);
@@ -228,7 +228,7 @@ public class TwoChoiceExerciseHandler extends ExerciseHandler {
 	@Override
 	protected String calculateExerciseMetricsInChain(int type) {
 		ArrayList<TwoChoiceExercise> twoChoiseExercises;
-		ArrayList<TwoChoiceMetric> twoChoiceMetric=new ArrayList<>();
+		ArrayList<TwoChoiceMetric> twoChoiceMetric = new ArrayList<>();
 		try {
 			twoChoiseExercises = (ArrayList<TwoChoiceExercise>) dataManager.getExercises();
 			ArrayList<TwoChoiceResult> results = new ArrayList<>();
@@ -236,14 +236,13 @@ public class TwoChoiceExerciseHandler extends ExerciseHandler {
 				removingHTMLTags(exercise);
 				results = dataManager.getAllResultsByExerciseId(exercise.getExerciseId());
 
-				
 				TwoChoiceMetric metric = new TwoChoiceMetric();
 				metric.setExercise(exercise);
 				metric.setResults(results);
-				
+
 				twoChoiceMetric.add(metric);
 			}
-			
+
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
