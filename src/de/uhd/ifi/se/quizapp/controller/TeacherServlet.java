@@ -23,7 +23,7 @@ import de.uhd.ifi.se.quizapp.model.twochoiceexercise.TwoChoiceResult;
 /**
  * Servlet implementation class TeacherServlet
  */
-@WebServlet("/TeacherServlet")
+@WebServlet("/Teacher")
 public class TeacherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private SentencePartDataManager sentencePartDataManager;

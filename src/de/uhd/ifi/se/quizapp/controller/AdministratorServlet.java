@@ -39,8 +39,6 @@ public class AdministratorServlet extends HttpServlet {
 	private transient DataManager dataManager;
 
 	private TwoChoiceExerciseHandler exerciseHandler;
-	private SentencePartExerciseHandler sentencePartExerciseHandler;
-	private LabelImageExerciseHandler labelImageExerciseHandler;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -48,8 +46,9 @@ public class AdministratorServlet extends HttpServlet {
 	public AdministratorServlet() {
 		super();
 		exerciseHandler = new TwoChoiceExerciseHandler(ExerciseHandler.TWOCHOICE);
-		sentencePartExerciseHandler = new SentencePartExerciseHandler(ExerciseHandler.SENTENCEPART);
-		labelImageExerciseHandler = new LabelImageExerciseHandler(ExerciseHandler.LABEL);
+		SentencePartExerciseHandler sentencePartExerciseHandler = new SentencePartExerciseHandler(
+				ExerciseHandler.SENTENCEPART);
+		LabelImageExerciseHandler labelImageExerciseHandler = new LabelImageExerciseHandler(ExerciseHandler.LABEL);
 
 		exerciseHandler.setSuccessor(sentencePartExerciseHandler);
 		sentencePartExerciseHandler.setSuccessor(labelImageExerciseHandler);
@@ -206,13 +205,7 @@ public class AdministratorServlet extends HttpServlet {
 
 		Information info = new Information(name, text);
 
-		// Insert new information into database
-		try {
-			dataManager.insertInformation(info);
-		} catch (ClassNotFoundException | SQLException e) {
-			System.err.println(e);
-			e.printStackTrace();
-		}
+		dataManager.insertInformation(info);
 
 		String message = "Die Information wurde erfolgreich erstellt.";
 		request.setAttribute("message", message);

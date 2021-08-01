@@ -28,8 +28,6 @@ public class StudentServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private TwoChoiceExerciseHandler exerciseHandler;
-	private SentencePartExerciseHandler sentencePartExerciseHandler;
-	private LabelImageExerciseHandler labelImageExerciseHandler;
 	private DataManager dataManager;
 
 	/**
@@ -38,8 +36,9 @@ public class StudentServlet extends HttpServlet {
 	public StudentServlet() {
 		super();
 		exerciseHandler = new TwoChoiceExerciseHandler(ExerciseHandler.TWOCHOICE);
-		sentencePartExerciseHandler = new SentencePartExerciseHandler(ExerciseHandler.SENTENCEPART);
-		labelImageExerciseHandler = new LabelImageExerciseHandler(ExerciseHandler.LABEL);
+		SentencePartExerciseHandler sentencePartExerciseHandler = new SentencePartExerciseHandler(
+				ExerciseHandler.SENTENCEPART);
+		LabelImageExerciseHandler labelImageExerciseHandler = new LabelImageExerciseHandler(ExerciseHandler.LABEL);
 
 		exerciseHandler.setSuccessor(sentencePartExerciseHandler);
 		sentencePartExerciseHandler.setSuccessor(labelImageExerciseHandler);

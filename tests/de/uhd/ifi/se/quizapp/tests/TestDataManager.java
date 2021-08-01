@@ -8,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -23,7 +24,7 @@ public class TestDataManager {
 	@Test
 	public void testGetInformation() throws ClassNotFoundException, SQLException {
 		DataManager dataManager = new DataManager();
-		ArrayList<Information> informationList = new ArrayList<Information>();
+		List<Information> informationList = new ArrayList<Information>();
 		informationList = dataManager.getInformation();
 		assertTrue(informationList.size() != 0);
 		assertNotNull(informationList);

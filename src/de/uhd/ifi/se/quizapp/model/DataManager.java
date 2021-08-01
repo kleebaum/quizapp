@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.jsoup.Jsoup;
@@ -24,58 +25,40 @@ public class DataManager {
 	private String dbUserName = "";
 	private String dbPassword = "";
 
-	private Connection conn = null;
+	private Connection connection = null;
 
 	public DataManager() {
-		this.conn = initConnection();
+		this.connection = initConnection();
 	}
 
 	public String getDbName() {
-		return this.dbName;
+		return dbName;
 	}
-
-	/*
-	 * public void setDbName(String dbName) { this.dbName = dbName; }
-	 */
 
 	public String getDbURL() {
-		return this.dbURL;
+		return dbURL;
 	}
-
-	/*
-	 * public void setDbURL(String dbURL) { this.dbURL = dbURL; }
-	 */
 
 	public String getDbUserName() {
-		return this.dbUserName;
+		return dbUserName;
 	}
-
-	/*
-	 * public void setDbUserName(String dbUserName) { this.dbUserName = dbUserName;
-	 * }
-	 */
 
 	public String getDbPassword() {
-		return this.dbPassword;
+		return dbPassword;
 	}
-
-	/*
-	 * public void setDbPassword(String dbPassword) { this.dbPassword = dbPassword;
-	 * }
-	 */
 
 	public Connection initConnection() {
 		try {
 			Class.forName(this.getDbName());
-			this.conn = DriverManager.getConnection(this.getDbURL());
+			connection = DriverManager.getConnection(this.getDbURL());
 		} catch (SQLException | ClassNotFoundException e) {
-			System.out.println("Could not connect to DB: " + e.getMessage());
+			System.err.println("Could not connect to DB: " + e.getMessage());
 		}
-		return this.conn;
+		return connection;
 	}
 
-	public Connection getConnection() throws ClassNotFoundException {
-		return this.conn;
+	public Connection getConnection() {
+		return connection;
 	}
 
 	/**
@@ -92,32 +75,29 @@ public class DataManager {
 	}
 
 	/**
-	 * @Decision Verwende Prepared Statements, um SQL Injection zu verhindern.
+	 * @issue How to prevent SQL injections?
+	 * @decision Use prepared statements to prevent SQL injections!
 	 * 
-	 * @Alternative Verwende einen normalen String
-	 * 
-	 * @Problem Sicherheit vernachlässigt
+	 *           Inserts an object of class {@link Information} into database.
 	 */
-
-	/**
-	 * Inserts an object of class Information into database.
-	 * 
-	 * @param information
-	 * @return
-	 * @throws SQLException
-	 * @throws ClassNotFoundException
-	 */
-	public boolean insertInformation(Information information) throws SQLException, ClassNotFoundException {
+	public boolean insertInformation(Information information) {
 		if (information == null) {
 			return false;
 		}
 		String sql = "INSERT INTO information (name, text) VALUES (?, ?)";
-		PreparedStatement stmt = this.getConnection().prepareStatement(sql);
-		stmt.setString(1, StringEscapeUtils.escapeHtml(Jsoup.parse(information.getName()).text()));
-		stmt.setString(2, StringEscapeUtils.escapeHtml(information.getText()));
+		PreparedStatement stmt;
+		int status = 0;
+		try {
+			stmt = getConnection().prepareStatement(sql);
+			stmt.setString(1, StringEscapeUtils.escapeHtml(Jsoup.parse(information.getName()).text()));
+			stmt.setString(2, StringEscapeUtils.escapeHtml(information.getText()));
 
-		int status = stmt.executeUpdate();
-		stmt.close();
+			status = stmt.executeUpdate();
+			stmt.close();
+		} catch (SQLException e) {
+			System.err.println("Insertion of information to database failed. " + e.getMessage());
+		}
+
 		if (status == 1) {
 			return true;
 		} else {
@@ -127,14 +107,14 @@ public class DataManager {
 	}
 
 	/**
-	 * Retrieves all information from database.
+	 * Retrieves all {@link Information} objects from database.
 	 * 
 	 * @return
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	public ArrayList<Information> getInformation() throws ClassNotFoundException, SQLException {
-		ArrayList<Information> informationList = new ArrayList<Information>();
+	public List<Information> getInformation() throws ClassNotFoundException, SQLException {
+		List<Information> informationList = new ArrayList<Information>();
 		ResultSet resultSet;
 
 		String sql = "SELECT * FROM information";
@@ -525,7 +505,7 @@ public class DataManager {
 																					// an
 																					// administrator
 			statement.close(); // @Argument only difference is the role
-		} catch (SQLException | ClassNotFoundException e) {
+		} catch (SQLException e) {
 			System.err.println(e.getMessage());
 			e.printStackTrace();
 		}
@@ -553,7 +533,7 @@ public class DataManager {
 			statement.executeUpdate("DELETE FROM result;");
 			statement.executeUpdate("DELETE FROM student;");
 			statement.close();
-		} catch (SQLException | ClassNotFoundException e) {
+		} catch (SQLException e) {
 			System.err.println(e.getMessage());
 			e.printStackTrace();
 		}
