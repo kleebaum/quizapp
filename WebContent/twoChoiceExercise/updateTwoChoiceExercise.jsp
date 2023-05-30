@@ -16,7 +16,7 @@
 	<%
 		int id = Integer.parseInt(request.getParameter("id"));
 		TwoChoiceExercise exercise = dataManager.getExercise(id);
-		ArrayList<BooleanStatement> booleanStatements = exercise.getBooleanStatements();
+		List<BooleanStatement> booleanStatements = exercise.getBooleanStatements();
 
 		String form = "<div class='group'>";
 		int i = 0;
@@ -63,7 +63,7 @@
 			<div class="col">
 				<select class="form-control" name="information" size="1">
 					<%
-						ArrayList<Information> informationList = dataManager.getInformation();
+						List<Information> informationList = dataManager.getInformation();
 						for (Information eachInformation : informationList) {
 					%><option>
 						<%

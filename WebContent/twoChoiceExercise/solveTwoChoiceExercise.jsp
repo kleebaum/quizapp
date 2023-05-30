@@ -1,4 +1,4 @@
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page
 	import="de.uhd.ifi.se.quizapp.model.twochoiceexercise.BooleanStatement"%>
 
@@ -20,7 +20,7 @@
 		<form id="exerciseform" action=Student method="post">
 			<div class='group'>
 				<%
-					ArrayList<BooleanStatement> booleanStatements = exercise.getBooleanStatements();
+					List<BooleanStatement> booleanStatements = exercise.getBooleanStatements();
 					int type = 1;
 					int id = exercise.getExerciseId();
 

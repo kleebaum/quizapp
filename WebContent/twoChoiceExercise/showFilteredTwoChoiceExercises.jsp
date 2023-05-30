@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="de.uhd.ifi.se.quizapp.model.Information"%>
 <%@page
 	import="de.uhd.ifi.se.quizapp.model.twochoiceexercise.TwoChoiceExercise"%>
@@ -9,7 +9,7 @@
 <div class="container">
 	<%
 		@SuppressWarnings("unchecked")
-		ArrayList<TwoChoiceExercise> exercises = (ArrayList<TwoChoiceExercise>) request.getAttribute("exercises");
+		List<TwoChoiceExercise> exercises = (List<TwoChoiceExercise>) request.getAttribute("exercises");
 		for (TwoChoiceExercise exercise : exercises) {
 			Information information = dataManager.getInformation(exercise.getInformationId());
 	%>

@@ -10,7 +10,7 @@
 	import="de.uhd.ifi.se.quizapp.model.twochoiceexercise.BooleanStatement"%>
 <%@page import="de.uhd.ifi.se.quizapp.controller.ExerciseHandler"%>
 <div class="container">
-	<h1>Aufgaben-Übersicht</h1>
+	<h1>Aufgaben-&Uuml;bersicht</h1>
 
 	<h2>Satzverbindungs-Aufgaben</h2>
 	<jsp:include

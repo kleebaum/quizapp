@@ -5,9 +5,8 @@
 <%@page import="de.uhd.ifi.se.quizapp.model.twochoiceexercise.*"%>
 <%@page import="de.uhd.ifi.se.quizapp.model.sentencepartexercise.*"%>
 <%@page import="java.util.Set"%>
-<%@page import="java.util.HashMap"%>
-<%@page import="java.util.Map.Entry"%>
 <%@page import="java.util.Map"%>
+<%@page import="java.util.Map.Entry"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="de.uhd.ifi.se.quizapp.model.Result"%>
 <%@page import="de.uhd.ifi.se.quizapp.model.Student"%>
@@ -30,7 +29,7 @@
 						out.println("<tr>");
 						out.println("<p>");
 
-						HashMap<Sentence, Boolean> checkedResult = sentencePartResult.getResult();
+						Map<Sentence, Boolean> checkedResult = sentencePartResult.getResult();
 
 						Set<Map.Entry<Sentence, Boolean>> entrySet = checkedResult.entrySet();
 
