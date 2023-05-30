@@ -1,6 +1,6 @@
 package de.uhd.ifi.se.quizapp.model.sentencepartexercise;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import de.uhd.ifi.se.quizapp.model.Metric;
 
@@ -9,7 +9,7 @@ import de.uhd.ifi.se.quizapp.model.Metric;
  */
 public class SentencePartMetric extends Metric {
 
-	ArrayList<SentencePartResult> results;
+	private List<SentencePartResult> results;
 
 	@Override
 	public int getNumberOfCorrectAnswers() {
@@ -27,7 +27,7 @@ public class SentencePartMetric extends Metric {
 		return this.results.size() - this.getNumberOfCorrectAnswers();
 	}
 
-	public void setResults(ArrayList<SentencePartResult> results) {
+	public void setResults(List<SentencePartResult> results) {
 		this.results = results;
 	}
 

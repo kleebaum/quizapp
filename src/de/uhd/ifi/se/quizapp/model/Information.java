@@ -6,26 +6,11 @@ public class Information {
 	private String name;
 	private String text;
 
-	public Information() {
-
-	}
-
-	/**
-	 * 
-	 * @param name
-	 * @param text
-	 */
 	public Information(String name, String text) {
 		this.name = name;
 		this.text = text;
 	}
 
-	/**
-	 * 
-	 * @param id
-	 * @param name
-	 * @param text
-	 */
 	public Information(int id, String name, String text) {
 		this.informationId = id;
 		this.name = name;

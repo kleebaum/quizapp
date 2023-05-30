@@ -1,12 +1,13 @@
 package de.uhd.ifi.se.quizapp.model.twochoiceexercise;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.uhd.ifi.se.quizapp.model.Exercise;
 
 public class TwoChoiceExercise extends Exercise {
 
-	private ArrayList<BooleanStatement> booleanStatements;
+	private List<BooleanStatement> booleanStatements;
 
 	public TwoChoiceExercise() {
 		this.booleanStatements = new ArrayList<BooleanStatement>();
@@ -18,11 +19,11 @@ public class TwoChoiceExercise extends Exercise {
 		this.booleanStatements = booleanStatements;
 	}
 
-	public ArrayList<BooleanStatement> getBooleanStatements() {
+	public List<BooleanStatement> getBooleanStatements() {
 		return booleanStatements;
 	}
 
-	public void setBooleanStatements(ArrayList<BooleanStatement> booleanStatements) {
+	public void setBooleanStatements(List<BooleanStatement> booleanStatements) {
 		this.booleanStatements = booleanStatements;
 	}
 

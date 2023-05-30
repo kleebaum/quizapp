@@ -38,9 +38,7 @@ public class AdministratorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private transient DataManager dataManager;
 
-	TwoChoiceExerciseHandler exerciseHandler;
-	SentencePartExerciseHandler sentencePartExerciseHandler;
-	LabelImageExerciseHandler labelImageExerciseHandler;
+	private TwoChoiceExerciseHandler exerciseHandler;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -48,8 +46,9 @@ public class AdministratorServlet extends HttpServlet {
 	public AdministratorServlet() {
 		super();
 		exerciseHandler = new TwoChoiceExerciseHandler(ExerciseHandler.TWOCHOICE);
-		sentencePartExerciseHandler = new SentencePartExerciseHandler(ExerciseHandler.SENTENCEPART);
-		labelImageExerciseHandler = new LabelImageExerciseHandler(ExerciseHandler.LABEL);
+		SentencePartExerciseHandler sentencePartExerciseHandler = new SentencePartExerciseHandler(
+				ExerciseHandler.SENTENCEPART);
+		LabelImageExerciseHandler labelImageExerciseHandler = new LabelImageExerciseHandler(ExerciseHandler.LABEL);
 
 		exerciseHandler.setSuccessor(sentencePartExerciseHandler);
 		sentencePartExerciseHandler.setSuccessor(labelImageExerciseHandler);
@@ -200,75 +199,38 @@ public class AdministratorServlet extends HttpServlet {
 		doPost(request, response);
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest handleCreateInformationRequest(HttpServletRequest request) {
 		String text = request.getParameter("text");
 		String name = request.getParameter("name");
 
 		Information info = new Information(name, text);
 
-		// Insert new information into database
-		try {
-			dataManager.insertInformation(info);
-		} catch (ClassNotFoundException | SQLException e) {
-			System.err.println(e);
-			e.printStackTrace();
-		}
+		dataManager.insertInformation(info);
 
 		String message = "Die Information wurde erfolgreich erstellt.";
 		request.setAttribute("message", message);
 		return request;
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest handleDeleteInformationRequest(HttpServletRequest request) {
 		int id = 0;
 		if (request.getParameter("id") != null)
 			id = Integer.parseInt(request.getParameter("id"));
 
-		try {
-			dataManager.deleteInformation(id);
-		} catch (ClassNotFoundException | SQLException e) {
-			System.err.println(e);
-			e.printStackTrace();
-		}
+		dataManager.deleteInformation(id);
 
 		String message = "Die Information erfolgreich gel&ouml;scht.";
 		request.setAttribute("message", message);
 		return request;
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest handleEditInformationRequest(HttpServletRequest request) {
 		int id = Integer.parseInt(request.getParameter("id"));
-		Information information = new Information();
-		try {
-			information = dataManager.getInformation(id);
-		} catch (ClassNotFoundException | SQLException e) {
-			System.err.println(e);
-			e.printStackTrace();
-		}
+		Information information = dataManager.getInformation(id);
 		request.setAttribute("information", information);
 		return request;
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest handleUpdateInformationRequest(HttpServletRequest request) {
 		String text = request.getParameter("text");
 		String name = request.getParameter("name");
@@ -276,25 +238,13 @@ public class AdministratorServlet extends HttpServlet {
 
 		Information info = new Information(id, name, text);
 
-		// Update information in database
-		try {
-			dataManager.updateInformation(info);
-		} catch (ClassNotFoundException | SQLException e) {
-			System.err.println(e);
-			e.printStackTrace();
-		}
+		dataManager.updateInformation(info);
 
 		String message = "Die Information wurde erfolgreich aktualisiert.";
 		request.setAttribute("message", message);
 		return request;
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 * @throws ServletException
-	 */
 	public HttpServletRequest uploadFile(HttpServletRequest request) throws ServletException {
 		FileItemFactory factory = new DiskFileItemFactory();
 		ServletFileUpload upload = new ServletFileUpload(factory);
@@ -340,12 +290,6 @@ public class AdministratorServlet extends HttpServlet {
 		return request;
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @param session
-	 * @return
-	 */
 	public HttpServletRequest handleLogin(HttpServletRequest request, HttpSession session) {
 
 		String message = null;
@@ -371,26 +315,18 @@ public class AdministratorServlet extends HttpServlet {
 
 		Administrator administrator = null;
 		message = "Login war nicht erfolgreich";
-		try {
-			administrator = this.dataManager.getAdministrator(username);
-			if (password.equals(administrator.getPasswordHash())) {
-				administrator.setValid(true);
-				session.setAttribute("administrator", administrator);
-				message = "Login erfolgreich";
-			}
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+
+		administrator = this.dataManager.getAdministrator(username);
+		if (password.equals(administrator.getPasswordHash())) {
+			administrator.setValid(true);
+			session.setAttribute("administrator", administrator);
+			message = "Login erfolgreich";
 		}
 
 		request.setAttribute("message", message);
 		return request;
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest deleteFiles(HttpServletRequest request) {
 		String[] files;
 		if (request.getParameterValues("deleteFiles") != null) {
@@ -413,43 +349,27 @@ public class AdministratorServlet extends HttpServlet {
 		return request;
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest handleChangingPassword(HttpServletRequest request) {
-		System.out.println("test");
 		HttpSession session = request.getSession();
 		Administrator administrator = (Administrator) session.getAttribute("administrator");
 		String newpassword = "";
 
 		if (request.getParameter("password") != null) {
 			newpassword = request.getParameter("password");
+
 			try {
-				try {
-					administrator.hashPassword(newpassword);
-					dataManager.changePassword(administrator.getUsername(), administrator.getPasswordHash());
-				} catch (NoSuchAlgorithmException e) {
-					e.printStackTrace();
-				}
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			} catch (SQLException e) {
+				administrator.hashPassword(newpassword);
+				dataManager.changePassword(administrator.getUsername(), administrator.getPasswordHash());
+			} catch (NoSuchAlgorithmException e) {
 				e.printStackTrace();
 			}
+
 		}
 
 		return request;
+
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 */
 	public HttpServletRequest handleDeleteUser(HttpServletRequest request) throws ClassNotFoundException, SQLException {
 		String username = request.getParameter("username");
 
@@ -458,11 +378,6 @@ public class AdministratorServlet extends HttpServlet {
 		return request;
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest handleChangingRole(HttpServletRequest request) {
 		String username = request.getParameter("username");
 		String newRole = request.getParameter("role");
@@ -476,5 +391,4 @@ public class AdministratorServlet extends HttpServlet {
 
 		return request;
 	}
-
 }

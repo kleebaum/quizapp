@@ -65,7 +65,7 @@
 			</div>
 			<div class="col-md-4">
 				<h3>Metriken-&Uuml;bersicht</h3>
-				<p>In der Metriken-&Uuml;bersicht können Statistiken zu bearbeiteten
+				<p>In der Metriken-&Uuml;bersicht k&ouml;nnen Statistiken zu bearbeiteten
 					Aufgaben eingesehen werden.</p>
 				<p>
 					<a class="btn btn-secondary" href=index.jsp?p=showMetrics

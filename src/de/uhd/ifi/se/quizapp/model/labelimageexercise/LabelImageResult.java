@@ -2,6 +2,7 @@ package de.uhd.ifi.se.quizapp.model.labelimageexercise;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -9,7 +10,7 @@ import java.util.Set;
 import de.uhd.ifi.se.quizapp.model.Result;
 
 public class LabelImageResult extends Result {
-	private ArrayList<ImageLabel> labels;
+	private List<ImageLabel> labels;
 	private HashMap<ImageLabel, Boolean> result;
 
 	public LabelImageResult() {
@@ -17,12 +18,11 @@ public class LabelImageResult extends Result {
 		this.result = new HashMap<ImageLabel, Boolean>();
 	}
 
-	public ArrayList<ImageLabel> getLabels() {
+	public List<ImageLabel> getLabels() {
 		return labels;
 	}
 
-	public void setLabels(ArrayList<ImageLabel> labels) {
-
+	public void setLabels(List<ImageLabel> labels) {
 		this.labels = labels;
 	}
 
@@ -46,8 +46,8 @@ public class LabelImageResult extends Result {
 		}
 
 		LabelImageExercise exercise = (LabelImageExercise) this.getExercise();
-		ArrayList<ImageLabel> exerciseLabels = exercise.getLabels();
-		ArrayList<ImageLabel> resultLabels = this.getLabels();
+		List<ImageLabel> exerciseLabels = exercise.getLabels();
+		List<ImageLabel> resultLabels = this.getLabels();
 
 		if (exerciseLabels.size() == resultLabels.size()) {
 			for (int i = 0; i < exerciseLabels.size(); i++) {
@@ -58,7 +58,7 @@ public class LabelImageResult extends Result {
 		}
 		return this.result;
 	}
-	
+
 	@Override
 	public int getNumberOfCorrectAnswers() {
 		int numberOfCorrectLabels = 0;
@@ -73,7 +73,7 @@ public class LabelImageResult extends Result {
 		}
 		return numberOfCorrectLabels;
 	}
-	
+
 	@Override
 	public int getNumberOfWrongAnswers() {
 		int numberOfCorrectSentences = getNumberOfCorrectAnswers();

@@ -18,7 +18,7 @@ import de.uhd.ifi.se.quizapp.model.labelimageexercise.LabelImageResult;
 
 public class LabelImageExerciseHandler extends ExerciseHandler {
 
-	LabelImageDataManager dataManager;
+	private LabelImageDataManager dataManager;
 
 	public LabelImageExerciseHandler() {
 		this.type = 3;
@@ -37,8 +37,8 @@ public class LabelImageExerciseHandler extends ExerciseHandler {
 	 * @param numberOfSentenceParts
 	 * @return
 	 */
-	protected static ArrayList<ImageLabel> parametersToLabels(HttpServletRequest request) {
-		ArrayList<ImageLabel> labels = new ArrayList<ImageLabel>();
+	protected static List<ImageLabel> parametersToLabels(HttpServletRequest request) {
+		List<ImageLabel> labels = new ArrayList<ImageLabel>();
 		Enumeration<String> parameters = request.getParameterNames();
 
 		List<String> parameterList = Collections.list(parameters);
@@ -196,7 +196,7 @@ public class LabelImageExerciseHandler extends ExerciseHandler {
 
 		Student student = (Student) request.getSession().getAttribute("student");
 		result.setStudent(student);
-		ArrayList<ImageLabel> labels = parametersToLabels(request);
+		List<ImageLabel> labels = parametersToLabels(request);
 
 		if (labels != null) {
 			result.setLabels(labels);

@@ -5,7 +5,7 @@
 	String path = "" + request.getContextPath();
 %>
 <nav class="navbar navbar-expand-lg navbar-light">
-	<a class="navbar-brand" href="<%=path%>">NAWIDAZ</a> <a
+	<a class="navbar-brand" href="../">NAWIDAZ</a> <a
 		class="mobilemenu mobilemenunormal" href="#navi"><span></span></a>
 	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">

@@ -1,4 +1,4 @@
-package de.uhd.ifi.se.quizapp.tests.sentencePartDataManager;
+package de.uhd.ifi.se.quizapp.tests.sentencepartexercise.sentencepartdatamanager;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

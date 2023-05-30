@@ -1,15 +1,11 @@
 package de.uhd.ifi.se.quizapp.controller;
 
-import java.sql.SQLException;
-
 import javax.servlet.http.HttpServletRequest;
 
 import de.uhd.ifi.se.quizapp.model.DataManager;
 import de.uhd.ifi.se.quizapp.model.Exercise;
 
 public abstract class ExerciseHandler {
-
-	DataManager dataManager;
 
 	public static final int TWOCHOICE = 1;
 	public static final int SENTENCEPART = 2;
@@ -28,8 +24,8 @@ public abstract class ExerciseHandler {
 		this.successor = successor;
 	}
 
-	/*
-	 * Trys to parse the seleceted information
+	/**
+	 * Trys to parse the selected information
 	 */
 	public boolean tryParse(String s) {
 		try {
@@ -39,9 +35,9 @@ public abstract class ExerciseHandler {
 		}
 		return true;
 	}
-	
+
 	/**
-	 * removes the HTML Tags which are save on the Database
+	 * Removes the HTML Tags which are save on the Database
 	 * 
 	 * @param exercise
 	 */
@@ -51,11 +47,6 @@ public abstract class ExerciseHandler {
 		exercise.setDescription(label);
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest handleCreation(HttpServletRequest request) {
 		int type = Integer.parseInt(request.getParameter("type"));
 		if (this.type == type) {
@@ -69,23 +60,13 @@ public abstract class ExerciseHandler {
 
 	abstract protected HttpServletRequest handleCreationInChain(HttpServletRequest request);
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest handleDeletion(HttpServletRequest request) {
-		this.dataManager = new DataManager();
+		DataManager dataManager = new DataManager();
 		int id = 1;
-		try {
-			if (request.getParameter("id") != null) {
-				id = Integer.parseInt(request.getParameter("id"));
-			}
-			dataManager.deleteExercise(id);
-		} catch (ClassNotFoundException | SQLException e) {
-			System.err.println(e);
-			e.printStackTrace();
+		if (request.getParameter("id") != null) {
+			id = Integer.parseInt(request.getParameter("id"));
 		}
+		dataManager.deleteExercise(id);
 
 		request.setAttribute("message", "Die Aufgabe wurde erfolgreich geloescht.");
 		return request;
@@ -108,11 +89,6 @@ public abstract class ExerciseHandler {
 
 	abstract protected HttpServletRequest handleEditingInChain(HttpServletRequest request);
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest handleUpdating(HttpServletRequest request) {
 		int type = Integer.parseInt(request.getParameter("type"));
 		if (this.type == type) {
@@ -126,11 +102,6 @@ public abstract class ExerciseHandler {
 
 	abstract protected HttpServletRequest handleUpdatingInChain(HttpServletRequest request);
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest handleFiltering(HttpServletRequest request) {
 		int type = Integer.parseInt(request.getParameter("type"));
 		if (this.type == type) {
@@ -151,11 +122,6 @@ public abstract class ExerciseHandler {
 
 	abstract protected HttpServletRequest handleFilteringInChain(HttpServletRequest request);
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest handleSolving(HttpServletRequest request) {
 		int type = Integer.parseInt(request.getParameter("type"));
 		if (this.type == type) {
@@ -176,11 +142,6 @@ public abstract class ExerciseHandler {
 
 	abstract protected HttpServletRequest handleSolvingInChain(HttpServletRequest request);
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest handleChecking(HttpServletRequest request) {
 		int type = Integer.parseInt(request.getParameter("type"));
 		if (this.type == type) {
@@ -200,24 +161,24 @@ public abstract class ExerciseHandler {
 	}
 
 	abstract protected HttpServletRequest handleCheckingInChain(HttpServletRequest request);
-	
+
 	public String calculateExerciseMetrics(int type) {
 		if (this.type == type) {
-            return calculateExerciseMetricsInChain(type);
-        }
-        if (this.successor != null) {
-            if (this.successor.type == type) {
-                return this.successor.calculateExerciseMetricsInChain(type);
-            }
-            if (this.successor.successor != null) {
-                if (this.successor.successor.type == type) {
-                    return this.successor.successor.calculateExerciseMetricsInChain(type);
-                }
-            }
-        }
-        return null;
+			return calculateExerciseMetricsInChain(type);
+		}
+		if (this.successor != null) {
+			if (this.successor.type == type) {
+				return this.successor.calculateExerciseMetricsInChain(type);
+			}
+			if (this.successor.successor != null) {
+				if (this.successor.successor.type == type) {
+					return this.successor.successor.calculateExerciseMetricsInChain(type);
+				}
+			}
+		}
+		return null;
 	}
-	
+
 	abstract protected String calculateExerciseMetricsInChain(int type);
-	
+
 }

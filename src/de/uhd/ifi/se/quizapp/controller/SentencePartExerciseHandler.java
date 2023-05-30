@@ -18,13 +18,12 @@ import de.uhd.ifi.se.quizapp.model.sentencepartexercise.SentencePartResult;
 
 public class SentencePartExerciseHandler extends ExerciseHandler {
 
-	SentencePartDataManager dataManager;
-	
+	private SentencePartDataManager dataManager;
+
 	public SentencePartExerciseHandler() {
 		this.type = 2;
 		this.dataManager = new SentencePartDataManager();
 	}
-	
 
 	public SentencePartExerciseHandler(int type) {
 		this.type = type;
@@ -225,7 +224,7 @@ public class SentencePartExerciseHandler extends ExerciseHandler {
 		}
 		return request;
 	}
-	
+
 	/**
 	 * This function returns a String in style of an Json File. It will be used to
 	 * Show the Metriks in the Teacher View
@@ -234,12 +233,12 @@ public class SentencePartExerciseHandler extends ExerciseHandler {
 	 */
 	@Override
 	protected String calculateExerciseMetricsInChain(int type) {
-		ArrayList<SentencePartExercise> sentencePartExercises;
-		ArrayList<SentencePartMetric> sentencePartMetrik= new ArrayList<>();
+		List<SentencePartExercise> sentencePartExercises;
+		List<SentencePartMetric> sentencePartMetrik = new ArrayList<>();
 		try {
-			sentencePartExercises = (ArrayList<SentencePartExercise>) dataManager.getExercises();
-			
-			ArrayList<SentencePartResult> results = new ArrayList<>();
+			sentencePartExercises = (List<SentencePartExercise>) dataManager.getExercises();
+
+			List<SentencePartResult> results = new ArrayList<>();
 			for (SentencePartExercise exercise : sentencePartExercises) {
 				removingHTMLTags(exercise);
 				results = dataManager.getAllResultsByExerciseId(exercise.getExerciseId());
@@ -255,7 +254,7 @@ public class SentencePartExerciseHandler extends ExerciseHandler {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		String data = "";
 		data += "[{type:'stackedColumn',";
 		data += "legendText: 'Richtig Angaben',";

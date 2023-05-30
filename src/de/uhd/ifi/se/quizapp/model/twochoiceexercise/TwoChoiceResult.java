@@ -2,6 +2,7 @@ package de.uhd.ifi.se.quizapp.model.twochoiceexercise;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -10,7 +11,7 @@ import de.uhd.ifi.se.quizapp.model.Result;
 
 public class TwoChoiceResult extends Result {
 
-	private ArrayList<BooleanStatement> booleanStatements;
+	private List<BooleanStatement> booleanStatements;
 	private HashMap<BooleanStatement, Boolean> result;
 
 	public TwoChoiceResult() {
@@ -18,16 +19,16 @@ public class TwoChoiceResult extends Result {
 		this.result = new HashMap<BooleanStatement, Boolean>();
 	}
 
-	public ArrayList<BooleanStatement> getBooleanStatements() {
+	public List<BooleanStatement> getBooleanStatements() {
 		return booleanStatements;
 	}
 
-	public void setBooleanStatements(ArrayList<BooleanStatement> booleanStatements) {
+	public void setBooleanStatements(List<BooleanStatement> booleanStatements) {
 		this.booleanStatements = booleanStatements;
 	}
 
 	public String toString() {
-		return this.booleanStatements.toString();
+		return booleanStatements.toString();
 	}
 
 	/**
@@ -40,9 +41,8 @@ public class TwoChoiceResult extends Result {
 		TwoChoiceExercise exercise = (TwoChoiceExercise) this.getExercise();
 
 		if (exercise != null) {
-
-			ArrayList<BooleanStatement> exerciseStatements = exercise.getBooleanStatements();
-			ArrayList<BooleanStatement> resultStatements = this.getBooleanStatements();
+			List<BooleanStatement> exerciseStatements = exercise.getBooleanStatements();
+			List<BooleanStatement> resultStatements = this.getBooleanStatements();
 
 			for (BooleanStatement resultStatement : resultStatements) {
 				for (BooleanStatement exerciseStatement : exerciseStatements) {
@@ -59,20 +59,20 @@ public class TwoChoiceResult extends Result {
 
 		return this.result;
 	}
-	
+
 	@Override
 	public int getNumberOfCorrectAnswers() {
 		int numberOfCorrectStatements = 0;
 
 		Set<Map.Entry<BooleanStatement, Boolean>> entrySet = this.getResult().entrySet();
 		for (Entry<BooleanStatement, Boolean> entry : entrySet) {
-			if ((Boolean) entry.getValue()) {
+			if (entry.getValue()) {
 				numberOfCorrectStatements++;
 			}
 		}
 		return numberOfCorrectStatements;
 	}
-	
+
 	@Override
 	public int getNumberOfWrongAnswers() {
 		int numberOfCorrectSentences = getNumberOfCorrectAnswers();

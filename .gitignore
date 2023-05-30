@@ -7,3 +7,4 @@
 # Files
 .classpath
 .project
+*.sqlite

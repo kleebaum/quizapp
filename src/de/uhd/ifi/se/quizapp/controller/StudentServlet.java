@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,16 +19,14 @@ import de.uhd.ifi.se.quizapp.model.DataManager;
 import de.uhd.ifi.se.quizapp.model.Student;
 
 /**
- * Servlet implementation class StudentServlet
+ * Fills the pages for students with data and handles the registration of new
+ * students.
  */
 @WebServlet("/Student")
 public class StudentServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-
-	TwoChoiceExerciseHandler exerciseHandler;
-	SentencePartExerciseHandler sentencePartExerciseHandler;
-	LabelImageExerciseHandler labelImageExerciseHandler;
+	private TwoChoiceExerciseHandler exerciseHandler;
 	private DataManager dataManager;
 
 	/**
@@ -38,8 +35,9 @@ public class StudentServlet extends HttpServlet {
 	public StudentServlet() {
 		super();
 		exerciseHandler = new TwoChoiceExerciseHandler(ExerciseHandler.TWOCHOICE);
-		sentencePartExerciseHandler = new SentencePartExerciseHandler(ExerciseHandler.SENTENCEPART);
-		labelImageExerciseHandler = new LabelImageExerciseHandler(ExerciseHandler.LABEL);
+		SentencePartExerciseHandler sentencePartExerciseHandler = new SentencePartExerciseHandler(
+				ExerciseHandler.SENTENCEPART);
+		LabelImageExerciseHandler labelImageExerciseHandler = new LabelImageExerciseHandler(ExerciseHandler.LABEL);
 
 		exerciseHandler.setSuccessor(sentencePartExerciseHandler);
 		sentencePartExerciseHandler.setSuccessor(labelImageExerciseHandler);
@@ -123,11 +121,6 @@ public class StudentServlet extends HttpServlet {
 		doPost(request, response);
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest handleRegistration(HttpServletRequest request) {
 		Student student = new Student();
 		student.setUsername(request.getParameter("username"));
@@ -146,7 +139,7 @@ public class StudentServlet extends HttpServlet {
 						+ ". Ihr Benutzername lautet <strong>" + request.getParameter("username") + "</strong>";
 
 				System.out.println("Registrierung erfolgreich");
-			} catch (NoSuchAlgorithmException | ClassNotFoundException | SQLException e) {
+			} catch (NoSuchAlgorithmException e) {
 				System.err.println("Fehler!");
 				message = "Registrierung nicht erfolgreich";
 				e.printStackTrace();
@@ -159,12 +152,6 @@ public class StudentServlet extends HttpServlet {
 		return request;
 	}
 
-	/**
-	 * 
-	 * @param request
-	 * @param session
-	 * @return
-	 */
 	public HttpServletRequest handleLogin(HttpServletRequest request, HttpSession session) {
 
 		String message = null;
@@ -190,23 +177,19 @@ public class StudentServlet extends HttpServlet {
 
 		Student student = null;
 		message = "Login war nicht erfolgreich";
-		try {
-			student = this.dataManager.getStudent(username);
-			if (student != null && password.equals(student.getPasswordHash())) {
-				student.setValid(true);
-				session.setAttribute("student", student);
-				message = "Erfolgreich als Student angemeldet";
-			} else {
-				Administrator administrator = this.dataManager.getAdministrator(username);
-				if (password.equals(administrator.getPasswordHash())) {
-					administrator.setValid(true);
-					session.setAttribute("administrator", administrator);
-					message = "Erfolgreich als Administrator angemeldet";
-				}
-
+		student = this.dataManager.getStudent(username);
+		if (student != null && password.equals(student.getPasswordHash())) {
+			student.setValid(true);
+			session.setAttribute("student", student);
+			message = "Erfolgreich als Student angemeldet";
+		} else {
+			Administrator administrator = this.dataManager.getAdministrator(username);
+			if (password.equals(administrator.getPasswordHash())) {
+				administrator.setValid(true);
+				session.setAttribute("administrator", administrator);
+				message = "Erfolgreich als Administrator angemeldet";
 			}
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+
 		}
 
 		request.setAttribute("message", message);

@@ -3,12 +3,7 @@ package de.uhd.ifi.se.quizapp.model;
 public abstract class Result {
 
 	private Exercise exercise;
-
 	private Student student;
-
-	public Result() {
-
-	}
 
 	public Exercise getExercise() {
 		return exercise;
@@ -27,6 +22,8 @@ public abstract class Result {
 	}
 
 	public abstract int getNumberOfCorrectAnswers();
+
 	public abstract int getNumberOfWrongAnswers();
+
 	public abstract float getPercentage();
 }

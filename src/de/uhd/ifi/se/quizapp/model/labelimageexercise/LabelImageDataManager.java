@@ -30,7 +30,7 @@ public class LabelImageDataManager extends DataManager {
 	 * @param content
 	 * @return
 	 */
-	public static ArrayList<ImageLabel> contentToString(String content) {
+	public static List<ImageLabel> contentToString(String content) {
 		if (content != null) {
 			if (content.contains("null")) {
 				return new ArrayList<ImageLabel>();
@@ -62,12 +62,7 @@ public class LabelImageDataManager extends DataManager {
 		return labels;
 	}
 
-	/**
-	 * 
-	 * @param labels
-	 * @return
-	 */
-	public static String labelsToString(ArrayList<ImageLabel> labels) {
+	public static String labelsToString(List<ImageLabel> labels) {
 		StringBuffer contentBuffer = new StringBuffer();
 		contentBuffer.append("[");
 		if (labels.size() == 1) {
@@ -139,7 +134,7 @@ public class LabelImageDataManager extends DataManager {
 		resultSet = stmt.executeQuery(sql);
 
 		while (resultSet.next()) {
-			ArrayList<ImageLabel> labels = contentToString(resultSet.getString(3));
+			List<ImageLabel> labels = contentToString(resultSet.getString(3));
 			LabelImageExercise exercise = new LabelImageExercise(resultSet.getInt(1), resultSet.getInt(2),
 					StringEscapeUtils.unescapeHtml(resultSet.getString(4)), resultSet.getInt(7), labels);
 			exercises.add(exercise);
@@ -172,7 +167,7 @@ public class LabelImageDataManager extends DataManager {
 
 		while (resultSet.next()) {
 			if (resultSet.getInt(1) == id) {
-				ArrayList<ImageLabel> labels = contentToString(resultSet.getString(3));
+				List<ImageLabel> labels = contentToString(resultSet.getString(3));
 				exercise = new LabelImageExercise(resultSet.getInt(1), resultSet.getInt(2),
 						StringEscapeUtils.unescapeHtml(resultSet.getString(4)), resultSet.getInt(7), labels);
 			}
@@ -208,7 +203,7 @@ public class LabelImageDataManager extends DataManager {
 		ResultSet resultSet = stmt.executeQuery();
 
 		while (resultSet.next()) {
-			ArrayList<ImageLabel> labels = contentToString(resultSet.getString(3));
+			List<ImageLabel> labels = contentToString(resultSet.getString(3));
 			LabelImageExercise exercise = new LabelImageExercise(resultSet.getInt(1), resultSet.getInt(2),
 					StringEscapeUtils.unescapeHtml(resultSet.getString(4)), resultSet.getInt(7), labels);
 			exercises.add(exercise);
@@ -246,11 +241,11 @@ public class LabelImageDataManager extends DataManager {
 		while (resultSet.next()) {
 			LabelImageResult result = new LabelImageResult();
 			LabelImageExercise exercise = new LabelImageExercise();
-			ArrayList<ImageLabel> labels = contentToString(resultSet.getString("content"));
+			List<ImageLabel> labels = contentToString(resultSet.getString("content"));
 			exercise = new LabelImageExercise(resultSet.getInt("id"), resultSet.getInt("difficulty"),
 					StringEscapeUtils.unescapeHtml(resultSet.getString("description")),
 					resultSet.getInt("information_id"), labels);
-			ArrayList<ImageLabel> labels_result = contentToString(resultSet.getString("result_content"));
+			List<ImageLabel> labels_result = contentToString(resultSet.getString("result_content"));
 
 			result.setLabels(labels_result);
 			result.setExercise(exercise);
@@ -293,12 +288,12 @@ public class LabelImageDataManager extends DataManager {
 			LabelImageResult result = new LabelImageResult();
 			LabelImageExercise exercise = new LabelImageExercise();
 
-			ArrayList<ImageLabel> labels = contentToString(resultSet.getString("content"));
+			List<ImageLabel> labels = contentToString(resultSet.getString("content"));
 			exercise = new LabelImageExercise(resultSet.getInt("id"), resultSet.getInt("difficulty"),
 					StringEscapeUtils.unescapeHtml(resultSet.getString("description")),
 					resultSet.getInt("information_id"), labels);
 
-			ArrayList<ImageLabel> labels_result = contentToString(resultSet.getString("result_content"));
+			List<ImageLabel> labels_result = contentToString(resultSet.getString("result_content"));
 
 			Student student = this.getStudent(resultSet.getString("student_id"));
 
@@ -339,12 +334,12 @@ public class LabelImageDataManager extends DataManager {
 			LabelImageResult result = new LabelImageResult();
 			LabelImageExercise exercise = new LabelImageExercise();
 
-			ArrayList<ImageLabel> labels = contentToString(resultSet.getString("content"));
+			List<ImageLabel> labels = contentToString(resultSet.getString("content"));
 			exercise = new LabelImageExercise(resultSet.getInt("id"), resultSet.getInt("difficulty"),
 					StringEscapeUtils.unescapeHtml(resultSet.getString("description")),
 					resultSet.getInt("information_id"), labels);
 
-			ArrayList<ImageLabel> labels_result = contentToString(resultSet.getString("result_content"));
+			List<ImageLabel> labels_result = contentToString(resultSet.getString("result_content"));
 
 			Student student = this.getStudent(resultSet.getString("student_id"));
 
@@ -400,7 +395,7 @@ public class LabelImageDataManager extends DataManager {
 	 * @throws SQLException
 	 */
 	public void insertResult(LabelImageResult result) throws ClassNotFoundException, SQLException {
-		ArrayList<ImageLabel> labels = result.getLabels();
+		List<ImageLabel> labels = result.getLabels();
 		String content = labelsToString(labels);
 
 		String sql = "INSERT INTO result (exercise_id, result_content, student_id) VALUES (?,?,?)";

@@ -23,12 +23,12 @@ import de.uhd.ifi.se.quizapp.model.twochoiceexercise.TwoChoiceResult;
 /**
  * Servlet implementation class TeacherServlet
  */
-@WebServlet("/TeacherServlet")
+@WebServlet("/Teacher")
 public class TeacherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	SentencePartDataManager sentencePartDataManager;
-	TwoChoiceDataManager twoChoiceDataManager;
-	LabelImageDataManager lableImageDataManager;
+	private SentencePartDataManager sentencePartDataManager;
+	private TwoChoiceDataManager twoChoiceDataManager;
+	private LabelImageDataManager lableImageDataManager;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -72,11 +72,6 @@ public class TeacherServlet extends HttpServlet {
 			}
 			dispatcher = request.getRequestDispatcher("/teacher/index.jsp?p=showStudentForExercise");
 		}
-		/*
-		 * else if (request.getParameter("filterExercise") != null) { request =
-		 * this.handleFilterExercises(request); dispatcher =
-		 * request.getRequestDispatcher("/teacher/index.jsp?p=showExercises"); }
-		 */
 
 		// No request
 		else {
@@ -88,11 +83,6 @@ public class TeacherServlet extends HttpServlet {
 		}
 	}
 
-	/**
-	 * Handle Teacher Requests
-	 * @param request
-	 * @return
-	 */
 	public HttpServletRequest handleStudentDetails(HttpServletRequest request) {
 		String username = request.getParameter("username");
 		Student student = new Student();
@@ -118,33 +108,6 @@ public class TeacherServlet extends HttpServlet {
 		return request;
 	}
 
-	/*
-	 * Handle Exercise Filter for the teachers exercise overview
-	 * 
-	 *
-	 * public HttpServletRequest handleFilterExercises(HttpServletRequest request) {
-	 * Enumeration<String> parameters = request.getParameterNames(); Map<String,
-	 * String> filterArguments = new HashMap<String, String>();
-	 * 
-	 * while (parameters.hasMoreElements()) { String paramName =
-	 * parameters.nextElement(); String paramValue =
-	 * request.getParameterValues(paramName)[0]; filterArguments.put(paramName,
-	 * paramValue); }
-	 * 
-	 * ArrayList<Exercise> exercises = null; try { exercises =
-	 * datamanager.getFilteredExercises(filterArguments); } catch
-	 * (ClassNotFoundException e) { e.printStackTrace(); } catch (SQLException e) {
-	 * e.printStackTrace(); }
-	 * 
-	 * request.setAttribute("exercises", exercises); return request; }
-	 */
-	/**
-	 * 
-	 * @param request
-	 * @return
-	 * @throws ClassNotFoundException
-	 * @throws SQLException
-	 */
 	public HttpServletRequest handleShowStudentsForExercise(HttpServletRequest request)
 			throws ClassNotFoundException, SQLException {
 		String exerciseId = null;

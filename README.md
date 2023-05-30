@@ -47,7 +47,7 @@ This has the following benefits:
 - The data remains confidential.
 
 ## Unit and Selenium Tests
-The quality of the app is ensured using JUnit and Selenium tests.
+The quality of the app is ensured using JUnit tests and static code analysis.
 
 ## Usage Description
 
