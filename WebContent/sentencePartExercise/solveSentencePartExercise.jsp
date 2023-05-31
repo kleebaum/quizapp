@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Collections"%>
 <%@page
@@ -18,7 +17,7 @@
 		<button class="btn btn-primary" onclick="goBack()">Zur&uuml;ck</button>
 	</div>
 	<%
-		ArrayList<Sentence> sentences = exercise.getSentences();
+		List<Sentence> sentences = exercise.getSentences();
 		for (Sentence sentence : sentences) {
 			List<String> sentenceParts = sentence.getSentenceParts();
 			Collections.shuffle(sentenceParts);
