@@ -2,7 +2,7 @@ package de.uhd.ifi.se.quizapp.model.init;
 
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 
 import de.uhd.ifi.se.quizapp.model.Administrator;
 import de.uhd.ifi.se.quizapp.model.DataManager;
@@ -36,7 +36,7 @@ public class InitDatabase {
 		SentencePartExercise sampleExercise = new SentencePartExercise();
 		sampleExercise.setDescription("Verbinde die Satzteile");
 
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(
 				"Obst und Gem&uumlse|sind gesund.|Du kannst Obst und Gem&uumlse|essen.|Es gibt viele|Sorten.", 2, 3);
 		sampleExercise.setSentences(sentences);
 		sampleExercise.setInformationId(1);

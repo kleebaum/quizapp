@@ -33,8 +33,8 @@ public class SentencePartExerciseHandler extends ExerciseHandler {
 	/**
 	 * Parses the parameters of the request object to sentences
 	 */
-	protected static ArrayList<Sentence> parametersToSentences(HttpServletRequest request, int numberOfSentenceParts) {
-		ArrayList<Sentence> sentences = new ArrayList<Sentence>();
+	protected static List<Sentence> parametersToSentences(HttpServletRequest request, int numberOfSentenceParts) {
+		List<Sentence> sentences = new ArrayList<Sentence>();
 		Enumeration<String> parameters = request.getParameterNames();
 
 		List<String> parameterList = Collections.list(parameters);
@@ -68,7 +68,7 @@ public class SentencePartExerciseHandler extends ExerciseHandler {
 		String selectedInformation = request.getParameter("information");
 		int numberOfSentenceParts = Integer.parseInt(request.getParameter("numberOfSentenceParts"));
 		String description = request.getParameter("description");
-		ArrayList<Sentence> sentences = parametersToSentences(request, numberOfSentenceParts);
+		List<Sentence> sentences = parametersToSentences(request, numberOfSentenceParts);
 
 		String message = "";
 
@@ -204,7 +204,7 @@ public class SentencePartExerciseHandler extends ExerciseHandler {
 		Student student = (Student) request.getSession().getAttribute("student");
 		System.out.println("Username " + student.getUsername());
 		result.setStudent(student);
-		ArrayList<Sentence> sentences = parametersToSentences(request, numberOfSentenceParts);
+		List<Sentence> sentences = parametersToSentences(request, numberOfSentenceParts);
 
 		if (sentences != null) {
 			result.setSentences(sentences);

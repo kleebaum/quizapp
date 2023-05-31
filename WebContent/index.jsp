@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +33,7 @@
 			<div class="col-md-4">
 				<h3>Ad&shy;mi&shy;nis&shy;tra&shy;tor&shy;Innen Zu&shy;gang</h3>
 				<p> 
-					Im AdministratorInnen Zugang können verschiedene Arten von Aufgaben erstellt, gel&ouml;scht oder bearbeitet werden.
+					Im AdministratorInnen Zugang k&ouml;nnen verschiedene Arten von Aufgaben erstellt, gel&ouml;scht oder bearbeitet werden.
 				</p>
 				<p>
 			 		<a class="btn btn-secondary" href="admin/index.jsp" role="button">Zum Zugang</a>

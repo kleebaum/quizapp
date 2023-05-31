@@ -14,7 +14,7 @@ public class SentencePartExercise extends Exercise {
 	}
 
 	public SentencePartExercise(int id, int difficulty, String description, int informationId,
-			ArrayList<Sentence> sentences) {
+			List<Sentence> sentences) {
 		super(id, difficulty, description, informationId);
 		this.sentences = sentences;
 	}

@@ -23,7 +23,7 @@ public class SentencePartResult extends Result {
 		return sentences;
 	}
 
-	public void setSentences(ArrayList<Sentence> sentences) {
+	public void setSentences(List<Sentence> sentences) {
 		this.sentences = sentences;
 	}
 
