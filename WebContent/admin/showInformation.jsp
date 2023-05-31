@@ -30,8 +30,8 @@
 				<input type="hidden" name="id"
 					value='<%=information.getInformationId()%>'> <input
 					class="btn btn-primary" type="submit" name="deleteInformation"
-					value="Löschen"
-					onclick="return confirm('ACHTUNG! Alle mit dieser Information verbundenen Aufgaben werden gelöscht! Klicken Sie OK zum fortfahren.')">
+					value="L&ouml;schen"
+					onclick="return confirm('ACHTUNG! Alle mit dieser Information verbundenen Aufgaben werden gel&ouml;scht! Klicken Sie OK zum fortfahren.')">
 				<input class="btn btn-primary" type="submit" name="editInformation"
 					value="Bearbeiten">
 			</form>
