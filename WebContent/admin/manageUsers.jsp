@@ -38,8 +38,8 @@
 				<form action="Administrator" method="post">
 					<input type="hidden" name="username"
 						value="<%=user.getUsername()%>" /> <input type="submit"
-						value="Löschen" name="deleteUser"
-						onclick="return confirm('ACHTUNG! Sie löschen einen Benutzer dauerhaft! Klicken Sie OK zum fortfahren.')" />
+						value="L&ouml;schen" name="deleteUser"
+						onclick="return confirm('ACHTUNG! Sie l&ouml;schen einen Benutzer dauerhaft! Klicken Sie OK zum fortfahren.')" />
 				</form>
 			</td>
 			<td>
@@ -56,14 +56,14 @@
 						value="teacher"
 						<%if (user.getRole().equals("teacher"))
 					out.println("checked");%> />
-					<label for="studentrole<%=IDcount%>">SchülerIn</label> <input
+					<label for="studentrole<%=IDcount%>">Sch&uuml;lerIn</label> <input
 						id="studentrole<%=IDcount%>" type="radio" name="role"
 						value="student"
 						<%if (user.getRole().equals("student"))
 					out.println("checked");%> />
 
-					<input type="submit" value="Ändern" name="changeRole"
-						onclick="return confirm('ACHTUNG! Sie ändern die Rolle eines Benutzers.')" />
+					<input type="submit" value="&Auml;ndern" name="changeRole"
+						onclick="return confirm('ACHTUNG! Sie &auml;ndern die Rolle eines Benutzers.')" />
 				</form>
 
 			</td>

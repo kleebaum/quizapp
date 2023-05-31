@@ -21,11 +21,11 @@
 	%>	
 
 	<noscript>Bitte aktivieren Sie Javascript, um die Applikation
-		richtig nutzen zu können.</noscript>
+		richtig nutzen zu k&ouml;nnen.</noscript>
 	<div class="jumbotron" id="wrapper" style="background: #28A828;">
 		<div class="container">
 			<h1 class="display-4">Na&shy;Wi&shy;DaZ-2.0 Sprach&shy;lern-App </h1>
-			<p align="center">Bitte wählen Sie einen Zugang aus.</p>
+			<p align="center">Bitte w&auml;hlen Sie einen Zugang aus.</p>
 		</div>
 	</div>
 	<br><br>
@@ -42,9 +42,9 @@
 			</div>
 			
 			<div class="col-md-4">
-				<h3>Schü&shy;ler&shy;Innen Zu&shy;gang</h3>
+				<h3>Sch&uuml;&shy;ler&shy;Innen Zu&shy;gang</h3>
 				<p> 
-					Im SchülerInnen Zugang können Satzteilverbindungs-Aufgaben, Richtig/Falsch-Aufgaben und Beschriftungs-Aufgaben bearbeitet werden.  
+					Im Sch&uuml;lerInnen Zugang k&ouml;nnen Satzteilverbindungs-Aufgaben, Richtig/Falsch-Aufgaben und Beschriftungs-Aufgaben bearbeitet werden.  
 				</p>
 				<p>
 					<a class="btn btn-secondary" href="student/index.jsp" role="button">Zum Zugang</a>
@@ -53,7 +53,7 @@
 			<div class="col-md-4">
 				<h3>Lehrer&shy;Innen Zu&shy;gang</h3>
 				<p>
-					Im LehrerInnen Zugang können die von den SchülerInnen bearbeiteten Aufgaben inklusive ihrer Korrektur eingesehen werden. 
+					Im LehrerInnen Zugang k&ouml;nnen die von den Sch&uuml;lerInnen bearbeiteten Aufgaben inklusive ihrer Korrektur eingesehen werden. 
 				</p>
 				<p>
 					<a class="btn btn-secondary" href="teacher/index.jsp" role="button">Zum Zugang</a>
