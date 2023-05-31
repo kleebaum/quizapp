@@ -4,7 +4,6 @@
 	pageEncoding="utf-8"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Set"%>
-<%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.Map.Entry"%>
 <%@page
@@ -16,7 +15,7 @@
 	class="de.uhd.ifi.se.quizapp.model.sentencepartexercise.SentencePartExercise"
 	scope="request" />
 <%
-	HashMap<Sentence, Boolean> checkedResult = result.getResult();
+	Map<Sentence, Boolean> checkedResult = result.getResult();
 
 	Set<Map.Entry<Sentence, Boolean>> entrySet = checkedResult.entrySet();
 
