@@ -6,15 +6,19 @@ public class Information {
 	private String name;
 	private String text;
 
+	public Information() {
+		// required for (de)serialization
+	}
+
 	public Information(String name, String text) {
+		this();
 		this.name = name;
 		this.text = text;
 	}
 
 	public Information(int id, String name, String text) {
+		this(name, text);
 		this.informationId = id;
-		this.name = name;
-		this.text = text;
 	}
 
 	public int getInformationId() {
