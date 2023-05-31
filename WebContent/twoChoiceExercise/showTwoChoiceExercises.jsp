@@ -16,7 +16,7 @@
 
 			List<TwoChoiceExercise> twoChoiceExercises = dataManager.getExercises();
 			for (TwoChoiceExercise exercise : twoChoiceExercises) {
-				ArrayList<BooleanStatement> booleanStatements = exercise.getBooleanStatements();
+				List<BooleanStatement> booleanStatements = exercise.getBooleanStatements();
 				for (BooleanStatement statement : booleanStatements) {
 					exerciseView += "<div class='group'>" + statement.getStatement();
 					if (statement.isCorrect()) {

@@ -37,7 +37,7 @@ public class SentencePartDataManager extends DataManager {
 		resultSet = stmt.executeQuery(sql);
 
 		while (resultSet.next()) {
-			ArrayList<Sentence> sentences = contentToSentences(resultSet.getString(3), resultSet.getInt(5),
+			List<Sentence> sentences = contentToSentences(resultSet.getString(3), resultSet.getInt(5),
 					resultSet.getInt(6));
 			SentencePartExercise exercise = new SentencePartExercise(resultSet.getInt(1), resultSet.getInt(2),
 					StringEscapeUtils.unescapeHtml(resultSet.getString(4)), resultSet.getInt(7), sentences);
@@ -55,8 +55,7 @@ public class SentencePartDataManager extends DataManager {
 	 * @param numberOfSentences
 	 * @return
 	 */
-	public static ArrayList<Sentence> contentToSentences(String content, int numberOfSentenceParts,
-			int numberOfSentences) {
+	public static List<Sentence> contentToSentences(String content, int numberOfSentenceParts, int numberOfSentences) {
 		ArrayList<String> contentParts = new ArrayList<String>(Arrays.asList(content.split("\\|")));
 
 		if (numberOfSentenceParts < 1 || numberOfSentences < 1) {
@@ -120,7 +119,7 @@ public class SentencePartDataManager extends DataManager {
 
 		while (resultSet.next()) {
 			if (resultSet.getInt(1) == id) {
-				ArrayList<Sentence> sentences = contentToSentences(resultSet.getString(3), resultSet.getInt(5),
+				List<Sentence> sentences = contentToSentences(resultSet.getString(3), resultSet.getInt(5),
 						resultSet.getInt(6));
 				exercise = new SentencePartExercise(resultSet.getInt(1), resultSet.getInt(2),
 						StringEscapeUtils.unescapeHtml(resultSet.getString(4)), resultSet.getInt(7), sentences);
@@ -220,7 +219,7 @@ public class SentencePartDataManager extends DataManager {
 		ResultSet resultSet = stmt.executeQuery();
 
 		while (resultSet.next()) {
-			ArrayList<Sentence> sentences = contentToSentences(resultSet.getString(3), resultSet.getInt(5),
+			List<Sentence> sentences = contentToSentences(resultSet.getString(3), resultSet.getInt(5),
 					resultSet.getInt(6));
 			SentencePartExercise exercise = new SentencePartExercise(resultSet.getInt(1), resultSet.getInt(2),
 					StringEscapeUtils.unescapeHtml(resultSet.getString(4)), resultSet.getInt(7), sentences);
@@ -287,13 +286,13 @@ public class SentencePartDataManager extends DataManager {
 			SentencePartResult result = new SentencePartResult();
 			SentencePartExercise exercise = new SentencePartExercise();
 
-			ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(resultSet.getString("content"),
+			List<Sentence> sentences = SentencePartDataManager.contentToSentences(resultSet.getString("content"),
 					resultSet.getInt("width"), resultSet.getInt("height"));
 			exercise = new SentencePartExercise(resultSet.getInt("id"), resultSet.getInt("difficulty"),
 					StringEscapeUtils.unescapeHtml(resultSet.getString("description")),
 					resultSet.getInt("information_id"), sentences);
 
-			ArrayList<Sentence> sentences_result = SentencePartDataManager.contentToSentences(
+			List<Sentence> sentences_result = SentencePartDataManager.contentToSentences(
 					resultSet.getString("result_content"), resultSet.getInt("width"), resultSet.getInt("height"));
 
 			result.setSentences(sentences_result);
@@ -332,13 +331,13 @@ public class SentencePartDataManager extends DataManager {
 			SentencePartResult result = new SentencePartResult();
 			SentencePartExercise exercise = new SentencePartExercise();
 
-			ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(resultSet.getString("content"),
+			List<Sentence> sentences = SentencePartDataManager.contentToSentences(resultSet.getString("content"),
 					resultSet.getInt("width"), resultSet.getInt("height"));
 			exercise = new SentencePartExercise(resultSet.getInt("id"), resultSet.getInt("difficulty"),
 					StringEscapeUtils.unescapeHtml(resultSet.getString("description")),
 					resultSet.getInt("information_id"), sentences);
 
-			ArrayList<Sentence> sentences_result = SentencePartDataManager.contentToSentences(
+			List<Sentence> sentences_result = SentencePartDataManager.contentToSentences(
 					resultSet.getString("result_content"), resultSet.getInt("width"), resultSet.getInt("height"));
 
 			Student student = this.getStudent(resultSet.getString("student_id"));
@@ -377,13 +376,13 @@ public class SentencePartDataManager extends DataManager {
 			SentencePartResult result = new SentencePartResult();
 			SentencePartExercise exercise = new SentencePartExercise();
 
-			ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(resultSet.getString("content"),
+			List<Sentence> sentences = SentencePartDataManager.contentToSentences(resultSet.getString("content"),
 					resultSet.getInt("width"), resultSet.getInt("height"));
 			exercise = new SentencePartExercise(resultSet.getInt("id"), resultSet.getInt("difficulty"),
 					StringEscapeUtils.unescapeHtml(resultSet.getString("description")),
 					resultSet.getInt("information_id"), sentences);
 
-			ArrayList<Sentence> sentences_result = SentencePartDataManager.contentToSentences(
+			List<Sentence> sentences_result = SentencePartDataManager.contentToSentences(
 					resultSet.getString("result_content"), resultSet.getInt("width"), resultSet.getInt("height"));
 
 			Student student = this.getStudent(resultSet.getString("student_id"));

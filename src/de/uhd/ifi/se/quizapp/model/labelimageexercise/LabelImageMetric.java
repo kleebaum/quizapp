@@ -1,6 +1,6 @@
 package de.uhd.ifi.se.quizapp.model.labelimageexercise;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import de.uhd.ifi.se.quizapp.model.Metric;
 
@@ -9,7 +9,7 @@ import de.uhd.ifi.se.quizapp.model.Metric;
  */
 public class LabelImageMetric extends Metric {
 
-	ArrayList<LabelImageResult> results;
+	List<LabelImageResult> results;
 
 	@Override
 	public int getNumberOfCorrectAnswers() {
@@ -27,7 +27,7 @@ public class LabelImageMetric extends Metric {
 		return this.results.size() - this.getNumberOfCorrectAnswers();
 	}
 
-	public void setResults(ArrayList<LabelImageResult> results) {
+	public void setResults(List<LabelImageResult> results) {
 		this.results = results;
 	}
 

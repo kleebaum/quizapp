@@ -20,7 +20,7 @@
 <jsp:include page="../labelImageExercise/showLabelImageResult.jsp"></jsp:include>
 <%
 	} else {
-			out.println("Keine Aufgabe verfügbar");
+			out.println("Keine Aufgabe verf&uuml;gbar");
 		}
 	}
 %>

@@ -7,7 +7,7 @@
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map.Entry"%>
 <%@page import="java.util.Map"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="de.uhd.ifi.se.quizapp.model.Result"%>
 <%@page import="de.uhd.ifi.se.quizapp.model.Student"%>
 
@@ -22,7 +22,7 @@
 		</thead>
 		<tbody>
 			<%
-				ArrayList<TwoChoiceResult> twoChoiceResults = (ArrayList<TwoChoiceResult>) request
+				List<TwoChoiceResult> twoChoiceResults = (List<TwoChoiceResult>) request
 						.getAttribute("twoChoiceResults");
 				if (twoChoiceResults != null) {
 					for (TwoChoiceResult twoChoiceResult : twoChoiceResults) {

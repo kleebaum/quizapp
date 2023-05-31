@@ -24,6 +24,24 @@
 					<warSourceDirectory>WebContent</warSourceDirectory>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>WebContent/WEB-INF/lib</outputDirectory>
+							<excludeTransitive>false</excludeTransitive>
+							<includeScope>compile</includeScope>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
@@ -31,7 +49,11 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>4.0.1</version>
-			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-lang</groupId>
@@ -52,7 +74,7 @@
 		<dependency>
 			<groupId>org.xerial</groupId>
 			<artifactId>sqlite-jdbc</artifactId>
-			<version>3.40.0.0</version>
+			<version>3.41.2.2</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -69,7 +91,7 @@
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
-			<version>1.4</version>
+			<version>1.5</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
@@ -97,7 +119,6 @@
 			<version>1.1.2</version>
 		</dependency>
 	</dependencies>
-	
 	<profiles>
 		<!-- Creates coverage reports in target/site/jacoco/ -->
 		<profile>
@@ -126,10 +147,9 @@
 								</goals>
 							</execution>
 						</executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-	
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>

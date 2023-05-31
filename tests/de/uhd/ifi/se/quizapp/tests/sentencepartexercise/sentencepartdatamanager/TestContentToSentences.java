@@ -4,7 +4,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -34,7 +33,7 @@ public class TestContentToSentences {
 	@Test
 	public void testStringEmptySentencePartsLessSentencesLess() throws ClassNotFoundException, SQLException {
 		this.content = "";
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, -1, -1);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, -1, -1);
 		assertNull(sentences);
 	}
 
@@ -42,7 +41,7 @@ public class TestContentToSentences {
 	@Test
 	public void testStringFullSentencePartsLessSentencesLess() throws ClassNotFoundException, SQLException {
 		this.content = "Test";
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, -1, -1);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, -1, -1);
 		assertNull(sentences);
 	}
 
@@ -50,7 +49,7 @@ public class TestContentToSentences {
 	@Test(expected = java.lang.NullPointerException.class)
 	public void testStringNullSentencePartsOkSentencesLess() throws ClassNotFoundException, SQLException {
 		this.content = null;
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 1, -1);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 1, -1);
 		assertNull(sentences);
 	}
 
@@ -58,7 +57,7 @@ public class TestContentToSentences {
 	@Test
 	public void testStringEmptySentencePartsOkSentencesLess() throws ClassNotFoundException, SQLException {
 		this.content = "";
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 1, -1);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 1, -1);
 		assertNull(sentences);
 	}
 
@@ -66,7 +65,7 @@ public class TestContentToSentences {
 	@Test
 	public void testStringFullSentencePartsOkSentencesLess() throws ClassNotFoundException, SQLException {
 		this.content = "Test";
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 1, -1);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 1, -1);
 		assertNull(sentences);
 	}
 
@@ -74,7 +73,7 @@ public class TestContentToSentences {
 	@Test(expected = java.lang.NullPointerException.class)
 	public void testStringNullSentencePartsLessentencesOk() throws ClassNotFoundException, SQLException {
 		this.content = null;
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, -1, 1);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, -1, 1);
 		assertNull(sentences);
 	}
 
@@ -82,7 +81,7 @@ public class TestContentToSentences {
 	@Test
 	public void testStringEmptySentencePartsLessSentencesOk() throws ClassNotFoundException, SQLException {
 		this.content = "";
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, -1, 1);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, -1, 1);
 		assertNull(sentences);
 	}
 
@@ -90,7 +89,7 @@ public class TestContentToSentences {
 	@Test
 	public void testStringFullSentencePartsLessSentencesOk() throws ClassNotFoundException, SQLException {
 		this.content = "Test";
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, -1, 1);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, -1, 1);
 		assertNull(sentences);
 	}
 
@@ -105,7 +104,7 @@ public class TestContentToSentences {
 	@Test
 	public void testStringEmptySentencePartsOkSentencesOk() throws ClassNotFoundException, SQLException {
 		this.content = "";
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 1, 1);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 1, 1);
 		assertNotNull(sentences);
 	}
 
@@ -113,7 +112,7 @@ public class TestContentToSentences {
 	@Test
 	public void testStringFullSentencePartsOkSentencesOk() throws ClassNotFoundException, SQLException {
 		this.content = "Test";
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 1, 1);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 1, 1);
 		assertNotNull(sentences);
 	}
 
@@ -129,7 +128,7 @@ public class TestContentToSentences {
 	@Test
 	public void testStringEmptySentencePartsBigSentencesOk() throws ClassNotFoundException, SQLException {
 		this.content = "";
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 2, 1);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 2, 1);
 		assertNull(sentences);
 	}
 
@@ -137,7 +136,7 @@ public class TestContentToSentences {
 	@Test
 	public void testStringFullSentencePartsBigSentencesOk() throws ClassNotFoundException, SQLException {
 		this.content = "Test";
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 2, 1);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 2, 1);
 		assertNull(sentences);
 	}
 
@@ -145,7 +144,7 @@ public class TestContentToSentences {
 	@Test(expected = java.lang.NullPointerException.class)
 	public void testStringNullSentencePartsOkSentencesBig() throws ClassNotFoundException, SQLException {
 		this.content = null;
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 1, 2);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 1, 2);
 		assertNull(sentences);
 	}
 
@@ -153,7 +152,7 @@ public class TestContentToSentences {
 	@Test
 	public void testStringEmptySentencePartsOkSentencesBig() throws ClassNotFoundException, SQLException {
 		this.content = "";
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 1, 2);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 1, 2);
 		assertNull(sentences);
 	}
 
@@ -161,7 +160,7 @@ public class TestContentToSentences {
 	@Test
 	public void testStringFullSentencePartsOkSentencesBig() throws ClassNotFoundException, SQLException {
 		this.content = "Test";
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 1, 2);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 1, 2);
 		assertNull(sentences);
 	}
 
@@ -169,7 +168,7 @@ public class TestContentToSentences {
 	@Test(expected = java.lang.NullPointerException.class)
 	public void testStringNullSentencePartsLessSentencesBig() throws ClassNotFoundException, SQLException {
 		this.content = null;
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, -1, 2);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, -1, 2);
 		assertNull(sentences);
 	}
 
@@ -177,7 +176,7 @@ public class TestContentToSentences {
 	@Test
 	public void testStringEmptySentencePartsLessSentencesBig() throws ClassNotFoundException, SQLException {
 		this.content = "";
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, -1, 2);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, -1, 2);
 		assertNull(sentences);
 	}
 
@@ -185,7 +184,7 @@ public class TestContentToSentences {
 	@Test
 	public void testStringFullSentencePartsLessSentencesBig() throws ClassNotFoundException, SQLException {
 		this.content = "Test";
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, -1, 2);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, -1, 2);
 		assertNull(sentences);
 	}
 
@@ -193,7 +192,7 @@ public class TestContentToSentences {
 	@Test(expected = java.lang.NullPointerException.class)
 	public void testStringNullSentencePartsBigSentencesLess() throws ClassNotFoundException, SQLException {
 		this.content = null;
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 2, -1);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 2, -1);
 		assertNull(sentences);
 	}
 
@@ -201,7 +200,7 @@ public class TestContentToSentences {
 	@Test
 	public void testStringEmptySentencePartsBigSentencesLess() throws ClassNotFoundException, SQLException {
 		this.content = "";
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 2, -1);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 2, -1);
 		assertNull(sentences);
 	}
 
@@ -209,7 +208,7 @@ public class TestContentToSentences {
 	@Test
 	public void testStringFullSentencePartsBigSentencesLess() throws ClassNotFoundException, SQLException {
 		this.content = "Test";
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 2, -1);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 2, -1);
 		assertNull(sentences);
 	}
 
@@ -217,7 +216,7 @@ public class TestContentToSentences {
 	@Test(expected = java.lang.NullPointerException.class)
 	public void testStringNullSentencePartsBigSentencesBig() throws ClassNotFoundException, SQLException {
 		this.content = null;
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 2, 2);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 2, 2);
 		assertNull(sentences);
 	}
 
@@ -225,7 +224,7 @@ public class TestContentToSentences {
 	@Test
 	public void testStringEmptySentencePartsBigSentencesBig() throws ClassNotFoundException, SQLException {
 		this.content = "";
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 2, 2);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 2, 2);
 		assertNull(sentences);
 	}
 
@@ -233,7 +232,7 @@ public class TestContentToSentences {
 	@Test
 	public void testStringFullSentencePartsBigSentencesBig() throws ClassNotFoundException, SQLException {
 		this.content = "Test";
-		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 2, 2);
+		List<Sentence> sentences = SentencePartDataManager.contentToSentences(content, 2, 2);
 		assertNull(sentences);
 	}
 

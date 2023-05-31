@@ -224,13 +224,13 @@ public class LabelImageExerciseHandler extends ExerciseHandler {
 	 */
 	@Override
 	protected String calculateExerciseMetricsInChain(int type) {
-		ArrayList<LabelImageExercise> labelImageExercises;
-		ArrayList<LabelImageMetric> labelImageMetric = new ArrayList<>();
+		List<LabelImageExercise> labelImageExercises;
+		List<LabelImageMetric> labelImageMetric = new ArrayList<>();
 
 		try {
 			labelImageExercises = (ArrayList<LabelImageExercise>) dataManager.getExercises();
 
-			ArrayList<LabelImageResult> results = new ArrayList<>();
+			List<LabelImageResult> results = new ArrayList<>();
 			for (LabelImageExercise exercise : labelImageExercises) {
 				removingHTMLTags(exercise);
 				results = dataManager.getAllResultsByExerciseId(exercise.getExerciseId());

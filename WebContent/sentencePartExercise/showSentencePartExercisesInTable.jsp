@@ -16,7 +16,7 @@
 				<th scope="row">Aufgabe</th>
 				<th scope="row">Beschreibung</th>
 				<th scope="row">Information</th>
-				<th scope="row">SchülerInnen</th>
+				<th scope="row">Sch&uuml;lerInnen</th>
 			</tr>
 		</thead>
 		<tbody>

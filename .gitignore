@@ -1,10 +1,10 @@
 # Gitignore for the mobile quizz app
 
 # Directories
-/target/
+target/
 .settings/
+WebContent/WEB-INF/lib/
 
 # Files
 .classpath
 .project
-*.sqlite

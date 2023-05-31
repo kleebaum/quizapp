@@ -1,7 +1,7 @@
+<%@ taglib uri="java.sun.com/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<jsp:useBean id="information" scope="request"
-	class="de.uhd.ifi.se.quizapp.model.Information" />
+<jsp:useBean id="information" scope="request" class="de.uhd.ifi.se.quizapp.model.Information" />
 <title>Information bearbeiten</title>
 <%
 	String text = information.getText();

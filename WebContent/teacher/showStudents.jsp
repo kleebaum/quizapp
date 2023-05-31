@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="de.uhd.ifi.se.quizapp.model.Student"%>
 <jsp:useBean id="datamanager"
 	class="de.uhd.ifi.se.quizapp.model.DataManager"></jsp:useBean>
@@ -8,7 +8,7 @@
 <script type="text/javascript" src="release/jsc/jsComponents.js"></script>
 
 <div class="container">
-	<h1>Sch&uuml;ler/Innen-Übersicht</h1>
+	<h1>Sch&uuml;ler/Innen-&Uuml;bersicht</h1>
 	<table id="sortabletable"
 		class="table-sm table-bordered tablesorter sortabletable">
 		<thead>
@@ -22,7 +22,7 @@
 		<tbody>
 			<%
 				@SuppressWarnings("unchecked")
-				ArrayList<Student> students = datamanager.getStudents();
+				List<Student> students = datamanager.getStudents();
 				for (Student student : students) {
 			%>
 

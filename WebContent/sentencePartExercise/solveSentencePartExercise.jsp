@@ -15,7 +15,7 @@
 		<div id='description'><%=exercise.getDescription()%></div>
 	</div>
 	<div class="row">
-		<button class="btn btn-primary" onclick="goBack()">Zurück</button>
+		<button class="btn btn-primary" onclick="goBack()">Zur&uuml;ck</button>
 	</div>
 	<%
 		ArrayList<Sentence> sentences = exercise.getSentences();
