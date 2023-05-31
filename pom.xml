@@ -35,7 +35,7 @@
 							<goal>copy-dependencies</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${maven.multiModuleProjectDirectory}/WebContent/WEB-INF/lib</outputDirectory>
+							<outputDirectory>WebContent/WEB-INF/lib</outputDirectory>
 							<excludeTransitive>false</excludeTransitive>
 							<includeScope>compile</includeScope>
 						</configuration>
@@ -115,7 +115,6 @@
 			<version>1.1.2</version>
 		</dependency>
 	</dependencies>
-
 	<profiles>
 		<!-- Creates coverage reports in target/site/jacoco/ -->
 		<profile>
@@ -149,5 +148,4 @@
 			</build>
 		</profile>
 	</profiles>
-
 </project>
