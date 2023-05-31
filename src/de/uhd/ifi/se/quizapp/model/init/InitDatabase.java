@@ -31,15 +31,13 @@ public class InitDatabase {
 						+ "Obst w&auml;chst h&auml;ufig an B&auml;umen, an Str&auml;uchern oder auf dem Boden. "
 						+ "Du isst Gem&uuml;se h&auml;ufig gekocht. Du kannst eine Suppe kochen. "
 						+ "Gem&uuml;se W&auml;chst h&auml;ufig am Boden oder an Str&auml;uchern.</p>"
-						+ "\r\n<p>&nbsp;</p>\r\n<p>"
-						+ "<img src='https://s14-eu5.ixquick.com/cgi-bin/serveimage?url=https:%2F%2Fs-media-cache-ak0.pinimg.com%2F736x%2Fec%2F52%2F5e%2Fec525ebb8219bd06c7785e71dbd17292.jpg&amp;sp=163cf6b64309a95eacb8a34be66076cf'/></p>");
+						+ "<img src='https://upload.wikimedia.org/wikipedia/commons/3/3d/Fruit%2C_Vegetables_and_Grain_NCI_Visuals_Online.jpg'/></p>");
 		dataManager.insertInformation(sampleInformation);
 		SentencePartExercise sampleExercise = new SentencePartExercise();
 		sampleExercise.setDescription("Verbinde die Satzteile");
 
 		ArrayList<Sentence> sentences = SentencePartDataManager.contentToSentences(
 				"Obst und Gem&uumlse|sind gesund.|Du kannst Obst und Gem&uumlse|essen.|Es gibt viele|Sorten.", 2, 3);
-
 		sampleExercise.setSentences(sentences);
 		sampleExercise.setInformationId(1);
 		sampleExercise.setDifficulty(1);
