@@ -28,5 +28,6 @@ jobs:
         # Select your package manager
         PACKAGE_MANAGER: maven
         GITHUB_ACCESS_TOKEN: ${{ github.token }}
+        OPTIONS: # none
       run: |
         docker run -v $PWD:/src -e PROJECT_PATH=$GITHUB_REPOSITORY -e PACKAGE_MANAGER=$PACKAGE_MANAGER -e DIRECTORY=src -e GITHUB_ACCESS_TOKEN=$GITHUB_ACCESS_TOKEN -e OPTIONS="$OPTIONS" dependabot/dependabot-script
