@@ -1,4 +1,4 @@
-name: ManualDependabot
+name: Manual dependabot
 
 on:
   workflow_dispatch:
@@ -26,10 +26,7 @@ jobs:
     - name: Run dependabot
       env:
         # Select your package manager
-        PACKAGE_MANAGER: docker
-        # Options can turn on extra features (not required)
-        OPTIONS: |
-           { "kubernetes_updates": true }
-        GITHUB_ACCESS_TOKEN: ${{ github.token }}
+        PACKAGE_MANAGER: maven
+        GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        docker run -v $PWD:/src -e PROJECT_PATH=$GITHUB_REPOSITORY -e PACKAGE_MANAGER=$PACKAGE_MANAGER -e DIRECTORY=src -e GITHUB_ACCESS_TOKEN=$GITHUB_ACCESS_TOKEN -e OPTIONS="$OPTIONS" dependabot/dependabot-script
+        docker run -v $PWD:/src -e PROJECT_PATH=$GITHUB_REPOSITORY -e PACKAGE_MANAGER=$PACKAGE_MANAGER -e DIRECTORY=src -e GITHUB_ACCESS_TOKEN=$GITHUB_ACCESS_TOKEN dependabot/dependabot-script
