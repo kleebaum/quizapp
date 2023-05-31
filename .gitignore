@@ -8,4 +8,3 @@ WebContent/WEB-INF/lib/
 # Files
 .classpath
 .project
-*.sqlite
