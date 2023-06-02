@@ -5,7 +5,7 @@
 [![codecov](https://codecov.io/gh/kleebaum/quizapp/branch/master/graph/badge.svg?token=xbzzGhdFjN)](https://codecov.io/gh/kleebaum/quizapp)
 [![GitHub contributors](https://img.shields.io/github/contributors/kleebaum/quizapp.svg)](https://github.com/kleebaum/quizapp/graphs/contributors)
 
-This repository contains the code of a mobile quiz web app that was developed within the [NaWi-DaZ 2.0 project](http://se.ifi.uni-heidelberg.de/research/projects/nawi_daz_20.html).
+This repository contains the code of a mobile quiz web app that was developed within the [NaWi-DaZ 2.0 project](https://se.ifi.uni-heidelberg.de/research/projects/nawi_daz_20.html).
 It is written in Java and web programming languages (e.g., Java Server Pages, Java Script) and stores data in an [SQLite database](https://www.sqlite.org).
 The app runs on a Java servlet container such as [Tomcat](https://tomcat.apache.org/) or [Jetty](https://www.eclipse.org/jetty/) and can be accessed via browser.
 
@@ -19,10 +19,9 @@ Currently, there are three different types of exercises: multiple choice exercis
 
 ## NaWi-DaZ 2.0 Project
 
-[NaWi-DaZ 2.0](http://se.ifi.uni-heidelberg.de/research/projects/nawi_daz_20.html) was a joint project between the Heidelberg School of Education and the Software Engineering group of the Heidelberg University. 
-It was financially supported by the [PLACE programme](https://hse-heidelberg.de/forschung/place-aktuell/).
+[NaWi-DaZ 2.0](https://se.ifi.uni-heidelberg.de/research/projects/nawi_daz_20.html) was a joint project between the [Heidelberg School of Education](https://hse-heidelberg.de) and the [Software Engineering group of the Heidelberg University](https://se.ifi.uni-heidelberg.de). 
 The NaWi-DaZ 2.0 project investigated how students can learn the German language with a focus on natural sciences.
-For this purpose, this mobile quiz web app was developed, which enables students to learn scientific terminology without using their first language.
+For this purpose, this mobile quiz web app was developed, which enables students to learn scientific terminology.
 
 ## Installation
 
